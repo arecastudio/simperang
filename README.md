@@ -1,8 +1,9 @@
-Aplikasi Pengadaan Barang
-=================================
+Sistem Informasi Manajemen Pengadaan Barang (SIMPERANG v.1.0)
+=============================================================
 
 ## Keterangan
-JavaFX app
+Aplikasi ini dibuat untuk memenuhi kebutuhan pengadaan barang dan ATK di kantor.
+Beberapa fitur tambahan menyesuaikan dengan kebutuhan identik dan struktur organisasi yang ada.
 
 > Update pertama
 ![screenshoot](img1.png)
@@ -29,3 +30,7 @@ Update modul Vendor, tambah nama pemilik beserta report
 >Update ke-7
 Penambahan fungsi terbilang ke report
 ![fungsi terbilang](img6.png)
+
+>Update ke-8
+Fungsi combo->Simpan, cetak, kirim email ke vendor fixed.
+![fungsi combo](img7.png)

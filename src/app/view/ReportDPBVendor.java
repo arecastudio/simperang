@@ -32,6 +32,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -65,6 +66,7 @@ public class ReportDPBVendor extends VBox {
 
     private final String KONTEN_SURAT="/app/surat_permintaan.txt";
     private final String SURAT_PERMINTAAN="/app/reports/surat-permintaan.jasper";
+    private final String SURAT_PERMINTAAN_LAMPIRAN="/app/reports/surat-permintaan-lampiran.jasper";
 
     private InputStream input;
     //khusus jasper for fast loading
@@ -77,6 +79,8 @@ public class ReportDPBVendor extends VBox {
     private int simpan=0;
 
     private ProgressBar progressBar;
+
+    private Optional<ButtonType> result;
 
     public ReportDPBVendor() {
         Inits();
@@ -365,12 +369,48 @@ public class ReportDPBVendor extends VBox {
             //if (1==1){
             text_nota.setText("df");
             if (textArea.getText().toString().trim().length()>0  && text_nota.getText().toString().trim().length()>0 && tmpNomor!="" && tmpNamaVendor!="" && tmpAlamatVendor!="" && tmpPemilikVendor!="" && tmpNamaManager!="") {
+
+                //========================================================
+                Task<Void>task_simpan=new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        DataNota d=new DataNota();
+                        d.setId_vendor(Integer.parseInt(tmpVendor));
+                        d.setNomor(text_nota.getText().toString().trim());
+                        d.setNomor_dpb_kolektif(tmpNomor);
+                        d.setMail_send(mailsend);
+
+                        simpan=new NotaModify().Simpan(d);
+                        return null;
+                    }
+                };
+                task_simpan.setOnSucceeded(event1 -> {
+                    hbox10.getChildren().clear();
+                    hbox10.getChildren().addAll(ket);
+                    if (simpan>0){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Dialog Informasi");
+                        alert.setHeaderText("Proses Berhasil");
+                        alert.setContentText("Data telah tersimpan.");
+                        alert.showAndWait();
+                    }else {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Dialog Informasi");
+                        alert.setHeaderText("Proses Gagal");
+                        alert.setContentText("Terjadi kesalahan proses simpan.");
+                        alert.showAndWait();
+                    }
+                    Refresh();
+                });
                 //========================================================
                 Task<Void>task_cetak=new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
                         if (chkPrint.isSelected()) {
                             input = getClass().getResourceAsStream(SURAT_PERMINTAAN);
+                            String lampiran=getClass().getResource(SURAT_PERMINTAAN_LAMPIRAN).toString();
+                            lampiran=lampiran.substring((Integer)"file:".length(),lampiran.length()-(Integer)"surat-permintaan-lampiran.jasper".length());
+                            System.out.println("File lampiran: "+lampiran.toString());
                             try {
                                 JasperReport report = (JasperReport) JRLoader.loadObject(input);
 
@@ -389,6 +429,8 @@ public class ReportDPBVendor extends VBox {
                                 params.put("grand_total", tmpGrandTotal);
                                 params.put("terbilang", tmpTerbilang);
 
+                                params.put("SUBREPORT_DIR",lampiran.toString());
+
                                 JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, conn);
                                 jasperPrint.setName("Rekap Surat Permintaan");
 
@@ -405,55 +447,11 @@ public class ReportDPBVendor extends VBox {
                     }
                 };
                 task_cetak.setOnSucceeded(event1 -> {
-                    Refresh();
-                    ket.setText("Keterangan: Proses Cetak berhasil.");
-                    hbox10.getChildren().clear();
-                    hbox10.getChildren().addAll(ket);
-                });
-                //========================================================
-                Task<Void>task_simpan=new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        DataNota d=new DataNota();
-                        d.setId_vendor(Integer.parseInt(tmpVendor));
-                        d.setNomor(text_nota.getText().toString().trim());
-                        d.setNomor_dpb_kolektif(tmpNomor);
-                        d.setMail_send(mailsend);
-
-                        simpan=new NotaModify().Simpan(d);
-                        return null;
-                    }
-                };
-                task_simpan.setOnSucceeded(event1 -> {
-                    ket.setText("Keterangan: Proses Simpan Data berhasil.");
+                    ket.setText("Keterangan: Tunggu hingga proses selesai...");
                     Platform.runLater(()->{
-                        if (chkPrint.isSelected()){
-                            hbox10.getChildren().clear();
-                            hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
-                            progressBar.setProgress(-1.0);
-                            ket.setText("Keterangan: Proses Simpan Data berhasil. Lanjut ke Proses Cetak.");
-                            Thread r=new Thread(task_cetak);
-                            r.setDaemon(true);
-                            r.start();
-                        }else {
-                            Refresh();
-                            ket.setText("Keterangan: Proses Simpan Data berhasil.");
-                            hbox10.getChildren().clear();
-                            hbox10.getChildren().addAll(ket);
-                        }
-                    });
-
-                    Platform.runLater(()->{
-                        if (simpan>0){
-                            hbox10.getChildren().clear();
-                            hbox10.getChildren().addAll(ket);
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Dialog Informasi");
-                            alert.setHeaderText("Proses Berhasil");
-                            alert.setContentText("Data telah tersimpan.");
-                            alert.show();
-                            //Refresh();
-                        }
+                        Thread t=new Thread(task_simpan);
+                        t.setDaemon(true);
+                        t.start();
                     });
                 });
                 //========================================================
@@ -470,54 +468,27 @@ public class ReportDPBVendor extends VBox {
                     }
                 };
                 task_mail.setOnSucceeded(event1 -> {
-                    ket.setText("Keterangan: Proses kirim e-mail berhasil. Lanjut ke Proses Simpan Data.");
+                    ket.setText("Keterangan: Tunggu hingga proses selesai...");
+                    Platform.runLater(()->{
+                        Thread r=new Thread(task_cetak);
+                        r.setDaemon(true);
+                        r.start();
+                    });
+
                 });
                 //========================================================
 
 
-
+                hbox10.getChildren().clear();
+                hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
+                progressBar.setProgress(-1.0);
+                ket.setText("Keterangan: Tunggu hingga proses selesai...");
                 Thread e=new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        //BOF kirim email
-                        if (chkEmail.isSelected()){
-
-                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                            alert.setTitle("Dialog Konfirmasi");
-                            alert.setHeaderText("Proses kirim e-mail.");
-                            alert.setContentText("Proses waktu beberapa detik. Lanjutkan?");
-
-                            Optional<ButtonType> result = alert.showAndWait();
-                            if (result.get() == ButtonType.OK){
-
-                                hbox10.getChildren().clear();
-                                hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
-
-                                progressBar.setProgress(-1.0);
-                                ket.setText("Keterangan: Mulai proses kirim e-mail.");
-
-                                Thread thread=new Thread(task_mail);
-                                thread.setDaemon(true);
-                                thread.start();
-
-                            } else {
-                                chkEmail.setSelected(false);
-                            }
-                        }
-                        //EOF kirim email
-
-
-                        Platform.runLater(()->{
-                            ket.setText("Keterangan: Mulai proses Simpan Data.");
-                            progressBar.setProgress(-1.0);
-                            hbox10.getChildren().clear();
-                            hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
-
-                            Thread t=new Thread(task_simpan);
-                            t.setDaemon(true);
-                            t.start();
-                        });
-
+                        Thread thread=new Thread(task_mail);
+                        thread.setDaemon(true);
+                        thread.start();
                     }
                 });
                 e.setDaemon(true);

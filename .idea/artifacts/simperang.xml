@@ -1,20 +1,20 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" name="PengadaanApp">
-    <output-path>$PROJECT_DIR$/out/artifacts/PengadaanApp</output-path>
+  <artifact type="javafx" name="simperang">
+    <output-path>$PROJECT_DIR$/out/artifacts/simperang</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="app.Main" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
         <option name="nativeBundle" value="all" />
-        <option name="title" value="Pengadaan Barang" />
-        <option name="vendor" value="" />
-        <option name="version" value="2.0" />
+        <option name="title" value="Sistem InformasiManajemen Pengadaan Barang" />
+        <option name="vendor" value="Areca  Studio" />
+        <option name="version" value="" />
       </options>
     </properties>
     <root id="root">
-      <element id="archive" name="pengadaan_barang.jar">
-        <element id="module-output" name="pengadaan-barang" />
+      <element id="archive" name="simperang.jar">
+        <element id="module-output" name="simperang" />
       </element>
     </root>
   </artifact>

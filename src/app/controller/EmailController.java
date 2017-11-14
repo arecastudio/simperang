@@ -118,7 +118,7 @@ public class EmailController {
     	final String username = new LoginEmail().getUsername();
 		final String password = new LoginEmail().getPassword();
 		String con="";
-		String subj="ATKMgr- Pembuatan Permintaan Barang "+tgl;
+		String subj="SIMPERANG - Pembuatan Permintaan Barang "+tgl;
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -145,31 +145,17 @@ public class EmailController {
 				System.out.println(str);
 				message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(str));
 			}
-			
+			System.out.println("prepare sending mail...");
 			message.setSubject(subj);
-			//message.setText("Dear Mail Crawler,\n\n No spam to my email, please!");
 			con+="Berikut ini adalah summary permintaan yang telah di-<i>approve</i> oleh SDM<br/>";
 			con+=getContent(nomor);
-			//con+="<hr/>"+tgl;
+
 			message.setContent(con, "text/html");
-
-			Task<Void>task=new Task<Void>() {
-				@Override
-				protected Void call() throws Exception {
-					Transport.send(message);
-					return null;
-				}
-			};
-			task.setOnSucceeded(event -> {
-				System.out.println("Proses kirim email selesai.");
-			});
-
-			Thread thread=new Thread(task);
-			thread.setDaemon(true);
-			thread.run();
+			System.out.println("Start sending mail...");
+			Transport.send(message);
 
 			//Transport.send(message);
-			//System.out.println("Done");
+			System.out.println("Done. Email sent.");
 			b=Boolean.TRUE;
 
 		} catch (MessagingException e) {

@@ -74,7 +74,7 @@ public class TabPermintaanItemSave extends AnchorPane {
 		
 		text_keterangan=new TextField();
 		text_keterangan.setPrefWidth(400);
-		text_keterangan.setPromptText("Keterangan");
+		text_keterangan.setPromptText("Perihal...");
 
 
 		//------------------------------------------------------------
@@ -289,7 +289,13 @@ public class TabPermintaanItemSave extends AnchorPane {
 						GlobalUtility.dataBarangDipilihEdit.clear();
 						refresh();
 						//Toast.makeText(Main.primaryStage, "Permintaan berhasil di-posting !", 650, 150, 150,Color.CHARTREUSE);
-						Main.borderPane.setCenter(new Label("Berhasil menyimpan permintaan."));
+						//Main.borderPane.setCenter(new Label("Berhasil menyimpan permintaan."));
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Dialog Informasi");
+						alert.setHeaderText("Simpan Data.");
+						alert.setContentText("Proses telah selesai.");
+						alert.showAndWait();
+						Main.borderPane.setCenter(new EditPermintaan());
 					}
 					
 				}else {

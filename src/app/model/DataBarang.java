@@ -1,5 +1,7 @@
 package app.model;
 
+import java.sql.Blob;
+
 public class DataBarang {
 	private String id;
 	private String nama;
@@ -7,6 +9,7 @@ public class DataBarang {
 	private String keterangan;
 	private String harga;
 	private DataBarangJenis jenis;
+	private Object img;
 	
 	public DataBarang(){}
 	
@@ -66,5 +69,13 @@ public class DataBarang {
 
 	public void setJenis(DataBarangJenis jenis) {
 		this.jenis = jenis;
+	}
+
+	public Object getImg() {
+		return img;
+	}
+
+	public void setImg(Object img) {
+		this.img = img;
 	}
 }

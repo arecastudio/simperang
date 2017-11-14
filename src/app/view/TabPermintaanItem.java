@@ -1,25 +1,26 @@
 package app.view;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import app.GlobalUtility;
 import app.Main;
+import app.controller.BarangModify;
 import app.controller.GetDataBarangs;
 import app.model.DataBarang;
 import app.model.DataBarangDipilih;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -39,6 +40,7 @@ public class TabPermintaanItem extends Pane {
 	private ObservableList<DataBarang> dataBarang;
 	//public static ObservableList<DataBarang> list;
 	private Boolean isEdit;
+	private String path="";
 	
 	public TabPermintaanItem(Boolean isEdit) {
 		this.isEdit=isEdit;
@@ -143,10 +145,45 @@ public class TabPermintaanItem extends Pane {
 		grid.getChildren().clear();
 		for (DataBarang db : dbr) {
 			///System.out.println(db.getNama()+"");
+
+			path=System.getProperty("java.io.tmpdir").toString();
+			if (path.substring(path.length()-1,path.length())!="/") path+="/";
+			//System.out.println("temp dir: "+path);
+
+			//File file=new File(path+db.getId()+".jpg");
+			//Image image=new Image(file.toURI().toString());
+			ImageView imageView=new ImageView();
+			imageView.setFitWidth(250);
+			imageView.setFitHeight(150);
+
+			byte[] b=new BarangModify().GetImage(db.getId());
+			if (b!=null){
+				Task<Void> task=new Task<Void>() {
+					@Override
+					protected Void call() throws Exception {
+						FileOutputStream fos = new FileOutputStream(path+db.getId()+".jpg");
+						fos.write(b);
+						return null;
+					}
+				};
+				task.setOnSucceeded(e->{
+					File f=new File(path+db.getId()+".jpg");
+					Image image=new Image(f.toURI().toString());
+					imageView.setImage(image);
+				});
+
+				Thread t=new Thread(task);
+				t.setDaemon(true);
+				t.start();
+			}
+
+
 			Button bt=new Button(""+ db.getNama());
+			bt.setContentDisplay(ContentDisplay.TOP);
+			bt.setGraphic(imageView);
 			bt.getStyleClass().addAll("button_barang");
 			bt.setId(""+db.getId());
-			bt.setPrefHeight(100);
+			bt.setPrefHeight(250);
 			bt.setPrefWidth(300);
 			if(j>3) {j=0;k++;}
 			grid.add(bt, j, k);

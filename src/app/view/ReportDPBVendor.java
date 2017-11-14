@@ -367,10 +367,11 @@ public class ReportDPBVendor extends VBox {
         button_save.setPrefWidth(120);
         button_save.setOnAction((ActionEvent event) -> {
             //if (1==1){
-            text_nota.setText("df");
+            //text_nota.setText("df");
             if (textArea.getText().toString().trim().length()>0  && text_nota.getText().toString().trim().length()>0 && tmpNomor!="" && tmpNamaVendor!="" && tmpAlamatVendor!="" && tmpPemilikVendor!="" && tmpNamaManager!="") {
 
                 //========================================================
+                //TASK SIMPAN
                 Task<Void>task_simpan=new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
@@ -403,6 +404,7 @@ public class ReportDPBVendor extends VBox {
                     Refresh();
                 });
                 //========================================================
+                //TASK CETAK
                 Task<Void>task_cetak=new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
@@ -455,6 +457,7 @@ public class ReportDPBVendor extends VBox {
                     });
                 });
                 //========================================================
+                //TASK KIRIM EMAIL
                 Task<Void>task_mail=new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
@@ -493,79 +496,13 @@ public class ReportDPBVendor extends VBox {
                 });
                 e.setDaemon(true);
                 e.start();
-
-                /*DataVendor v=new VendorModify().GetVenderoById(tmpVendor);
-                if (chkEmail.isSelected()){
-                    mailsend=new EmailController().EmailVendor(v.getEmail().toString());
-                }
-
-                DataNota d=new DataNota();
-                d.setId_vendor(Integer.parseInt(tmpVendor));
-                d.setNomor(text_nota.getText().toString().trim());
-                d.setNomor_dpb_kolektif(tmpNomor);
-                d.setMail_send(mailsend);
-
-                simpan=new NotaModify().Simpan(d);
-
-                if (chkPrint.isSelected()) {
-                    input = getClass().getResourceAsStream(SURAT_PERMINTAAN);
-                    try {
-                        JasperReport report = (JasperReport) JRLoader.loadObject(input);
-
-                        Map<String, Object> params = new HashMap<String, Object>();
-                        params.put("nomor_surat", tmpNomor);
-                        params.put("nota_dinas", text_nota.getText().toString().trim());
-                        params.put("konten_surat", textArea.getText().toString().trim());
-                        params.put("nama_vendor", tmpNamaVendor);
-                        params.put("alamat_vendor", tmpAlamatVendor);
-                        params.put("pemilik_vendor", tmpPemilikVendor);
-                        params.put("nama_manager", tmpNamaManager);
-
-                        //params.put("tanggal_posting",tmpTanggal);
-                        params.put("total", tmpTotal);
-                        params.put("ppn", tmpPPN);
-                        params.put("grand_total", tmpGrandTotal);
-                        params.put("terbilang", tmpTerbilang);
-
-                        JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, conn);
-                        jasperPrint.setName("Rekap Surat Permintaan");
-
-                        JasperViewer jv=new JasperViewer(jasperPrint,false);
-                        jv.setTitle("Rekap Surat Permintaan");
-                        jv.setVisible(true);
-
-                        //if (jasperPrint!=null){
-                        //    JasperExportManager.exportReportToPdfFile(jasperPrint,"/home/rail/Documents/cetak-permintaan-"+tmpNamaVendor+"-"+tmpNomor+".pdf");
-                        //}
-
-                    } catch (JRException e) {
-                        e.printStackTrace();
-                    }
-                }*/
             }else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Dialog Informasi");
-                alert.setHeaderText("Print Preview Gagal");
+                alert.setHeaderText("Proses Gagal.");
                 alert.setContentText("Lengkapi opsi pilihan pada form ini.");
-                alert.show();
-                progressBar.setProgress(0);
+                alert.showAndWait();
             }
-
-            /*if (simpan>0){
-                progressBar.setProgress(1);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Dialog Informasi");
-                alert.setHeaderText("Proses Berhasil");
-                alert.setContentText("Data telah tersimpan.");
-                alert.show();
-            }else {
-                progressBar.setProgress(0);
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Dialog Informasi");
-                alert.setHeaderText("Proses Gagal");
-                alert.setContentText("Terjadi kesalahan proses simpan.");
-                alert.show();
-            }*/
         });
 
 
@@ -577,6 +514,7 @@ public class ReportDPBVendor extends VBox {
     private void Refresh(){
         //button_print.setDisable(true);
         textArea.setText(stringBuffer.toString());
+        text_nota.setText("");
 
         tmpNomor="";
         tmpIdManager="";

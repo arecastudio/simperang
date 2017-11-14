@@ -10,13 +10,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -40,7 +36,7 @@ public class HapusDPB extends VBox {
 		hbox.setPadding(new Insets(5,5,5,5));
 		hbox.getChildren().addAll(button_del,new Label("               "),button_clear);
 		
-		getChildren().addAll(new LabelJudul("Hapus DPB"),new Label(topdesc),hbox1,table,ket,hbox);
+		getChildren().addAll(new LabelJudul("Hapus DPB"),new Separator(Orientation.HORIZONTAL),new HBox(new Label(topdesc)),hbox1,table,new HBox(ket),hbox);
 	}
 	
 	private void init() {

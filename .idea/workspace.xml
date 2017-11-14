@@ -2,100 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/PengadaanApp.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/pengadaan-barang.iml" afterPath="$PROJECT_DIR$/simperang.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/asisten-atk-logo.ico" afterPath="$PROJECT_DIR$/src/app/asisten-atk-logo.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/asisten-atk-logo.png" afterPath="$PROJECT_DIR$/src/app/asisten-atk-logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/login_banner.png" afterPath="$PROJECT_DIR$/src/app/login_banner.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/surat-permintaan-lampiran.jasper" afterPath="$PROJECT_DIR$/src/app/reports/surat-permintaan-lampiran.jasper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/surat-permintaan.jasper" afterPath="$PROJECT_DIR$/src/app/reports/surat-permintaan.jasper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/spinner.gif" afterPath="$PROJECT_DIR$/src/app/spinner.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/controller/BarangModify.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/controller/BarangSimpan.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.database/db.sql" afterPath="$PROJECT_DIR$/.database/db.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/GlobalUtility.java" afterPath="$PROJECT_DIR$/src/app/GlobalUtility.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/Main.java" afterPath="$PROJECT_DIR$/src/app/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/config.properties" afterPath="$PROJECT_DIR$/src/app/config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/BarangShow.java" afterPath="$PROJECT_DIR$/src/app/controller/BarangShow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/BarangSimpan.java" afterPath="$PROJECT_DIR$/src/app/controller/BarangSimpan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/CekRole.java" afterPath="$PROJECT_DIR$/src/app/controller/CekRole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/DBHelper.java" afterPath="$PROJECT_DIR$/src/app/controller/DBHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/DPBKolektifModify.java" afterPath="$PROJECT_DIR$/src/app/controller/DPBKolektifModify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/DivisiModify.java" afterPath="$PROJECT_DIR$/src/app/controller/DivisiModify.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/EmailController.java" afterPath="$PROJECT_DIR$/src/app/controller/EmailController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/GetCurDate.java" afterPath="$PROJECT_DIR$/src/app/controller/GetCurDate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/GetDataBarangs.java" afterPath="$PROJECT_DIR$/src/app/controller/GetDataBarangs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/HapusDPBInquiry.java" afterPath="$PROJECT_DIR$/src/app/controller/HapusDPBInquiry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/LoginEmail.java" afterPath="$PROJECT_DIR$/src/app/controller/LoginEmail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/LoginInquiry.java" afterPath="$PROJECT_DIR$/src/app/controller/LoginInquiry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/NotaModify.java" afterPath="$PROJECT_DIR$/src/app/controller/NotaModify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/PermintaanSimpan.java" afterPath="$PROJECT_DIR$/src/app/controller/PermintaanSimpan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/PosisiModify.java" afterPath="$PROJECT_DIR$/src/app/controller/PosisiModify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/ReviewPermintaanModify.java" afterPath="$PROJECT_DIR$/src/app/controller/ReviewPermintaanModify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/RoleModify.java" afterPath="$PROJECT_DIR$/src/app/controller/RoleModify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/Terbilang.java" afterPath="$PROJECT_DIR$/src/app/controller/Terbilang.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/UserModify.java" afterPath="$PROJECT_DIR$/src/app/controller/UserModify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/VendorModify.java" afterPath="$PROJECT_DIR$/src/app/controller/VendorModify.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataBarang.java" afterPath="$PROJECT_DIR$/src/app/model/DataBarang.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataBarangDipilih.java" afterPath="$PROJECT_DIR$/src/app/model/DataBarangDipilih.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataBarangJenis.java" afterPath="$PROJECT_DIR$/src/app/model/DataBarangJenis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataCekRole.java" afterPath="$PROJECT_DIR$/src/app/model/DataCekRole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataDPB.java" afterPath="$PROJECT_DIR$/src/app/model/DataDPB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataDPBReport.java" afterPath="$PROJECT_DIR$/src/app/model/DataDPBReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataDetailPermintaan.java" afterPath="$PROJECT_DIR$/src/app/model/DataDetailPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataDivisi.java" afterPath="$PROJECT_DIR$/src/app/model/DataDivisi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataJenisBarang.java" afterPath="$PROJECT_DIR$/src/app/model/DataJenisBarang.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataKaryawan.java" afterPath="$PROJECT_DIR$/src/app/model/DataKaryawan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataNota.java" afterPath="$PROJECT_DIR$/src/app/model/DataNota.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataPermintaan.java" afterPath="$PROJECT_DIR$/src/app/model/DataPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataPermintaanDetail.java" afterPath="$PROJECT_DIR$/src/app/model/DataPermintaanDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataPermintaanReport.java" afterPath="$PROJECT_DIR$/src/app/model/DataPermintaanReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataPosisi.java" afterPath="$PROJECT_DIR$/src/app/model/DataPosisi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataRole.java" afterPath="$PROJECT_DIR$/src/app/model/DataRole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataSetRole.java" afterPath="$PROJECT_DIR$/src/app/model/DataSetRole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataStatusPosting.java" afterPath="$PROJECT_DIR$/src/app/model/DataStatusPosting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataTerbilang.java" afterPath="$PROJECT_DIR$/src/app/model/DataTerbilang.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataUserLogin.java" afterPath="$PROJECT_DIR$/src/app/model/DataUserLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataUsers.java" afterPath="$PROJECT_DIR$/src/app/model/DataUsers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataVendor.java" afterPath="$PROJECT_DIR$/src/app/model/DataVendor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/LoginEmail.java" afterPath="$PROJECT_DIR$/src/app/model/LoginEmail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/report-permintaan-detail.jrxml" afterPath="$PROJECT_DIR$/src/app/reports/report-permintaan-detail.jrxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/report-permintaan.jrxml" afterPath="$PROJECT_DIR$/src/app/reports/report-permintaan.jrxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/surat-permintaan-lampiran.jrxml" afterPath="$PROJECT_DIR$/src/app/reports/surat-permintaan-lampiran.jrxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/surat-permintaan.jrxml" afterPath="$PROJECT_DIR$/src/app/reports/surat-permintaan.jrxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/style.css" afterPath="$PROJECT_DIR$/src/app/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/surat_permintaan.txt" afterPath="$PROJECT_DIR$/src/app/surat_permintaan.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/AddRole.java" afterPath="$PROJECT_DIR$/src/app/view/AddRole.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Barang.java" afterPath="$PROJECT_DIR$/src/app/view/Barang.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/BuatPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/BuatPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/DPBKolektif.java" afterPath="$PROJECT_DIR$/src/app/view/DPBKolektif.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/DetailPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/DetailPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Divisi.java" afterPath="$PROJECT_DIR$/src/app/view/Divisi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/EditPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/EditPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/EditPermintaanEntry.java" afterPath="$PROJECT_DIR$/src/app/view/EditPermintaanEntry.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/EmailDPB.java" afterPath="$PROJECT_DIR$/src/app/view/EmailDPB.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/HapusDPB.java" afterPath="$PROJECT_DIR$/src/app/view/HapusDPB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/HapusPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/HapusPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/LabelJudul.java" afterPath="$PROJECT_DIR$/src/app/view/LabelJudul.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Login.java" afterPath="$PROJECT_DIR$/src/app/view/Login.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Posisi.java" afterPath="$PROJECT_DIR$/src/app/view/Posisi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReportDPB.java" afterPath="$PROJECT_DIR$/src/app/view/ReportDPB.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReportDPBVendor.java" afterPath="$PROJECT_DIR$/src/app/view/ReportDPBVendor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReportPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/ReportPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReviewPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/ReviewPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/SetDB.java" afterPath="$PROJECT_DIR$/src/app/view/SetDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/SetRole.java" afterPath="$PROJECT_DIR$/src/app/view/SetRole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/SetUser.java" afterPath="$PROJECT_DIR$/src/app/view/SetUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabDPBItem.java" afterPath="$PROJECT_DIR$/src/app/view/TabDPBItem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabDPBItemSave.java" afterPath="$PROJECT_DIR$/src/app/view/TabDPBItemSave.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabPermintaanItem.java" afterPath="$PROJECT_DIR$/src/app/view/TabPermintaanItem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java" afterPath="$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabelDPB.java" afterPath="$PROJECT_DIR$/src/app/view/TabelDPB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabelDPBEmail.java" afterPath="$PROJECT_DIR$/src/app/view/TabelDPBEmail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabelPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/TabelPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabelPosisi.java" afterPath="$PROJECT_DIR$/src/app/view/TabelPosisi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabelVendor.java" afterPath="$PROJECT_DIR$/src/app/view/TabelVendor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Toast.java" afterPath="$PROJECT_DIR$/src/app/view/Toast.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Vendor.java" afterPath="$PROJECT_DIR$/src/app/view/Vendor.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -157,18 +78,79 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+            <state relative-caret-position="221">
+              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#10587#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabPermintaanItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/TabPermintaanItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-520">
+              <caret line="161" column="29" lean-forward="true" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
+              <folding>
+                <element signature="e#5031#5032#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReportPermintaan.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/ReportPermintaan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="70" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5711#6863#0" expanded="true" />
+                <element signature="e#6862#6863#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabDPBItemSave.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/TabDPBItemSave.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="249" column="46" lean-forward="false" selection-start-line="249" selection-start-column="46" selection-end-line="249" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReportDPBVendor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EmailController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/controller/EmailController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="125" column="54" lean-forward="true" selection-start-line="125" selection-start-column="54" selection-end-line="125" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmailDPB.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/view/EmailDPB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+              <folding>
+                <element signature="e#2404#2751#0" expanded="true" />
+                <element signature="e#2750#2751#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReportDPBVendor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/view/ReportDPBVendor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="396" column="73" lean-forward="true" selection-start-line="396" selection-start-column="73" selection-end-line="396" selection-end-column="73" />
+            <state relative-caret-position="289">
+              <caret line="397" column="24" lean-forward="false" selection-start-line="397" selection-start-column="24" selection-end-line="401" selection-end-column="44" />
               <folding>
                 <element signature="e#11912#11928#0" expanded="true" />
               </folding>
@@ -196,6 +178,18 @@
       <list>
         <option value="$PROJECT_DIR$/src/app/Controller.java" />
         <option value="$PROJECT_DIR$/src/app/view/ReportDPBVendor.java" />
+        <option value="$PROJECT_DIR$/src/app/Main.java" />
+        <option value="$PROJECT_DIR$/src/app/model/DataBarang.java" />
+        <option value="$PROJECT_DIR$/src/app/controller/BarangSimpan.java" />
+        <option value="$PROJECT_DIR$/src/app/controller/BarangModify.java" />
+        <option value="$PROJECT_DIR$/src/app/view/Barang.java" />
+        <option value="$PROJECT_DIR$/src/app/view/TabPermintaanItem.java" />
+        <option value="$PROJECT_DIR$/src/app/view/ReportPermintaan.java" />
+        <option value="$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java" />
+        <option value="$PROJECT_DIR$/src/app/view/HapusDPB.java" />
+        <option value="$PROJECT_DIR$/src/app/view/TabDPBItemSave.java" />
+        <option value="$PROJECT_DIR$/src/app/controller/EmailController.java" />
+        <option value="$PROJECT_DIR$/src/app/view/EmailDPB.java" />
       </list>
     </option>
   </component>
@@ -286,6 +280,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simperang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simperang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simperang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simperang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -587,13 +625,14 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20754717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20754717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15812592" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -611,7 +650,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -634,7 +672,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-          <folding />
+          <folding>
+            <element signature="e#0#10587#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -650,7 +690,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#10587#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -658,7 +700,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#10587#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -682,20 +726,146 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/SetDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="60" column="18" lean-forward="false" selection-start-line="58" selection-start-column="58" selection-end-line="66" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controller/BarangShow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/DataBarang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="829">
+          <caret line="73" column="28" lean-forward="false" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
+          <folding>
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1290#1291#0" expanded="true" />
+            <element signature="e#1311#1312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+        <state relative-caret-position="221">
+          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10587#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controller/BarangModify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="51" column="60" lean-forward="true" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#285#286#0" expanded="false" />
+            <element signature="e#311#312#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/Barang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="230" column="26" lean-forward="false" selection-start-line="230" selection-start-column="20" selection-end-line="233" selection-end-column="51" />
+          <folding>
+            <element signature="e#10546#10761#0" expanded="true" />
+            <element signature="e#10760#10761#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/TabPermintaanItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-520">
+          <caret line="161" column="29" lean-forward="true" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
+          <folding>
+            <element signature="e#5031#5032#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/HapusDPB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="38" column="122" lean-forward="false" selection-start-line="38" selection-start-column="122" selection-end-line="38" selection-end-column="122" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/LoginEmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/TabDPBItemSave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="249" column="46" lean-forward="false" selection-start-line="249" selection-start-column="46" selection-end-line="249" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controller/EmailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="125" column="54" lean-forward="true" selection-start-line="125" selection-start-column="54" selection-end-line="125" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/ReportPermintaan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="70" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5711#6863#0" expanded="true" />
+            <element signature="e#6862#6863#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/view/ReportDPBVendor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="396" column="73" lean-forward="true" selection-start-line="396" selection-start-column="73" selection-end-line="396" selection-end-column="73" />
+        <state relative-caret-position="289">
+          <caret line="397" column="24" lean-forward="false" selection-start-line="397" selection-start-column="24" selection-end-line="401" selection-end-column="44" />
           <folding>
             <element signature="e#11912#11928#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/EmailDPB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+          <folding>
+            <element signature="e#2404#2751#0" expanded="true" />
+            <element signature="e#2750#2751#0" expanded="true" />
           </folding>
         </state>
       </provider>

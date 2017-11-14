@@ -22,6 +22,7 @@ import app.model.DataStatusPosting;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -35,13 +36,14 @@ import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 //array("parameter1"=>$nomor,"parameter2"=>$ket,"parameter3"=>$tgl,"parameter4"=>$div,"parameter5"=>$tgl_cetak,"parameter6"=>$nik1,"parameter7"=>$nama1,"parameter8"=>$nik2,"parameter9"=>$nama2)
 
 public class ReportPermintaan extends VBox {
-	private HBox hbox1,hbox2,hbox3;
+	private HBox hbox1,hbox2,hbox3,hbox10;
 	private VBox vbox1;
 	private GridPane grid;
 	private TableView table;
@@ -66,6 +68,11 @@ public class ReportPermintaan extends VBox {
 	private DBHelper helper;
 	private String sql;
 
+	private ProgressBar progressBar;
+
+	private final String REPORT_PERMINTAAN="/app/reports/report-permintaan.jasper";
+	private final String REPORT_PERMINTAAN_DETAIL="/app/reports/report-permintaan-detail.jasper";
+
 
 	//panduan jasper for javafx
 	//https://www.youtube.com/watch?v=AfC6MlWrXqY
@@ -88,8 +95,9 @@ public class ReportPermintaan extends VBox {
 		grid.add(text_nomor,1,1);
 
 		//hbox3.getChildren().addAll(grid,hbox2);
+		hbox10.getChildren().addAll(ket);
 
-		this.getChildren().addAll(new LabelJudul("Laporan Permintaan"),new Separator(Orientation.HORIZONTAL),new Label(tmp_desc),grid,new Separator(Orientation.HORIZONTAL),hbox2,table,new HBox(ket));
+		this.getChildren().addAll(new LabelJudul("Laporan Permintaan"),new Separator(Orientation.HORIZONTAL),new Label(tmp_desc),grid,new Separator(Orientation.HORIZONTAL),hbox2,table,hbox10);
 	}
 
 	private void init() {
@@ -104,6 +112,9 @@ public class ReportPermintaan extends VBox {
 
 		isAdmin=Boolean.FALSE;
 		if (GlobalUtility.getUser_logged_in().getId_role().equals("1"))isAdmin=Boolean.TRUE;
+
+		hbox10=new HBox(5);
+		progressBar=new ProgressBar(0);
 
 		ket=new Label("Keterangan :");
 		text_nomor=new TextField();
@@ -158,40 +169,54 @@ public class ReportPermintaan extends VBox {
 		button_print.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				//if(GlobalUtility.getInetStat()==true) new EmailController().send();
 				String tanggal=new GetCurDate().getTanggal().toString();
 				if (tmpNomor!=""){
-					DataPermintaanReport dpr=new PermintaanSimpan().getPermintaanReport(tmpNomor);
+					Task<Void>task=new Task<Void>() {
+						@Override
+						protected Void call() throws Exception {
+							DataPermintaanReport dpr=new PermintaanSimpan().getPermintaanReport(tmpNomor);
 
-					InputStream input=getClass().getResourceAsStream("/app/reports/report-permintaan.jrxml");
-					//getClass().getResource("/app/reports/cetak-permintaan.jrxml") <--berhasil
+							InputStream input=getClass().getResourceAsStream(REPORT_PERMINTAAN);
+							String lampiran=getClass().getResource(REPORT_PERMINTAAN_DETAIL).toString();
+							lampiran=lampiran.substring((Integer)"file:".length(),lampiran.length()-(Integer)"report-permintaan-detail.jasper".length());
+							System.out.println("File lampiran: "+lampiran.toString());
 
-					try {
-						//JasperCompileManager.compileReport(JRXmlLoader.load(getClass().getResourceAsStream("/app/reports/surat-permintaan-lampiran.jrxml")));
+							try {
+								JasperReport report=(JasperReport) JRLoader.loadObject(input);
+								//Map
+								Map<String, Object> params = new HashMap<String, Object>();
+								params.put("nomor",tmpNomor);
+								params.put("SUBREPORT_DIR",lampiran.toString());
 
-						JasperDesign design= JRXmlLoader.load(input);
-						JasperReport report= JasperCompileManager.compileReport(design);
-						//Map
-						Map<String, Object> params = new HashMap<String, Object>();
-						params.put("nomor",tmpNomor);
-						/*params.put("parameter2",dpr.getAlasan());
-						params.put("parameter3",dpr.getTgl());
-						params.put("parameter4",dpr.getDivisi());
-						params.put("parameter5",tanggal);
-						params.put("parameter6",dpr.getNik_user());
-						params.put("parameter7",dpr.getUser());
-						params.put("parameter8",dpr.getNik_atasan());
-						params.put("parameter9",dpr.getAtasan());*/
+								JasperPrint jasperPrint=JasperFillManager.fillReport(report,params,conn);
+								jasperPrint.setName("Laporan");
 
-						JasperPrint jasperPrint=JasperFillManager.fillReport(report,params,conn);
-						jasperPrint.setName("Laporan");
+								JasperViewer jv=new JasperViewer(jasperPrint,false);
+								jv.setTitle("Laporan Permintaan");
+								jv.setVisible(true);
+							} catch (JRException e) {
+								e.printStackTrace();
+							}
+							return null;
+						}
+					};
+					task.setOnSucceeded(e->{
+						/*Alert alert = new Alert(Alert.AlertType.INFORMATION);
+						alert.setTitle("Dialog Informasi");
+						alert.setHeaderText("Proses Selesai.");
+						alert.setContentText("Proses cetak telah dilakukan.");
+						alert.showAndWait();*/
+						refresh();
+					});
 
-						JasperViewer jv=new JasperViewer(jasperPrint,false);
-						jv.setTitle("Laporan Permintaan");
-						jv.setVisible(true);
-					} catch (JRException e) {
-						e.printStackTrace();
-					}
+					hbox10.getChildren().clear();
+					hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
+					progressBar.setProgress(-1.0);
+					ket.setText("Keterangan: Tunggu hingga proses selesai...");
+
+					Thread thread=new Thread(task);
+					thread.setDaemon(true);
+					thread.start();
 				}
 			}
 		});
@@ -321,6 +346,9 @@ public class ReportPermintaan extends VBox {
 
 		tglawal.setValue(new GetCurDate().getLocalDate());
 		tglakhir.setValue(new GetCurDate().getLocalDate());
+
+		hbox10.getChildren().clear();
+		hbox10.getChildren().addAll(ket);
 	}
 
 }

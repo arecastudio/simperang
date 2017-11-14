@@ -86,7 +86,7 @@ public class Main extends Application{
         //imgView = new ImageView(new Image(getClass().getResourceAsStream("hd-wallpaper.jpg")));
         borderPane.setCenter(new Login().vLogin());
 
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/app/asisten-atk-logo.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/app/simperang-logo.png")));
         stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();       

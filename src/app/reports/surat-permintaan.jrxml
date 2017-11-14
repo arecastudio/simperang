@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="surat-permintaan" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a3643e3-a184-4101-8357-381247218f6a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="306"/>
+	<parameter name="nomor_surat" class="java.lang.String">
+		<defaultValueExpression><![CDATA[6666]]></defaultValueExpression>
+	</parameter>
+	<parameter name="konten_surat" class="java.lang.String"/>
+	<parameter name="nama_vendor" class="java.lang.String"/>
+	<parameter name="alamat_vendor" class="java.lang.String"/>
+	<parameter name="nama_manager" class="java.lang.String"/>
+	<parameter name="pemilik_vendor" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/rail/IdeaProjects/pengadaan-barang/src/app/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="ppn" class="java.lang.String"/>
+	<parameter name="grand_total" class="java.lang.String"/>
+	<parameter name="terbilang" class="java.lang.String"/>
+	<parameter name="nota_dinas" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT k.nomor,k.ket,CONCAT(DATE_FORMAT(k.tgl,'%d %M %Y'),' ') AS tanggal,k.nik,k.mail_send,SUM(p.harga_barang*p.jml_minta) AS tot,((SUM(p.harga_barang*p.jml_minta)*10)/100)AS ppn,(SUM(p.harga_barang*p.jml_minta)-((SUM(p.harga_barang*p.jml_minta)*10)/100))AS grand_total
+FROM dpb_kolektif AS k
+LEFT OUTER JOIN dpb_kolektif_d AS d ON d.nomor_dpb_kolektif=k.nomor
+LEFT OUTER JOIN permintaan_d AS p ON p.nomor_permintaan=d.nomor_permintaan
+WHERE k.nomor=$P{nomor_surat} GROUP BY k.nomor;]]>
+	</queryString>
+	<field name="nomor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ket" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal" class="java.lang.String"/>
+	<field name="nik" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mail_send" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tot" class="java.lang.Double"/>
+	<field name="ppn" class="java.lang.Double"/>
+	<field name="grand_total" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="40" uuid="462a7cdb-dc7d-42d9-80c4-712cd4f795b3"/>
+				<box bottomPadding="0">
+					<pen lineStyle="Double"/>
+					<topPen lineStyle="Double"/>
+					<leftPen lineStyle="Double"/>
+					<bottomPen lineWidth="2.0" lineStyle="Double"/>
+					<rightPen lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Surat Pesanan Barang]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="423" y="40" width="149" height="20" uuid="f626d26a-c5b7-4406-9e08-8ccbe9f83556"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="52" width="66" height="20" uuid="371a41ee-ac59-4926-aca6-ba1b91df7efb"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Nomor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="72" width="66" height="20" uuid="51a4cb8f-6ae7-457f-b199-a62273a07caa"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Lampiran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="92" width="66" height="20" uuid="9640f098-f45f-490f-ad62-b67292ac3ed2"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Perihal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="52" width="10" height="20" uuid="b3d17291-bdb5-4890-aa93-605792f094ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="72" width="10" height="20" uuid="28408b38-0299-42d8-b560-3393b522760d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="92" width="10" height="20" uuid="75a9699f-512e-46e9-9173-f6a2dfb47684"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="60" width="66" height="20" uuid="71ed8493-b4ac-4c0e-a7ff-6923f5a589dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Kepada]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="76" y="52" width="276" height="20" uuid="49bce118-bcca-4888-b8c5-a9fd254c26e0"/>
+				<textFieldExpression><![CDATA[$P{nomor_surat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="374" y="80" width="198" height="22" uuid="1f5cb84e-0e3e-4232-b47a-8ad3aa3dcf54"/>
+				<textFieldExpression><![CDATA[$P{nama_vendor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="374" y="102" width="198" height="33" uuid="4f85c4b8-1e37-419a-938a-c08a8fbe97d3"/>
+				<textFieldExpression><![CDATA[$P{alamat_vendor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="76" y="92" width="276" height="43" uuid="00c4b811-57ad-490a-85b9-e37b73b77723"/>
+				<textFieldExpression><![CDATA[$F{ket}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="50">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="572" height="50" uuid="900ce392-8dc5-4e54-be39-95598d3195e3"/>
+				<box topPadding="10"/>
+				<textFieldExpression><![CDATA[$P{konten_surat}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="92">
+			<staticText>
+				<reportElement x="0" y="0" width="289" height="20" uuid="0749c612-e609-4072-a71e-19248fddae2d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[PIHAK KEDUA,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="0" width="283" height="20" uuid="66191ece-bdc9-48c1-a371-e4e45a22d4f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[PIHAK PERTAMA,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="289" height="20" uuid="176a4506-96bd-42fd-9ccc-df572474d15b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{nama_vendor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="65" width="289" height="20" uuid="d70c60b6-d23c-4b40-8113-53815e0cc904"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{pemilik_vendor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="65" width="283" height="20" uuid="a437932d-b045-4466-8794-cac457cecc7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{nama_manager}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<break>
+				<reportElement x="0" y="0" width="572" height="1" uuid="a2c02bce-b2d2-4d27-8347-eed96f7daa85"/>
+			</break>
+			<subreport>
+				<reportElement x="0" y="10" width="572" height="40" uuid="e6fb0ac9-074c-45f3-b0d2-4ff38afea74d"/>
+				<subreportParameter name="nota_dinas">
+					<subreportParameterExpression><![CDATA[$P{nota_dinas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="terbilang">
+					<subreportParameterExpression><![CDATA[$P{terbilang}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nomor_dpb_kolektif">
+					<subreportParameterExpression><![CDATA[$F{nomor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "surat-permintaan-lampiran.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="452" y="30" width="80" height="20" uuid="28af305e-636c-4e72-91ae-5cba37a611b0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="532" y="30" width="40" height="20" uuid="725febbb-9542-4cbe-9600-bfb3443d93d2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

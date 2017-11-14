@@ -1,0 +1,479 @@
+-- MySQL dump 10.16  Distrib 10.1.28-MariaDB, for Linux (x86_64)
+--
+-- Host: localhost    Database: db_atk_fx
+-- ------------------------------------------------------
+-- Server version	10.1.28-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `barang`
+--
+
+DROP TABLE IF EXISTS `barang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `barang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `satuan` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `stok` int(11) NOT NULL,
+  `ket` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '-',
+  `jenis` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `max` int(11) NOT NULL DEFAULT '0',
+  `min` int(11) NOT NULL DEFAULT '0',
+  `harga` double NOT NULL DEFAULT '0',
+  `img` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'no-image.png',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `barang`
+--
+
+LOCK TABLES `barang` WRITE;
+/*!40000 ALTER TABLE `barang` DISABLE KEYS */;
+INSERT INTO `barang` VALUES (1,'Ballpoint hitam tinta basah','PAK',54,'Khusus tanda tangan/ paraf',NULL,0,0,15000,'300917105110-afro-skincare.jpg'),(2,'Ballpoint hitam tinta kering','PAK',15,'keperluan umum',NULL,0,0,2500,'no-image.png'),(7,'Lakban','BUAH',7,'keperluan pantry',NULL,0,0,4000,'no-image.png'),(5,'Stempel','LEMBAR',40,'mantap jiwamu',NULL,0,0,220,'no-image.png'),(6,'Penghapus Pencil','DOS',0,'Keperluan gambar',NULL,0,0,100,'no-image.png'),(8,'Kertas HVS','PAK',0,'-',NULL,0,0,8500,'300917101135-ilustrasi-toko-online1.jpg'),(9,'hekter','BUAH',0,'-',NULL,0,0,1500,'no-image.png'),(10,'Spidol Hitam','DOS',0,'-',NULL,0,0,1200,'no-image.png'),(11,'Spidol Biru','DOS',0,'-',NULL,0,0,1200,'no-image.png'),(12,'Penggaris Lurus','DOS',0,'-',NULL,0,0,2000,'no-image.png'),(13,'Kertas Postit','DOS',0,'-',NULL,0,0,5000,'no-image.png'),(14,'Penggaris Segi Tiga','PAK',0,'-',NULL,0,0,350,'no-image.png'),(15,'Kertas HVS Later','PAK',0,'-',NULL,0,0,8000,'no-image.png'),(16,'Penggaris Bulat','PAK',0,'-',NULL,0,0,33500,'no-image.png');
+/*!40000 ALTER TABLE `barang` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `divisi`
+--
+
+DROP TABLE IF EXISTS `divisi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `divisi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ket` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `divisi`
+--
+
+LOCK TABLES `divisi` WRITE;
+/*!40000 ALTER TABLE `divisi` DISABLE KEYS */;
+INSERT INTO `divisi` VALUES (1,'Non Divisi','Khusus Direksi'),(2,'Keuangan','rttewtrrrr7777'),(3,'Pemasaran','rewrwrwr8888'),(4,'Humas','Hubungan Gelap dgn Masyarakat'),(5,'Penertiban','Survey lapangan34343'),(6,'BAG PERTANAHAN',NULL),(7,'BID HK, KOM DAN PERTANAHAN',NULL),(8,'BID OP KONS',NULL),(9,'UPP KITRING PAPUA BARAT',NULL),(10,'BAG ADM MUM',NULL),(11,'PT PLN (PERSERO) UIP PAPUA',NULL),(12,'BAG AKT MUM DAN AT',NULL),(13,'SUBID PMIS DAN ADM TEKNIK',NULL),(14,'BID KEU DAN SDM',NULL),(15,'BID REN',NULL),(16,'SUBID HK DAN KOM',NULL),(17,'BAG PROYEK (PLTMG MPP JAYAPURA 50MW)',NULL),(18,'BAG ADM KEU',NULL),(19,'SUBID PERTANAHAN',NULL),(20,'SUBID REN MUM',NULL),(21,'SUBID REN ANG',NULL),(22,'SUBID KEU',NULL),(23,'PELAKSANA PENGADAAN',NULL),(24,'SUBID REN ELEKTROMEKANIK',NULL),(25,'BAG PROYEK (PLTMG SERUI 10MW)',NULL),(26,'UPP KITRING PAPUA',NULL),(27,'SUBID DAL PROYEK DAN K2',NULL),(28,'BAG AKT PDP',NULL),(29,'BAG PROYEK (PLTU 2 PAPUA 2X10MW)',NULL),(30,'BAG TEKNIK',NULL),(31,'SIE PROYEK (PLTMH AMAI 2x0,75MW)',NULL),(32,'BAG DAL PROYEK KIT',NULL),(33,'BAG KON',NULL),(34,'SIE KEU DAN ADM',NULL),(35,'BAG PROYEK (PLTMG MERAUKE 20MW)',NULL),(36,'BAG PROYEK (PLTMG BIAK 15MW)',NULL),(37,'BAG K3 DAN LING',NULL),(38,'BAG PROYEK (PLTMG SERUI 2 10MW)',NULL),(39,'SUBID REN SIPIL',NULL),(40,'BAG ADM DAN BANG SDM',NULL),(41,'BAG PROYEK (PLTMG MPP NABIRE 20MW)',NULL),(42,'BAG PROYEK (PLTMG MPP FAK-FAK 10MW)',NULL),(43,'BAG PROYEK (PLTMG MPP MANOKWARI 20MW)',NULL),(44,'SIE PROYEK (PLTMH SARMI 5MW)',NULL),(45,'BAG DAL PROYEK RING',NULL),(46,'SIE LOLA PMIS',NULL),(47,'BAG PROYEK (PLTMG MPP TIMIKA 10MW)',NULL),(48,'PERENCANA PENGADAAN',NULL),(49,'BAG PELAP',NULL),(50,'BAG PROYEK (PLTMG MERAUKE 2 20MW)',NULL),(51,'SIE PROYEK (PLTMH KALIBUMI 1x1,25 MW)',NULL),(52,'BAG PROYEK (PLTMG SORONG 50MW)',NULL);
+/*!40000 ALTER TABLE `divisi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `divisi_old`
+--
+
+DROP TABLE IF EXISTS `divisi_old`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `divisi_old` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ket` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nik_manager` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `divisi_old`
+--
+
+LOCK TABLES `divisi_old` WRITE;
+/*!40000 ALTER TABLE `divisi_old` DISABLE KEYS */;
+INSERT INTO `divisi_old` VALUES (1,'Non Divisi','Khusus Direksi',NULL),(2,'Keuangan','',NULL),(3,'Pemasaran','','555'),(4,'Humas','','666'),(5,'Penertiban','Survey lapangan',''),(6,'BAG PERTANAHAN',NULL,NULL),(7,'BID HK, KOM DAN PERTANAHAN',NULL,NULL),(8,'BID OP KONS',NULL,NULL),(9,'UPP KITRING PAPUA BARAT',NULL,NULL),(10,'BAG ADM MUM',NULL,NULL),(11,'PT PLN (PERSERO) UIP PAPUA',NULL,NULL),(12,'BAG AKT MUM DAN AT',NULL,NULL),(13,'SUBID PMIS DAN ADM TEKNIK',NULL,NULL),(14,'BID KEU DAN SDM',NULL,NULL),(15,'BID REN',NULL,NULL),(16,'SUBID HK DAN KOM',NULL,NULL),(17,'BAG PROYEK (PLTMG MPP JAYAPURA 50MW)',NULL,NULL),(18,'BAG ADM KEU',NULL,NULL),(19,'SUBID PERTANAHAN',NULL,NULL),(20,'SUBID REN MUM',NULL,NULL),(21,'SUBID REN ANG',NULL,NULL),(22,'SUBID KEU',NULL,NULL),(23,'PELAKSANA PENGADAAN',NULL,NULL),(24,'SUBID REN ELEKTROMEKANIK',NULL,NULL),(25,'BAG PROYEK (PLTMG SERUI 10MW)',NULL,NULL),(26,'UPP KITRING PAPUA',NULL,NULL),(27,'SUBID DAL PROYEK DAN K2',NULL,NULL),(28,'BAG AKT PDP',NULL,NULL),(29,'BAG PROYEK (PLTU 2 PAPUA 2X10MW)',NULL,NULL),(30,'BAG TEKNIK',NULL,NULL),(31,'SIE PROYEK (PLTMH AMAI 2x0,75MW)',NULL,NULL),(32,'BAG DAL PROYEK KIT',NULL,NULL),(33,'BAG KON',NULL,NULL),(34,'SIE KEU DAN ADM',NULL,NULL),(35,'BAG PROYEK (PLTMG MERAUKE 20MW)',NULL,NULL),(36,'BAG PROYEK (PLTMG BIAK 15MW)',NULL,NULL),(37,'BAG K3 DAN LING',NULL,NULL),(38,'BAG PROYEK (PLTMG SERUI 2 10MW)',NULL,NULL),(39,'SUBID REN SIPIL',NULL,NULL),(40,'BAG ADM DAN BANG SDM',NULL,NULL),(41,'BAG PROYEK (PLTMG MPP NABIRE 20MW)',NULL,NULL),(42,'BAG PROYEK (PLTMG MPP FAK-FAK 10MW)',NULL,NULL),(43,'BAG PROYEK (PLTMG MPP MANOKWARI 20MW)',NULL,NULL),(44,'SIE PROYEK (PLTMH SARMI 5MW)',NULL,NULL),(45,'BAG DAL PROYEK RING',NULL,NULL),(46,'SIE LOLA PMIS',NULL,NULL),(47,'BAG PROYEK (PLTMG MPP TIMIKA 10MW)',NULL,NULL),(48,'PERENCANA PENGADAAN',NULL,NULL),(49,'BAG PELAP',NULL,NULL),(50,'BAG PROYEK (PLTMG MERAUKE 2 20MW)',NULL,NULL),(51,'SIE PROYEK (PLTMH KALIBUMI 1x1,25 MW)',NULL,NULL),(52,'BAG PROYEK (PLTMG SORONG 50MW)',NULL,NULL);
+/*!40000 ALTER TABLE `divisi_old` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dpb_kolektif`
+--
+
+DROP TABLE IF EXISTS `dpb_kolektif`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dpb_kolektif` (
+  `nomor` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ket` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nik` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mail_send` int(11) NOT NULL DEFAULT '0',
+  `nik_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_posisi_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`nomor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dpb_kolektif`
+--
+
+LOCK TABLES `dpb_kolektif` WRITE;
+/*!40000 ALTER TABLE `dpb_kolektif` DISABLE KEYS */;
+INSERT INTO `dpb_kolektif` VALUES ('DPBK/01/2017','Perdana','2017-11-14 01:10:43','1',1,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `dpb_kolektif` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dpb_kolektif_d`
+--
+
+DROP TABLE IF EXISTS `dpb_kolektif_d`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dpb_kolektif_d` (
+  `nomor_dpb_kolektif` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nomor_permintaan` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `divisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_divisi` int(11) DEFAULT NULL,
+  PRIMARY KEY (`nomor_dpb_kolektif`,`nomor_permintaan`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dpb_kolektif_d`
+--
+
+LOCK TABLES `dpb_kolektif_d` WRITE;
+/*!40000 ALTER TABLE `dpb_kolektif_d` DISABLE KEYS */;
+INSERT INTO `dpb_kolektif_d` VALUES ('DPBK/01/2017','333','UPP KITRING PAPUA BARAT',NULL),('DPBK/01/2017','999','BAG PERTANAHAN',NULL);
+/*!40000 ALTER TABLE `dpb_kolektif_d` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `nota`
+--
+
+DROP TABLE IF EXISTS `nota`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `nota` (
+  `nomor` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_vendor` int(11) NOT NULL,
+  `nomor_dpb_kolektif` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mail_send` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`nomor`,`id_vendor`,`nomor_dpb_kolektif`),
+  UNIQUE KEY `nomor` (`nomor`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `nota`
+--
+
+LOCK TABLES `nota` WRITE;
+/*!40000 ALTER TABLE `nota` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nota` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `notifikasi`
+--
+
+DROP TABLE IF EXISTS `notifikasi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notifikasi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_send` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_rec` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `judul` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `konten` text COLLATE utf8mb4_unicode_ci,
+  `stat` int(11) NOT NULL DEFAULT '0',
+  `id_rel` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notifikasi`
+--
+
+LOCK TABLES `notifikasi` WRITE;
+/*!40000 ALTER TABLE `notifikasi` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notifikasi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permintaan`
+--
+
+DROP TABLE IF EXISTS `permintaan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permintaan` (
+  `nomor` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alasan` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '-',
+  `status` int(11) NOT NULL DEFAULT '0',
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nik` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_posisi` int(11) DEFAULT NULL,
+  `nik_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_posisi_atasan` int(11) DEFAULT NULL,
+  `nama` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_posisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_posisi_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_divisi` int(11) DEFAULT NULL,
+  `nama_divisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`nomor`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permintaan`
+--
+
+LOCK TABLES `permintaan` WRITE;
+/*!40000 ALTER TABLE `permintaan` DISABLE KEYS */;
+INSERT INTO `permintaan` VALUES ('333','Permintaan UPP KITRING PB yang pertama',2,'2017-11-11 04:03:57','222',68,'111',5,'Dwi Panca','AS KOM','Eka Esa Primus','MAN UPP KITRING PAPUA BARAT',NULL,NULL),('999','Permintaan Pertanahan, urgen',2,'2017-11-11 04:04:54','333',3,'555',1,'Trie','ASMAN PERTANAHAN','Vivi','SPV PERTANAHAN',NULL,NULL);
+/*!40000 ALTER TABLE `permintaan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permintaan_d`
+--
+
+DROP TABLE IF EXISTS `permintaan_d`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permintaan_d` (
+  `nomor_permintaan` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `jml_minta` int(11) NOT NULL,
+  `jml_setuju` int(11) NOT NULL DEFAULT '0',
+  `ket_tolak` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '-',
+  `user_nama` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nama_barang` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `satuan_barang` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `harga_barang` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`nomor_permintaan`,`id_barang`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permintaan_d`
+--
+
+LOCK TABLES `permintaan_d` WRITE;
+/*!40000 ALTER TABLE `permintaan_d` DISABLE KEYS */;
+INSERT INTO `permintaan_d` VALUES ('333',2,75,0,'-','Dwi Panca','2017-11-11 04:05:46','Ballpoint hitam tinta kering','PAK',2500),('333',1,155,0,'-','Dwi Panca','2017-11-11 04:05:46','Ballpoint hitam tinta basah','PAK',15000),('999',6,14,0,'-','Trie','2017-11-11 04:05:12','Penghapus Pencil','DOS',100),('999',8,18,0,'-','Trie','2017-11-11 04:05:12','Kertas HVS','PAK',8500),('999',11,17,0,'-','Trie','2017-11-11 04:05:12','Spidol Biru','DOS',1200),('333',15,15,0,'-','Dwi Panca','2017-11-11 04:05:46','Kertas HVS Later','PAK',8000),('333',6,183,0,'-','Dwi Panca','2017-11-11 04:05:46','Penghapus Pencil','DOS',100),('333',10,12,0,'-','Dwi Panca','2017-11-11 04:05:46','Spidol Hitam','DOS',1200);
+/*!40000 ALTER TABLE `permintaan_d` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posisi`
+--
+
+DROP TABLE IF EXISTS `posisi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posisi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ket` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_divisi` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posisi`
+--
+
+LOCK TABLES `posisi` WRITE;
+/*!40000 ALTER TABLE `posisi` DISABLE KEYS */;
+INSERT INTO `posisi` VALUES (1,'SPV PERTANAHAN','',6),(2,'PLT MAN HK, KOM DAN PERTANAHAN','',7),(3,'ASMAN PERTANAHAN','',6),(4,'EG KONS RING','',8),(5,'MAN UPP KITRING PAPUA BARAT','',9),(6,'SPV ADM MUM',NULL,10),(7,'GM','',11),(8,'SPV AKT MUM DAN AT','',7),(9,'PLT DM PMIS DAN ADM TEKNIK','',13),(10,'PLT MAN KEU DAN SDM','',14),(11,'PLT DM SDM DAN UMUM',NULL,10),(12,'MAN REN','',15),(13,'PLT MAN OP KONS','',33),(14,'PLT DM HK DAN KOM',NULL,10),(15,'ASMAN PROYEK PLTMG MPP JAYAPURA',NULL,10),(16,'SPV ADM KEU',NULL,10),(17,'DM PERTANAHAN',NULL,10),(18,'PLT DM REN MUM',NULL,10),(19,'PLT DM REN ANG',NULL,10),(20,'PLT DM KEU',NULL,10),(21,'PLT PJ PELAKSANA PENGADAAN',NULL,10),(22,'PLT DM REN ELEKTROMEKANIK',NULL,10),(23,'ASMAN PROYEK PLTMG SERUI',NULL,10),(24,'PLT MAN UPP KITRING PAPUA',NULL,10),(25,'PLT DM DAL PROYEK DAN K2',NULL,10),(26,'PLT SPV AKT DAN PDP',NULL,10),(27,'ASMAN PROYEK PLTU 2 PAPUA',NULL,10),(28,'ASMAN TEKNIK',NULL,10),(29,'SPV PROYEK PLTMH AMAI',NULL,10),(30,'AS TI',NULL,10),(31,'SPV DAL PROYEK KIT',NULL,10),(32,'SPV KON',NULL,10),(33,'SPV KEU DAN ADM',NULL,10),(34,'ASMAN PROYEK PLTMG MERAUKE',NULL,10),(35,'ASMAN PROYEK PLTMG BIAK',NULL,10),(36,'SPV K3 DAN LING',NULL,10),(37,'ASMAN PROYEK PLTMG SERUI 2',NULL,10),(38,'JE TEKNIK SIPIL',NULL,10),(39,'PLT SPV ADM DAN BANG SDM',NULL,10),(40,'PLT ASMAN PROYEK PLTMG MPP NABIRE','',9),(41,'PLT ASMAN PROYEK PLTMG MPP FAK-FAK','',9),(42,'PLT ASMAN PROYEK PLTMG MPP MANOKWARI','',9),(43,'SPV PROYEK PLTMG SARMI',NULL,10),(44,'SPV DAL PROYEK RING',NULL,10),(45,'JE LOLA KON',NULL,10),(46,'JF ADM PENGADAAN',NULL,10),(47,'SPV LOLA PMIS',NULL,10),(48,'PLT ASMAN PROYEK PLTMG MPP TIMIKA',NULL,10),(49,'AE TEKNIK SIPIL',NULL,10),(50,'AE TEKNIK ELEKTRIKAL',NULL,10),(51,'JF ADM DAN KAM',NULL,10),(52,'JA PERENCANA PENGADAAN',NULL,10),(53,'JE SURVEY, PENGUKURAN DAN PERIJINAN',NULL,10),(54,'PLT PJ PERENCANA PENGADAAN',NULL,10),(55,'PLT SPV PELAP',NULL,10),(56,'JA LOLA KAS',NULL,10),(57,'JE DAL KONS RING',NULL,10),(58,'PLT ASMAN PROYEK PLTMG MERAUKE 2',NULL,10),(59,'PLT SPV PROYEK PLTMH KALIBUMI',NULL,10),(60,'JA REN ANG',NULL,10),(61,'AE TEKNIK MESIN','',30),(62,'AS ADM DAN BANG SDM',NULL,10),(63,'PLT ASMAN PROYEK PLTMG SORONG','',9),(64,'AS PELAKSANA PENGADAAN',NULL,10),(65,'AE TEKNIK ELKTRIKAL',NULL,10),(66,'PLT ASMAN PERTANAHAN',NULL,10),(67,'AS HK',NULL,10),(68,'AS KOM','',9),(69,'JE K2 DAN K3',NULL,10),(70,'JF SEKRE DAN RUMAH TANGGA',NULL,10),(71,'JA AKT',NULL,10),(72,'AE REN LING',NULL,10),(73,'JE LING, KAM DAN K3',NULL,10),(74,'JA PENGADAAN TANAH',NULL,10),(75,'JE TEKNIK ELKTRIKAL',NULL,10),(76,'JE TEKNIK MEKANIKAL',NULL,10),(77,'JA KEU',NULL,10),(78,'AS PENGADAAN TANAH','',19),(79,'JF ADM',NULL,10),(80,'JF ADM KEU','',22),(81,'JF ADM DAN KESRA SDM','',40);
+/*!40000 ALTER TABLE `posisi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `berkas_barang` int(11) NOT NULL DEFAULT '0',
+  `berkas_divisi` int(11) NOT NULL DEFAULT '0',
+  `proses_buat_permintaan` int(11) NOT NULL DEFAULT '0',
+  `proses_edit_permintaan` int(11) NOT NULL DEFAULT '0',
+  `proses_hapus_permintaan` int(11) NOT NULL DEFAULT '0',
+  `proses_review_permintaan` int(11) NOT NULL DEFAULT '0',
+  `proses_buat_dpb_kolektif` int(11) NOT NULL DEFAULT '0',
+  `proses_hapus_dpb_kolektif` int(11) NOT NULL DEFAULT '0',
+  `proses_cek_email` int(11) NOT NULL DEFAULT '0',
+  `laporan_permintaan` int(11) NOT NULL DEFAULT '0',
+  `laporan_dpb_kolektif` int(11) NOT NULL DEFAULT '0',
+  `pengaturan_basis_data` int(11) NOT NULL DEFAULT '0',
+  `pengaturan_admin` int(11) NOT NULL DEFAULT '0',
+  `laporan_dpb_vendor` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'Admin',1,1,1,1,1,1,1,1,1,1,1,1,1,1),(2,'Super Operator',0,0,0,0,1,1,0,0,0,1,1,0,0,0),(3,'Operator',0,0,1,1,1,0,0,0,0,1,1,0,0,0),(6,'Guest',0,0,0,0,0,0,0,0,0,1,1,0,0,0);
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `nik` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telp` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_divisi` int(11) NOT NULL,
+  `id_role` int(11) NOT NULL,
+  PRIMARY KEY (`nik`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('1','Root Linuxer','c4ca4238a0b923820dcc509a6f75849b','085244444830','ondiisrail@gmail.com',6,1),('666','Djumandjie','fae0b27c451c728867a567e8c1bb4e53','085244444592','arafuru.style@gmail.com',8,2),('555','Vivi','15de21c670ae7c3f6f3f1f37029303c9','081527745622','humaspdamjpr@gmail.com',6,2),('333','Trie','310dcbbf4cce62f762a2aaa148d556bd','0811481219','r41l_86@yahoo.com',6,3),('888','Oktavius','0a113ef6b61820daa5611c870ed8d5ee','085244448888','samudranta@gmail.com',9,3),('222','Dwi Panca','bcbe3365e6ac95ea2c0343a2395834dd','081545672222','r41l_22@hotmail.com',9,3),('444','Fani','550a141f12de6341fba65b0ad0433500','085244444592','samudranta@gmail.com',6,3),('777','Martuju Seventinus','f1c1592588411002af340cbaedd6fc33','0852777777','r41l_86@yahoo.com',15,2),('111','Eka Esa Primus','698d51a19d8a121ce581499d7b701668','085211111','arafuru.style@gmail.com',9,2);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_detail`
+--
+
+DROP TABLE IF EXISTS `user_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_detail` (
+  `prev_per_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pers_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `second_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_panjang_posisi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `org_unit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bus_area` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_area` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_pendek_posisi_atasan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_posisi_atasan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenjang` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `posisi_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `posisi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl_lahir` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_sub_area` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_detail`
+--
+
+LOCK TABLES `user_detail` WRITE;
+/*!40000 ALTER TABLE `user_detail` DISABLE KEYS */;
+INSERT INTO `user_detail` VALUES ('6284176P','62842403','YULIANUS BATO TARIAN',NULL,NULL,'SUPERVISOR PERTANAHAN','BAG PERTANAHAN','Kantor Induk UIP Papua','UIP Papua','yulianus.batotarian@pln.co.id','DM PERTANAHAN','37000732','JL. TOA DAENG 3 LRG. TERATAI NO. 91 C','Supervisori Atas','081342005144','Male','37000733','SPV PERTANAHAN','7371111605620004','5/16/1962','KANTOR INDUK'),('6381003S','63818000','MERRY LAUW',NULL,'SE','SENIOR SPECIALIST II KINERJA (PLT MANAJER HUKUM, KOMUNIKASI DANPERTANAHAN)','BID HK, KOM DAN PERTANAHAN','Kantor Induk UIP Papua','UIP Papua','MERRY.LAUW@PLN.CO.ID','MAN HK, KOM DAN PERTANAHAN','30215810','<JALAN..>JAYAPURA','Manajemen Menengah','08124836586','Female','30231129','PLT MAN HK, KOM DAN PERTANAHAN','9171016703630002','3/27/1963','KANTOR INDUK'),('6383032S','63838000','SLAMET',NULL,NULL,'ASISTEN MANAJER PERTANAHAN','BAG PERTANAHAN','UPP Kitring Papua Barat','UIP Papua','SLAMET63@PLN.CO.ID','MAN UPP KITRING PAPUA BARAT','37000741','KOMP. KPR BPD JLN. BASUKI RAHMAR KM. 9','Supervisori Atas','081344422037','Male','37000743','ASMAN PERTANAHAN','9271051410630002','10/14/1963','UPP KITJAR PBRT'),('6385056S','63858006','TRIMANTO',NULL,NULL,'ENGINEER KONSTRUKSI JARINGAN','BID OP KONS','Kantor Induk UIP Papua','UIP Papua','trimanto@pln.co.id','MAN OP KONS','30215808','GANG YAO I NO.8 PERUMNAS I WAENA','Fungsional IV','08124808691','Male','30224832','EG KONS RING','9109011212630004','12/12/1963','KANTOR INDUK'),('6483059S','64838004','ABDULLAH HATARI',NULL,'SE','MANAJER UNIT PELAKSANA PROYEK PEMBANGKIT DAN JARINGAN PAPUA BARAT','UPP KITRING PAPUA BARAT','UPP Kitring Papua Barat','UIP Papua','ABDULLAH.HATARI@PLN.CO.ID','GM','30215806','SKYLINE','Manajemen Dasar','0967 532145S','Male','37000741','MAN UPP KITRING PAPUA BARAT','9171030401640002','1/4/1964','UPP KITJAR PBRT'),('6490001S','64908000','MELKI EVERT LEGI',NULL,NULL,'SUPERVISOR ADMINISTRASI UMUM','BAG ADM MUM','Kantor Induk UIP Papua','UIP Papua','MELKI.LEGI@PLN.CO.ID','DM SDM DAN MUM','37000729','KOMPLEK PERUMAHAN JAYA ASRI ENTROP','Supervisori Atas','0967-532145','Male','37000731','SPV ADM MUM','9171020211640001','11/2/1964','KANTOR INDUK'),('6593054Z','65930007','HENRISON ADVENTIUS LUMBANRAJA','Ir.','MM.','GENERAL MANAGER','PT PLN (PERSERO) UIP PAPUA','Kantor Induk UIP Papua','UIP Papua','HENRISON.LUMBANRAJA@PLN.CO.ID',NULL,'0','Wisma Pagesanga V no 8 Surabaya','Manajemen Atas','08123114855','Male','30215806','GM','3578230508650003','8/5/1965','KANTOR INDUK'),('6689052S','66898010','SUHIRMAN',NULL,'SE','SUPERVISOR AKUNTANSI UMUM DAN AKTIVA TETAP','BAG AKT MUM DAN AT','Kantor Induk UIP Papua','UIP Papua','SUHIRMAN66@PLN.CO.ID','DM AKT','37000726','PERUMAHAN VURIA KEHUTANAN NO.PA.11 KOTARAJA','Supervisori Atas','0967-584560','Male','37000727','SPV AKT MUM DAN AT','9171032611660002','11/26/1966','KANTOR INDUK'),('6692034P','66927602','SUHARKAN',NULL,'S.T.','ENGINEER PENGELOLA KONTRAK (PLT DEPUTI MANAJER PMIS DAN ADMINISTRASITEKNIK)','SUBID PMIS DAN ADM TEKNIK','Kantor Induk UIP Papua','UIP Papua','SUHARKAN034@PLN.CO.ID','DM PMIS DAN ADM TEKNIK','37000714','PERUMAHAN RANGGONG SAKINA BLOK A2 ANTANG','Manajemen Dasar','085255884431','Male','30224833','PLT DM PMIS DAN ADM TEKNIK','7313060112660003','12/1/1966','KANTOR INDUK'),('6695122B','66956600','HARIS JHON HORAS, S.E., Ak.',NULL,NULL,'SENIOR SPECIALIST II KINERJA (PLT MANAJER KEUANGAN DAN SUMBER DAYAMANUSIA)','BID KEU DAN SDM','Kantor Induk UIP Papua','UIP Papua','HARIS.JOHN@PLN.CO.ID','MAN KEU DAN SDM','30215809','BANDAR LAMPUNG','Manajemen Menengah','081273900105','Male','30230728','PLT MAN KEU DAN SDM','1871062406660002','6/24/1966','KANTOR INDUK'),('6791004S','67918000','JAMES M RUNTUKAHU',NULL,NULL,'OFFICER HUBUNGAN INDUSTRIAL DAN PERENCANAAN TENAGA KERJA (PLT DEPUTI MANAJER SDM DAN UMUM)','BAG ADM MUM','Kantor Induk UIP Papua','UIP Papua','JAMES.RUNTUKAHU@PLN.CO.ID','SPV ADM MUM','37000731','PERUM, TANAH HITAM','Manajemen Dasar','085244444678','Male','30243026','PLT DM SDM DAN UMUM','9171030705670004','5/7/1967','KANTOR INDUK'),('6795091P','67952200','AGUS RISFIAN NOOR','Ir.',NULL,'MANAJER PERENCANAAN','BID REN','Kantor Induk UIP Papua','UIP Papua','agus.risfian@pln.co.id','GM','30215806','Komplek Sepinggan Baru 1, Jl.Mandiri Utama II, No. D5, RT.20','Manajemen Menengah','081253099005','Male','30215807','MAN REN','6471052508670007','8/25/1967','KANTOR INDUK'),('6795088P','67953402','TONA INDORA','Ir.',NULL,'SENIOR SPECIALIST II KINERJA (PLT MANAJER OPERASI KONSTRUKSI)','BID OP KONS','Kantor Induk UIP Papua','UIP Papua','tona.indora@pln.co.id','MAN OP KONS','30215808','JL. AEROMODELING RAYA NO. 101 RT. 006/02','Manajemen Menengah','0811218959','Male','30237605','PLT MAN OP KONS','3273241312670000','12/13/1967','KANTOR INDUK'),('6801023S','68017600','HERMES E. MOZES ANSANAY',NULL,'SE','ANALYST KOMUNIKASI(PLT DEPUTI MANAJER HUKUM & KOMUNIKASI)','SUBID HK DAN KOM','Kantor Induk UIP Papua','UIP Papua','HERMES.ANSANAY@PLN.CO.ID','DM HK DAN KOM','37000734','JL. RIDGE PERUM. PLN','Manajemen Dasar','081241007077','Male','30224825','PLT DM HK DAN KOM','9171011003680004','3/10/1968','KANTOR INDUK'),('7093095F','70937607','ASRI',NULL,'S.T.','ASISTEN MANAJER PROYEK PLTMG MPP JAYAPURA (50 MW)','BAG PROYEK (PLTMG MPP JAYAPURA 50MW)','UPP Kitring Papua','UIP Papua','asri2@pln.co.id','MAN UPP KITRING PAPUA','37000735','JL. SEKUMPUL KOMP. PONDOK PERMATA NO. 22','Supervisori Atas','08124071551','Male','30224968','ASMAN PROYEK PLTMG MPP JAYAPURA','6303053008700005','8/31/1970','UPP KITJAR PPUA'),('7094058G','70947803','NURUL AINI NINGKEULA',NULL,'SE','SUPERVISOR ADMINISTRASI KEUANGAN','BAG ADM KEU','Kantor Induk UIP Papua','UIP Papua','NINGKEULA.NURUL@PLN.CO.ID','DM KEU','37000723','PASSO','Supervisori Atas','085344065218','Female','37000725','SPV ADM KEU','8171034910700002','10/9/1970','KANTOR INDUK'),('7301003S','73018001','FREDRIK MAURIDS NORIWARI',NULL,'SH','DEPUTI MANAJER PERTANAHAN','SUBID PERTANAHAN','Kantor Induk UIP Papua','UIP Papua','fredrik.noriwari@pln.co.id','MAN HK, KOM DAN PERTANAHAN','30215810','RT. I/RW. 1 KAMPUNG WASORI','Manajemen Dasar','081241644646','Male','37000732','DM PERTANAHAN','9103022901730001','1/29/1973','KANTOR INDUK'),('7806014Z','78063600','WILLY NOVANANDA SIREGAR',NULL,'M.Si','ENGINEER SURVEY, PENGUKURAN DAN PERIJINAN (PLT DEPUTI MANAJERPERENCANAAN UMUM)','SUBID REN MUM','Kantor Induk UIP Papua','UIP Papua','WILLY.SIREGAR@PLN.CO.ID','DM REN MUM','30222513','KARET PSR BARU BARAT II NO.33 RT.007 RW.005','Manajemen Dasar','081229031318','Male','30224826','PLT DM REN MUM','3171071711780004','11/17/1978','KANTOR INDUK'),('7806082Z','78068000','SULISTYO SURYO',NULL,'SE','ANALYST PERENCANAAN ANGGARAN (PLT DEPUTI MANAJER PERENCANAAN ANGGARAN)','SUBID REN ANG','Kantor Induk UIP Papua','UIP Papua','sulistyo.suryo@pln.co.id','DM REN ANG','37000722','Jl. Klampok Kasri II-F/266','Manajemen Dasar','081334592010','Male','30236107','PLT DM REN ANG','3573022106780002','6/21/1978','KANTOR INDUK'),('7806086Z','78068003','ATENG MARUDUT SIHOMBING',NULL,'SE','ANALYST PENGENDALIAN KEUANGAN (PLT DEPUTI MANAJER KEUANGAN)','SUBID KEU','Kantor Induk UIP Papua','UIP Papua','ATENG.SIHOMBING@PLN.CO.ID','DM KEU','37000723','JLN. SENTANI RAYA-WAENA BELAKANG MEGA WAENA GANG KARANG 1','Manajemen Dasar','081344328247','Male','30234159','PLT DM KEU','9171050105780001','5/1/1978','KANTOR INDUK'),('7906109Z','79062000','BENNY SUSANTO',NULL,'M.T.','ANALYST PELAKSANA PENGADAAN (PLT PEJABAT PELAKSANA PENGADAAN)','PELAKSANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','BENNY.SUSANTO@PLN.CO.ID','PJ PELAKSANA PENGADAAN','30215812','<JALAN..>JL. TEBET BARAT X-A NO. 30, TEBET','Manajemen Dasar','081367008937','Male','30224862','PLT PJ PELAKSANA PENGADAAN','3275020310790030','10/3/1979','KANTOR INDUK'),('8007060Z','80076600','HENRY DONALD MANGATAS SILAEN',NULL,'S.T.','EG REN ELEKTROMEKANIK (PLT DEPUTI MANAJER PERENCANAAN ELEKTROMEKANIK)','SUBID REN ELEKTROMEKANIK','Kantor Induk UIP Papua','UIP Papua','DONALD_SILAEN@PLN.CO.ID','DM REN ELEKTROMEKANIK','30222515','PERUM BILABONG JAYA BLOK C NO.11','Manajemen Dasar','08117162123','Male','30239071','PLT DM REN ELEKTROMEKANIK','1871030305800006','5/3/1980','KANTOR INDUK'),('8209029Z','82092003','DAVID JONMA SAHAT PARULIAN',NULL,'S.T.','ASISTEN MANAJER PROYEK PLTMG SERUI (10 MW)','BAG PROYEK (PLTMG SERUI 10MW)','UPP Kitring Papua','UIP Papua','DAVID.PARULIAN@pln.co.id','MAN UPP KITRING PAPUA','37000735','KOMP. BANGUN REKSA II W-17 03/06 PD PUCUNG','Supervisori Atas','085367923556','Male','30224967','ASMAN PROYEK PLTMG SERUI','3671121401820002','1/14/1982','UPP KITJAR PPUA'),('8209681Z','82092004','HENDRA FITRIA',NULL,'S.T.','ANALYST KINERJA (PLT MANAJER UNIT PELAKSANA PROYEK PEMBANGKIT DANJARINGAN PAPUA)','UPP KITRING PAPUA','UPP Kitring Papua','UIP Papua','HENDRA.FITRIA@pln.co.id','MAN UPP KITRING PAPUA','37000735','JL. K. USMAN LRG. SAWAH NO. 8 ULEE KARENG','Manajemen Dasar','081360540678','Male','30230731','PLT MAN UPP KITRING PAPUA','1105012107820004','7/21/1982','UPP KITJAR PPUA'),('8308493Z','83082401','BENAYA SUTAMI WINOWODA',NULL,'S.T.','ENGINEER PENGENDALIAN KONSTRUKSI PEMBANGKIT (PLT DEPUTI MANAJER PENGENDALIAN PROYEK DAN KESELAMATAN KETENAGALISTRIKAN)','SUBID DAL PROYEK DAN K2','Kantor Induk UIP Papua','UIP Papua','benaya@pln.co.id','DM DAL PROYEK DAN K2','37000717','JL. TELKOM III NO. 90 TELKOMAS','Manajemen Dasar','0813425557410','Male','30237157','PLT DM DAL PROYEK DAN K2','7371111809830002','9/18/1983','KANTOR INDUK'),('8609797Z','86092501','HERMAN',NULL,'A.Md.','ASSISTANT ANALYST AKUNTANSI(PLT SUPERVISOR AKUNTANSI DAN PDP)','BAG AKT PDP','Kantor Induk UIP Papua','UIP Papua','HERMAN42@pln.co.id','SPV AKT PDP','37000728','BIRING ROMANG LR. 2 NO. 24 G','Supervisori Atas','081355299','Male','30224851','PLT SPV AKT DAN PDP','7372031001860001','1/10/1986','KANTOR INDUK'),('8610317Z','86109200','MARTEN TUNA',NULL,'S.T.','ASISTEN MANAJER PROYEK PLTU 2 PAPUA (2 X 10 MW)','BAG PROYEK (PLTU 2 PAPUA 2X10MW)','UPP Kitring Papua','UIP Papua','MARTEN.TUNA@pln.co.id','MAN UPP KITRING PAPUA','37000735','BUMI TAMALANREA PERMAI BLOK 9M','Supervisori Atas','081355629005','Male','37000740','ASMAN PROYEK PLTU 2 PAPUA','7326063003860002','3/30/1986','UPP KITJAR PPUA'),('8612592ZY','86122400','BAYU ADI LAKSONO PUTRA',NULL,'S.T.','ASISTEN MANAJER TEKNIK','BAG TEKNIK','UPP Kitring Papua Barat','UIP Papua','bayu.laksono@pln.co.id','MAN UPP KITRING PAPUA BARAT','37000741','JALAN SAWENTAR BARAT 1/5','Supervisori Atas','082123282788','Male','37000742','ASMAN TEKNIK','3578102906860002','6/29/1986','UPP KITJAR PBRT'),('87111082Z','87112507','ASRUL AMRULLAH',NULL,'A.Md.','SUPERVISOR PROYEK PLTMH AMAI','SIE PROYEK (PLTMH AMAI 2x0,75MW)','UPP Kitring Papua','UIP Papua','ASRUL.AMRULLAH@pln.co.id','MAN UPP KITRING PAPUA','37000735','JL. TINUMBU LR-154 NO.82','Supervisori Dasar','085255125789','Male','30226223','SPV PROYEK PLTMH AMAI','7371061211870003','11/12/1987','UPP KITJAR PPUA'),('8711343Z','87116410','IMA SYLVIA PRIHANDITA',NULL,'S.T.','ASSISTANT ANALYST TEKNOLOGI INFORMASI','SUBID REN MUM','Kantor Induk UIP Papua','UIP Papua','IMA.SYLVIA@PLN.CO.ID','DM REN MUM','30222513','GG. MENUR III, JL. PISANG, SUSILOHARJO RT/RW. 004/012 SISWOD','Fungsional V',NULL,'Female','30235998','AS TI','3309056808870001','8/26/1987','KANTOR INDUK'),('8812378ZY','88122002','HOTMASTERMAN SIMBOLON',NULL,'S.T.','ASISTEN MANAJER TEKNIK','BAG TEKNIK','UPP Kitring Papua','UIP Papua','HOTMASTERMAN.SIMBOLON@pln.co.id','MAN UPP KITRING PAPUA','37000735','JL. SIANTAR TIMUR NO. 18','Supervisori Atas','081396725198','Male','37000736','ASMAN TEKNIK','1272012308880002','8/23/1988','UPP KITJAR PPUA'),('8812065ZY','88122401','I MADE EKA ASTINA',NULL,'S.T.','SUPERVISOR PENGENDALIAN PROYEK PEMBANGKIT','BAG DAL PROYEK KIT','Kantor Induk UIP Papua','UIP Papua','eastina@pln.co.id','DM DAL PROYEK DAN K2','37000717','JL. NUSAKAMBANGAN NO. 20','Supervisori Atas','08123933347','Male','37000718','SPV DAL PROYEK KIT','5171032503880019','3/25/1988','KANTOR INDUK'),('8812067ZY','88122402','RONALD PASCHALIS FOUDUBUN',NULL,'S.T.','SUPERVISOR KONTRAK','BAG KON','Kantor Induk UIP Papua','UIP Papua','ronald.pf@pln.co.id','DM PMIS DAN ADM TEKNIK','37000714','LINGKUNGAN ENGELBERTUS RT.001/RW.001 LANGGUR KEC. KEI KECIL','Supervisori Atas','082199694675','Male','37000716','SPV KON','8102012803880002','3/28/1988','KANTOR INDUK'),('8913383ZY','88133300','MOCH YARFA\'ILLAH',NULL,'A.Md.','SUPERVISOR KEUANGAN DAN ADMINISTRASI','SIE KEU DAN ADM','UPP Kitring Papua','UIP Papua','m.yarfa@pln.co.id','MAN UPP KITRING PAPUA','37000735','PESEGAN ASRI BLOK C1-17 RT/RW 15/03 KELURAHAN KELOPOSEPULUH','Supervisori Dasar','081344716916','Male','37000738','SPV KEU DAN ADM','3515142202890001','2/22/1989','UPP KITJAR PPUA'),('8813370ZY','88139400','YUDA PRATAMA PUTRA',NULL,'S.T.','ASISTEN MANAJER PROYEK PLTMG MERAUKE (20 MW)','BAG PROYEK (PLTMG MERAUKE 20MW)','UPP Kitring Papua','UIP Papua','yudapratamaputra@pln.co.id','MAN UPP KITRING PAPUA','37000735','VILLA JATIRASA JL.MURAI C.18 NO.14 RT.06, RW 11.','Supervisori Atas','085328082828','Male','30226216','ASMAN PROYEK PLTMG MERAUKE','3275092401880008','1/24/1988','UPP KITJAR PPUA'),('8813375ZY','88139401','ANDRA PRAHESTHY',NULL,'S.T.','ASISTEN MANAJER PROYEK PLTMG BIAK','BAG PROYEK (PLTMG BIAK 15MW)','UPP Kitring Papua','UIP Papua','andra.prahesthy@pln.co.id','MAN UPP KITRING PAPUA','37000735','JL.CEMARA NO.18 RT/RW 002/002, KELURAHAN KALIREJO,','Supervisori Atas','08157746272','Male','30226215','ASMAN PROYEK PLTMG BIAK','3322190510880002','10/5/1988','UPP KITJAR PPUA'),('8814039ZY','88149400','MUHAMMAD HATTA AL ULA',NULL,'S.T.','SUPERVISOR KESELAMATAN, KESEHATAN KERJA, DAN LINGKUNGAN','BAG K3 DAN LING','Kantor Induk UIP Papua','UIP Papua','m.hatta.al@pln.co.id','DM DAL PROYEK DAN K2','37000717','JL. RAYA SENORI MERAK URAK NO.552','Supervisori Atas','082112945767','Male','37000720','SPV K3 DAN LING','3523132411880001','11/24/1988','KANTOR INDUK'),('8913391ZY','89139403','MUHAMMAD HANIF',NULL,'S.T.','ASISTEN MANAJER PROYEK PLTMG SERUI 2 (10 MW)','BAG PROYEK (PLTMG SERUI 2 10MW)','UPP Kitring Papua','UIP Papua','mohamad.hanif@pln.co.id','MAN UPP KITRING PAPUA','37000735','DUSUN BROJODITO RT/RW 008/004','Supervisori Atas','085225500045','Male','30226220','ASMAN PROYEK PLTMG SERUI 2','3322120209890002','9/2/1989','UPP KITJAR PPUA'),('8913390ZY','89139404','RENDY MARIO ARJUNA',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK SIPIL','SUBID REN SIPIL','Kantor Induk UIP Papua','UIP Papua','rendymarioarjuna@pln.co.id','DM REN SIPIL','30222514','NGAGLIK LAMA NO.137 A, RT/RW 003/001, KELURAHAN BENDUNGAN,','Fungsional VI','085640948403','Male','30224829','JE TEKNIK SIPIL','3374091208890003','8/12/1989','KANTOR INDUK'),('8915024ZY','89159400','WAHYU SUGAR IBRAHIM',NULL,'S.T.','ASSISTANT ANALYST PENGEMBANGAN SDM DAN ORGANISASI (PLT SUPERVISORADMINISTRASI DAN PENGEMBANGAN SDM)','BAG ADM DAN BANG SDM','Kantor Induk UIP Papua','UIP Papua','WAHYU.SUGAR@PLN.CO.ID','SPV ADM DAN BANG SDM','37000730','JL. Gotong Royong No. 46 RT 001 RW 003 Kreo - Larangan, Tang','Supervisori Atas','8567853776','Male','30224852','PLT SPV ADM DAN BANG SDM','3671130403890001','3/4/1989','KANTOR INDUK'),('8915038ZY','89159401','YOHANES ANDREW',NULL,'S.ST','ASSISTANT ENGINEER TEKNIK SIPIL (PLT ASISTEN MANAJER PROYEK PLTMG MPPNABIRE)','BAG PROYEK (PLTMG MPP NABIRE 20MW)','UPP Kitring Papua','UIP Papua','yohanes.andrew@pln.co.id','ASMAN PROYEK PLTMG MPP NABIRE','30226218','Wisma Bogani No. 17 008/009 Kel. Jatiwarna Kec. Pondok Melat','Supervisori Atas','85718385676','Male','30224911','PLT ASMAN PROYEK PLTMG MPP NABIRE','3275122809890002','9/28/1989','UPP KITJAR PPUA'),('8915347ZY','89159402','ANDREAS BIMAR SETIARI',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL (PLT ASISTEN MANAJER PROYEK PLTMG MPPFAK-FAK)','BAG PROYEK (PLTMG MPP FAK-FAK 10MW)','UPP Kitring Papua Barat','UIP Papua','ANDREAS.BIMAR@PLN.CO.ID','ASMAN PROYEK PLTMG MPP FAK-FAK','30226200','Dsn. Banyuurip RT03/RW01 Mojorejo Wates Blitar Jawa Timur','Supervisori Atas','82139949616','Male','30224919','PLT ASMAN PROYEK PLTMG MPP FAK-FAK','3505202912890001','12/29/1989','UPP KITJAR PBRT'),('8915331ZY','89159403','DWI SEPTYAN WALUYO',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL (PLT ASISTEN MANAJER PROYEK PLTMG MPPMANOKWARI)','BAG PROYEK (PLTMG MPP MANOKWARI 20MW)','UPP Kitring Papua Barat','UIP Papua','DWI.SEPTYAN@PLN.CO.ID','ASMAN PROYEK PLTMG MPP MANOKWARI','30226208','Jalan Golf 8 no.9 Gunungsari Surabaya','Supervisori Atas','81233430001','Male','30224920','PLT ASMAN PROYEK PLTMG MPP MANOKWARI','3578211009890001','9/10/1989','UPP KITJAR PBRT'),('9014152ZY','90149401','ARIGUSMAN SITANGGANG',NULL,'A.Md.','SUPERVISOR PROYEK PLTMG SARMI (5MW)','SIE PROYEK (PLTMH SARMI 5MW)','UPP Kitring Papua','UIP Papua','arigusman_stg@pln.co.id','MAN UPP KITRING PAPUA','37000735','JL. DANAU MATANA LK.II','Supervisori Dasar','081396414103','Male','30226222','SPV PROYEK PLTMG SARMI','1276011008900002','8/10/1990','UPP KITJAR PPUA'),('9014158ZY','90149402','PRATAMA NUR SATRIA',NULL,'S.T.','SUPERVISOR PENGENDALIAN PROYEK JARINGAN','BAG DAL PROYEK RING','Kantor Induk UIP Papua','UIP Papua','pratamanursatria@pln.co.id','DM DAL PROYEK DAN K2','37000717','ARINDA 1 BLOK H-12','Supervisori Atas','081294643786','Male','37000719','SPV DAL PROYEK RING','3674031709900006','9/17/1990','KANTOR INDUK'),('9014159ZY','90149403','ANDREAS GALINGGING',NULL,'A.Md.','JUNIOR ENGINEER PENGELOLAAN KONTRAK','SUBID PMIS DAN ADM TEKNIK','Kantor Induk UIP Papua','UIP Papua','andreas.galingging@pln.co.id','DM PMIS DAN ADM TEKNIK','37000714','JL. TANJUNG BATU NO.176','Fungsional VI','085297153911','Male','30224836','JE LOLA KON','1211102010900001','10/20/1990','KANTOR INDUK'),('9015363ZY','90159400','ABDUL LATIF',NULL,'A.Md.','JUNIOR OFFICER ADMINISTRASI PENGADAAN','PELAKSANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','ABDULLATIF@PLN.CO.ID','PJ PELAKSANA PENGADAAN','30215812','JAMUS GODO RT.13/RW.IV KEC.MRANGGEN KAB. DEMAK','Fungsional VI','85876307735','Male','30224863','JF ADM PENGADAAN','3321012703900002','3/27/1990','KANTOR INDUK'),('9015397ZY','90159402','JUSMAN',NULL,'A.Md.','SUPERVISOR PENGELOLAAN PMIS','SIE LOLA PMIS','UPP Kitring Papua Barat','UIP Papua','JUSMAN@PLN.CO.ID','ASMAN TEKNIK','37000742','PAULAMBUSU, DESA TAMALANREA, KEC. BONTOTIRO','Supervisori Dasar','85242663334','Male','30222465','SPV LOLA PMIS','7302040507900001','7/5/1990','UPP KITJAR PBRT'),('9015733ZY','90159404','REZA ARVIANTO',NULL,'S.ST','ASSISTANT ENGINEER TEKNIK SIPIL (PLT ASISTEN MANAJER PROYEK PLTMG MPPTIMIKA)','BAG PROYEK (PLTMG MPP TIMIKA 10MW)','UPP Kitring Papua Barat','UIP Papua','REZA.ARVIANTO@PLN.CO.ID','ASMAN PROYEK PLTMG MPP TIMIKA','30226210','JALAN DANAU SERIANG C2 F3 RT.05/RW.16 SAWOJAJAR','Supervisori Atas','85881553253','Male','30224922','PLT ASMAN PROYEK PLTMG MPP TIMIKA','3573031207900002','7/12/1990','UPP KITJAR PBRT'),('9016060ZY','90169400','SANTO PERDANA PUTRA',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','SUBID REN SIPIL','Kantor Induk UIP Papua','UIP Papua','SANTOPERDANA@PLN.CO.ID','DM REN SIPIL','30222514','BUCEND 2 ENTROP','Fungsional V','085254418493','Male','30239279','AE TEKNIK SIPIL','9171022905900006','5/29/1990','KANTOR INDUK'),('9017187ZY','90179400','YUSTIAN ARIEF ARYA HERLIYATNO',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK ELEKTRIKAL','BAG PROYEK (PLTMG MPP NABIRE 20MW)','UPP Kitring Papua','UIP Papua',NULL,'ASMAN PROYEK PLTMG MPP NABIRE','30226218','JL. KEBUN RAJA NO 15 RT 007/RW','Fungsional V','085239478008','Male','30239278','AE TEKNIK ELEKTRIKAL','5371041611900000','11/16/1990','UPP KITJAR PPUA'),('9017626ZY','90179401','CANDRA NUR ARIFIN',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua','UIP Papua',NULL,'ASMAN TEKNIK','37000736','JL. PAPANGGUNGAN X NO 80/127D RT 06 RW 09','Fungsional V','085720395766','Male','37401981','AE TEKNIK SIPIL','3273161401900004','1/14/1990','UPP KITJAR PPUA'),('9110010S','91108003','FRANSISCO SAMAY',NULL,NULL,'JUNIOR OFFICER ADMINISTRASI DAN KEAMANAN','BAG ADM MUM','Kantor Induk UIP Papua','UIP Papua','FRANSISCO.SAMAY@PLN.CO.ID','SPV ADM MUM','37000731','JL. YOS SUDARSO','Fungsional VI','085254815151','Male','30224855','JF ADM DAN KAM','9171032010910001','10/20/1991','KANTOR INDUK'),('9114190ZY','91149400','WIEM SATRIAWAN PUTRA',NULL,'A.Md.','JUNIOR ANALYST PERENCANA PENGADAAN','PERENCANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','wiemsatriawanputra@pln.co.id','PJ PERENCANA PENGADAAN','30215811','PERUMDAM BA.63 RT 02 RW 13 CANDIRENGGO SINGOSARI','Fungsional VI','081359190875','Male','30224860','JA PERENCANA PENGADAAN','3507243005910002','5/30/1991','KANTOR INDUK'),('9114200ZY','91149401','FARID LABIB MAHDI SUBEKTI',NULL,'A.Md.','JUNIOR ENGINEER SURVEY, PENGUKURAN DAN PERIJINAN','SUBID REN MUM','Kantor Induk UIP Papua','UIP Papua','faridsubekti@pln.co.id','DM REN MUM','30222513','KOMP.TNI AU DWIKORA NO.69 TAPOS','Fungsional VI','082197893021','Male','30224827','JE SURVEY, PENGUKURAN DAN PERIJINAN','3276021109910001','9/11/1991','KANTOR INDUK'),('9115140ZY','91159400','SYEH ARIES FAUZAN',NULL,'SH','ASSISTANT ANALYST PERENCANA PENGADAAN (PLT PEJABAT PERENCANA PENGADAAN)','PERENCANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','syeh.aries@pln.co.id','PJ PERENCANA PENGADAAN','30215811','JL. WISNUWARDANA RT 01 RW 06 LANGENSARI, UNGARAN, KAB. SEMAR','Supervisori Atas','85727179359','Male','30242401','PLT PJ PERENCANA PENGADAAN','3322181903710003','3/19/1991','KANTOR INDUK'),('9115165ZY','91159401','PAWITRA CITRA MAHENDRA',NULL,'S.T.','ASSISTANT OFFICER PELAPORAN (PLT SUPERVISOR PELAPORAN)','BAG PELAP','Kantor Induk UIP Papua','UIP Papua','PAWITRA.CITRA@PLN.CO.ID','SPV PELAP','37000715','PENJARINGANSARI PS1 F/22','Supervisori Atas','85646035010','Male','30224834','PLT SPV PELAP','1256202406910002','6/24/1991','KANTOR INDUK'),('9115489ZY','91159403','SYAHWALUDDIN',NULL,'A.Md.','JUNIOR ANALYST PENGELOLAAN KAS','BAG ADM KEU','Kantor Induk UIP Papua','UIP Papua','SYAHWALUDDIN@PLN.CO.ID','SPV ADM KEU','37000725','BTN BUNGORO INDAH BLOK B2/03 SAMALEWA KEC . BUNGORO','Fungsional VI','82349870577','Male','30224845','JA LOLA KAS','7310062612910001','4/26/1991','KANTOR INDUK'),('9115546ZY','91159404','MUHAMMAD RIFKY N. MANANGIN',NULL,'A.Md.','SUPERVISOR KEUANGAN DAN ADMINISTRASI','SIE KEU DAN ADM','UPP Kitring Papua Barat','UIP Papua','RIFKY.NOVIANTO@PLN.CO.ID','MAN UPP KITRING PAPUA BARAT','37000741','JL. SAHMINA NUR KEC. LIMBOTO KAB. GORONTALO','Supervisori Dasar','85298278676','Male','37000744','SPV KEU DAN ADM','7501012511910001','11/25/1991','UPP KITJAR PBRT'),('9115799ZY','91159405','SUDILAH DIARTO',NULL,'A.Md.','JUNIOR ENGINEER PENGENDALIAN KONSTRUKSI JARINGAN','SUBID DAL PROYEK DAN K2','Kantor Induk UIP Papua','UIP Papua','SUDILAH.DIARTO@PLN.CO.ID','DM DAL PROYEK DAN K2','37000717','JL. RANGKAH BUNTU 1/45 SURABAYA','Fungsional VI','85852367697','Male','30224839','JE DAL KONS RING','3578102304910002','4/23/1991','KANTOR INDUK'),('9115800ZY','91159406','PURNAMA',NULL,'A.Md.','JUNIOR OFFICER ADMINISTRASI PENGADAAN','PELAKSANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','PURNAMA@PLN.CO.ID','PJ PELAKSANA PENGADAAN','30215812','KP. JUNGHUN RT 001 RW 018 DESA JAYAGIRI KECAMATAN LEMBANG KA','Fungsional VI','082217018725','Male','30224865','JF ADM PENGADAAN','3217010105911001','5/1/1991','KANTOR INDUK'),('9115834ZY','91159407','IRFAN ARYA SATRIA',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK ELEKTRIKAL (PLT ASISTEN MANAJER PROYEK PLTMGMERAUKE 2)','BAG PROYEK (PLTMG MERAUKE 2 20MW)','UPP Kitring Papua','UIP Papua','IRFAN.ARYASATRIA@PLN.CO.ID','ASMAN PROYEK PLTMG MERAUKE 2','30226217','JL. CENDRAWASIH G2 NO.12','Supervisori Atas','081287306071','Male','30224910','PLT ASMAN PROYEK PLTMG MERAUKE 2','3275023007910004','7/30/1991','UPP KITJAR PPUA'),('91151137ZY','91159408','ABDUL RASYID ILYAS',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK SIPIL (PLT SUPERVISOR PROYEK PLTMH KALIBUMI)','SIE PROYEK (PLTMH KALIBUMI 1x1,25 MW)','UPP Kitring Papua','UIP Papua','ABDUL.RASYID@PLN.CO.ID','SPV PROYEK PLTMH KALIBUMI','30226221','GILIRENG, KEL. GILIRENG, KEC. GILIRENG, KAB. WAJO','Supervisori Dasar','85242332971','Male','30224914','PLT SPV PROYEK PLTMH KALIBUMI','7313130101910001','1/1/1991','UPP KITJAR PPUA'),('91151138ZY','91159409','ARSAL ARIFUDDIN',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','ARSAL.ARIFUDDIN@PLN.CO.ID','ASMAN TEKNIK','37000736','JL. MUH TAHIR LR 7 NO 1','Fungsional VI','82345477791','Male','30224870','JE TEKNIK SIPIL','7371102401910004','1/24/1991','UPP KITJAR PPUA'),('9116095ZY','91169400','DEDE REINHARD TAULA\'BI\'',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','SUBID REN SIPIL','Kantor Induk UIP Papua','UIP Papua','D2TAULABI@PLN.CO.ID','DM REN SIPIL','30222514','Jl. Reremi Permai 1 A No. 07','Fungsional V','085255171493','Male','30229447','AE TEKNIK SIPIL','7371090202910016','2/2/1991','KANTOR INDUK'),('9116152ZY','91169401','YUNITA PALIK',NULL,'A.Md.','JUNIOR ANALYST PERENCANAAN ANGGARAN','SUBID REN ANG','Kantor Induk UIP Papua','UIP Papua','YUNITAPALIK@PLN.CO.ID','DM REN ANG','37000722','JL SETIAPURA II PALDAM','Fungsional VI','081240880995','Female','30224842','JA REN ANG','9171024809910008','9/8/1991','KANTOR INDUK'),('9116183ZY','91169402','CHRISTIANTO LUMBA',NULL,'S.ST','ASSISTANT ENGINEER TEKNIK MESIN','SUBID REN ELEKTROMEKANIK','Kantor Induk UIP Papua','UIP Papua','CHRISTIANTO.LUMBA@PLN.CO.ID','DM REN ELEKTROMEKANIK','30222515','MARUALA','Fungsional V','82345674776','Male','30224830','AE TEKNIK MESIN','7311012312910004','12/23/1991','KANTOR INDUK'),('9116428ZY','91169403','PRASETYA TRIPUTRA NUGRAHA',NULL,'S.Psi','ASSISTANT ANALYST PENGEMBANGAN SDM DAN ORGANISASI','BAG ADM DAN BANG SDM','Kantor Induk UIP Papua','UIP Papua','PRASETYA.TRIPUTRA@PLN.CO.ID','SPV ADM DAN BANG SDM','37000730','JL. KAMPUNG BARU NO.48 RT.04/02 KEL.PD BAMBU KEC.DUREN SAWIT','Fungsional V','082199655788','Male','30224853','AS ADM DAN BANG SDM','3175070306910009','6/3/1991','KANTOR INDUK'),('9116858ZY','91169404','EIDIL DHANURMAWIJAYA',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL (PLT ASISTEN MANAJER PROYEK PLTMGSORONG)','BAG PROYEK (PLTMG SORONG 50MW)','UPP Kitring Papua Barat','UIP Papua','EIDIL.DHANURMA@PLN.CO.ID','ASMAN PROYEK PLTMG SORONG','30226212','JL. KAPAL FERY NO.26','Supervisori Atas','85255659455','Male','30224923','PLT ASMAN PROYEK PLTMG SORONG','6474012106910003','6/21/1991','UPP KITJAR PBRT'),('9116898ZY','91169405','REZA ANUGRAH',NULL,'S.T.','ASSISTANT ANALYST PELAKSANA PENGADAAN','PELAKSANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','REZAANUGRAH@PLN.CO.ID','PJ PELAKSANA PENGADAAN','30215812','JL. SATELIT 8 NO. 5 TELKOMAS','Fungsional V','81342971363','Male','30224864','AS PELAKSANA PENGADAAN','7371113112910060','12/31/1991','KANTOR INDUK'),('91162457ZY','91169407','ABDUL WAHID ALKINDY',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK ELEKTRIKAL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','WAHID.ALKINDY@PLN.CO.ID','ASMAN TEKNIK','37000736','KOMP DOSEN UNHAS BLOK AG NO 3','Fungsional V','085656216439','Male','30236108','AE TEKNIK ELKTRIKAL','7371140111900006','11/1/1991','UPP KITJAR PPUA'),('91162393ZY','91169408','SANDRYAWAL',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua Barat','UIP Papua','SANDRYAWAL@PLN.CO.ID','ASMAN TEKNIK','37000742','\"JLN. MEGAPURA SKYLINE ,RT/RW : 003/001, KELURAHAN : ENTROP,','Fungsional V','82399308523','Male','30229445','AE TEKNIK SIPIL','91710223049100002','4/23/1991','UPP KITJAR PBRT'),('9215244ZY','92159400','YOLAN ERLANDA',NULL,'S.Sos','ASSISTANT ANALYST PENGADAAN TANAH DAN PENGENDALIAN ROW (PLT ASISTEN MANAJER PERTANAHAN)','BAG PERTANAHAN','UPP Kitring Papua','UIP Papua','YOLAN.ERLANDA@PLN.CO.ID','ASMAN PERTANAHAN','37000737','PAJELERAN, RT001/RW006, SUKAHATI, CIBINONG','Supervisori Atas','8979613911','Male','30224917','PLT ASMAN PERTANAHAN','3201012006920012','6/20/1992','UPP KITJAR PPUA'),('9215605ZY','92159401','MUH. TAQDIR NUR',NULL,'A.Md.','SUPERVISOR PENGELOLAAN PMIS','SIE LOLA PMIS','UPP Kitring Papua','UIP Papua','TAQDIR.NUR@PLN.CO.ID','ASMAN TEKNIK','37000736','BOTTOE, KEL. TANETE, KEC. TANETE KABUPATEN BARRU','Supervisori Dasar','085342254849','Male','30222464','SPV LOLA PMIS','7311020408920001','8/4/1992','UPP KITJAR PPUA'),('9216594ZY','92169400','BERNADUS ARDIAN RICKY MAHENDRA',NULL,'SH','ASSISTANT ANALYST HUKUM','SUBID HK DAN KOM','Kantor Induk UIP Papua','UIP Papua','BERNADUS.ARDIAN@PLN.CO.ID','DM HK DAN KOM','37000734','Mloyokusuman Rt.03 Rw. XII kelurahan Baluwarti Kecamatan Pas','Fungsional V','\'081217407856','Male','30224857','AS HK','3372032710920001','10/27/1992','KANTOR INDUK'),('9216609ZY','92169401','DIMAS PRABOWO WICAKSONO',NULL,'S.Sos','ASSISTANT ANALYST KOMUNIKASI','SUBID HK DAN KOM','Kantor Induk UIP Papua','UIP Papua','DIMAS.PRABOWO@PLN.CO.ID','DM HK DAN KOM','37000734','JL. ANGGREK NELIMURNI BLK A/104 RT 01 RW 01 KEMANGGISAN PALA','Fungsional V','081510003630','Male','30224858','AS KOM','3173071012920004','12/10/1992','KANTOR INDUK'),('9216987ZY','92169402','MUH. FADEL FAHMI',NULL,'A.Md.','JUNIOR ENGINEER KESELAMATAN KETENAGALISTRIKAN DAN K3','BAG K3 DAN LING','Kantor Induk UIP Papua','UIP Papua','FADEL.FAHMI@PLN.CO.ID','SPV K3 DAN LING','37000720','JLN. KERUKUNAN TIMUR 27 BLOK G NO. 229 BTP','Fungsional VI','85298514110','Male','30224841','JE K2 DAN K3','7371142612920002','12/26/1992','KANTOR INDUK'),('92162624ZY','92169403','ARI PRATOMO AJI',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','ARI.PRATOMO@PLN.CO.ID','ASMAN TEKNIK','37000736','KOMP. SMU TERUNA BAKTI WAENA RT 1 RW 3 KELURAHAN YABANSAI KE','Fungsional V','82198502798','Male','30229443','AE TEKNIK SIPIL','9171052310920003','10/23/1992','UPP KITJAR PPUA'),('92163108ZY','92169404','MUHAMMAD DZUL FADHLI',NULL,'A.Md.','JUNIOR OFFICER ADMINISTRASI DAN KEAMANAN','BAG ADM MUM','Kantor Induk UIP Papua','UIP Papua','MUHAMMAD.DZUL@PLN.CO.ID','SPV ADM MUM','37000731','\"PP DARUL ISTIQAMAH KEL. TAROADA, KEC. TURIKALE\"','Fungsional VI','085299723937','Male','30239167','JF SEKRE DAN RUMAH TANGGA','73091409019200004','1/9/1992','KANTOR INDUK'),('92163166ZY','92169405','SATRIO GELAR PAMUNGKAS',NULL,'A.Md.','JUNIOR ANALYST PERENCANAAN ANGGARAN','SUBID REN ANG','Kantor Induk UIP Papua','UIP Papua','SATRIO.GELAR@PLN.CO.ID','DM REN ANG','37000722','\"JL PARANGPUSPO 2 D/ 15 RT 02 RW 9 MEDONO, PEKALONGAN BARAT\"','Fungsional VI','082313135618','Male','30236105','JA REN ANG','3375010406920007','6/5/1992','KANTOR INDUK'),('92163171ZY','92169406','TRIAJI SYAIFUL RAKHMAN',NULL,'A.Md.','JUNIOR ANALYST AKUNTANSI','BAG AKT PDP','Kantor Induk UIP Papua','UIP Papua','TRIAJI.SYAIFUL@PLN.CO.ID','SPV AKT PDP','37000728','KP CICAPAR TENGAH RT 01 RW 03 DESA LELES KEC LELES KAB GARUT','Fungsional VI','089618660887','Male','30229862','JA AKT','3205092706920001','6/27/1992','KANTOR INDUK'),('92163147ZY','92169407','TRY BAYU SASONGKO',NULL,'A.Md.','JUNIOR ANALYST PERENCANAAN ANGGARAN','SUBID REN ANG','Kantor Induk UIP Papua','UIP Papua','TRY.BAYU@PLN.CO.ID','DM REN ANG','37000722','JL. BAKTI 6 RT. 08 RW.06 N0. 49 KEL. CILINCING KEC. CILINCIN','Fungsional VI','087787212174','Male','30229863','JA REN ANG','3172041104920000','4/11/1992','KANTOR INDUK'),('92163660ZY','92169408','HANINDITO ANDHIKA',NULL,'S.T.','ASSISTANT ENGINEER PERENCANAAN LINGKUNGAN','SUBID REN MUM','Kantor Induk UIP Papua','UIP Papua','HANINDITO.ANDHIKA@PLN.CO.ID','DM REN MUM','30222513','JL. MANDAR UTAMA DC 11 NO.7 BINTARO JAYA SEKTOR 3A','Fungsional V','081219138475','Male','30232830','AE REN LING','3674030112920011','12/1/1992','KANTOR INDUK'),('9217627ZY','92179400','NAJIHUN GHULAM HALIM',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK MESIN','BAG PROYEK (PLTMG BIAK 15MW)','UPP Kitring Papua','UIP Papua',NULL,'ASMAN PROYEK PLTMG BIAK','30226215','Jl. Parkit FA-07 Graha Kembangan Asri Desa Kembangan','Fungsional V','082231763859','Male','37401980','AE TEKNIK MESIN',NULL,'7/18/1992','UPP KITJAR PPUA'),('9315948ZY','93152505','FAUZIAH NURUL AINI',NULL,'A.Md.','JUNIOR ANALYST PERENCANA PENGADAAN','PERENCANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','FAUZIAH.NURUL@PLN.CO.ID','PJ PERENCANA PENGADAAN','30215811','JL. SUPLIER II NO. 84','Fungsional VI','085720088434','Female','30224861','JA PERENCANA PENGADAAN','3204284502930003','2/5/1993','KANTOR INDUK'),('93161006ZY','93169400','GERALD ABRAHAM',NULL,'A.Md.','JUNIOR ENGINEER LINGKUNGAN, KEAMANAN DAN K3','BAG TEKNIK','UPP Kitring Papua','UIP Papua','GERALDABRAHAM1993@PLN.CO.ID','ASMAN TEKNIK','37000736','JALAN RADIO 2 NO. 37A','Fungsional VI','85242195348','Male','30224871','JE LING, KAM DAN K3','7371111105930007','5/1/1993','UPP KITJAR PPUA'),('9316996ZY','93169401','MUHAMMAD AZWAR',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua Barat','UIP Papua','MUHAMMAD.AZWAR@PLN.CO.ID','ASMAN TEKNIK','37000742','JALAN GUNUNG BAWAKARAENG LORONG 75D NOMOR 3B','Fungsional VI','85342246286','Male','30224903','JE TEKNIK SIPIL','7371031202930011','2/12/1993','UPP KITJAR PBRT'),('9316997ZY','93169402','WESLY TURISMAN NGOHAL',NULL,'A.Md.','JUNIOR ANALYST PENGADAAN TANAH','BAG PERTANAHAN','Kantor Induk UIP Papua','UIP Papua','WESLY.TURISMAN@PLN.CO.ID','SPV PERTANAHAN','37000733','JL. MANGKA DG. BOMBONG','Fungsional VI','85242500688','Male','30224856','JA PENGADAAN TANAH','7306081502930005','2/15/1993','KANTOR INDUK'),('93161875ZY','93169403','MUHAMMAD FAIZAL RACHMAWAN FANANI',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK ELEKTRIKAL','BAG TEKNIK','UPP Kitring Papua Barat','UIP Papua','FAIZAL.RACHMAWAN@PLN.CO.ID','ASMAN TEKNIK','37000742','\"JALAN DANAU POSO 1 G2D/25 RT 01 RW 05, KELURAHAN SAWOJAJAR,','Fungsional VI','81230534665','Male','30224904','JE TEKNIK ELKTRIKAL','3573031607930004','7/16/1993','UPP KITJAR PBRT'),('93161921ZY','93169404','HAMDAN HASIAN RITONGA',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK MEKANIKAL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','HAMDAN.HASIAN@PLN.CO.ID','ASMAN TEKNIK','37000736','JL. PROGO FL-20 WISMA TROPODO SIDOARJO','Fungsional VI','85730210110','Male','30224872','JE TEKNIK MEKANIKAL','3515182210930001','10/22/1993','UPP KITJAR PPUA'),('93162658ZY','93169405','GENI GIOVANNI SHANDY GUNAWAN',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','GENI.GIOVANNI@PLN.CO.ID','ASMAN TEKNIK','37000736','JL. GURU NO. 66 BPG KOTARAJA RT. 005 RW. 004 KELURAHAN VIM K','Fungsional V','082291599532','Female','30236106','AE TEKNIK SIPIL',NULL,'1/8/1993','UPP KITJAR PPUA'),('93163292ZY','93169406','MOCH. RIZAL ABDULLAH',NULL,'A.Md.','JUNIOR ANALYST AKUNTANSI','BAG AKT MUM DAN AT','Kantor Induk UIP Papua','UIP Papua','MOCH.RIZAL@PLN.CO.ID','SPV AKT MUM DAN AT','37000727','\"JL.MUTIARA DUSUN II PEGUNDAN, RT 001 RW 003, DESA PEGUNDAN,','Fungsional VI','085642653983','Male','30229860','JA AKT','3327101504930000','4/15/1993','KANTOR INDUK'),('9317628ZY','93179400','FAISAL KUS HERMAWAN',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua','UIP Papua',NULL,'ASMAN TEKNIK','37000736','Dawung Tengah 01/13 Serengan,','Fungsional V','081228382889','Male','37401982','AE TEKNIK SIPIL',NULL,'6/14/1993','UPP KITJAR PPUA'),('94161696ZY','94169400','FARIS MAULANA HAYKAL',NULL,'A.Md.','JUNIOR ANALYST KEUANGAN','SUBID KEU','Kantor Induk UIP Papua','UIP Papua','FARIS.MAULANA@PLN.CO.ID','DM KEU','37000723','JL. BLEDAK ANGGUR II NO.37','Fungsional VI','\'08985696518','Male','30224843','JA KEU','3374062807940001','7/28/1994','KANTOR INDUK'),('94162016ZY','94169401','AMAR MA\'RUF',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK MEKANIKAL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','A.MA\'RUF@PLN.CO.ID','ASMAN TEKNIK','37000736','Jl. Kapasa Raya Bangkala RT2 RW 1 Kel. Kapasa Kec. Tamalanre','Fungsional VI','89639675521','Male','30239168','JE TEKNIK MEKANIKAL','7371142003940003','3/20/1994','UPP KITJAR PPUA'),('94162081ZY','94169402','MUHAMAD BARHAN FAZABIH',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK MEKANIKAL','BAG TEKNIK','UPP Kitring Papua Barat','UIP Papua','MUHAMAD.BARHAN@PLN.CO.ID','ASMAN TEKNIK','37000742','DS. KENDALDOYONG RT 04 RW 02 KECAMATAN WONOSALAM KABUPATEN D','Fungsional VI','85226638129','Male','30224906','JE TEKNIK MEKANIKAL','3321062605940001','5/26/1994','UPP KITJAR PBRT'),('94162877ZY','94169403','GALIH NUR PRAMUDI RAHARJO',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK MEKANIKAL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','GALIH.NUR@PLN.CO.ID','ASMAN TEKNIK','37000736','\"JL. RAYA MAOS NO 18 RT 002 RW 003 , KALIKUDI, ADIPALA\"','Fungsional VI','081224307611','Male','30229444','JE TEKNIK MEKANIKAL','3301032103940004','3/21/1994','UPP KITJAR PPUA'),('9417629ZY','94179400','YOHANES ARWADI',NULL,'S.T.','ASSISTANT ENGINEER TEKNIK SIPIL','BAG TEKNIK','UPP Kitring Papua','UIP Papua',NULL,'ASMAN TEKNIK','37000736','Jalan Jati Padang RT. 014 RW. 06 No. 127, Jati Padang,','Fungsional V','085780823910','Male','37401983','AE TEKNIK SIPIL',NULL,'2/10/1994','UPP KITJAR PPUA'),('9417630ZY','94179401','CHRISTIAN ISAL SANGGALANGI',NULL,'SH','ASSISTANT ANALYST PENGADAAN TANAH','BAG PERTANAHAN','Kantor Induk UIP Papua','UIP Papua',NULL,'SPV PERTANAHAN','37000733','TAMBAKSARI 5/20. Surabaya, Jawa Timur','Fungsional V','085731744400','Male','37401979','AS PENGADAAN TANAH',NULL,'5/12/1994','KANTOR INDUK'),('9516065S','95169400','FAHMI RIZALDY ISKANDAR',NULL,NULL,'JUNIOR OFFICER ADMINISTRASI DAN KEAMANAN','BAG ADM MUM','Kantor Induk UIP Papua','UIP Papua','FAHMI.RIZALDY@PLN.CO.ID','SPV ADM MUM','37000731','JL ARDIPURA BATU PUTIH','Fungsional VI','085354147547','Male','30239166','JF SEKRE DAN RUMAH TANGGA','9171020506930006','6/5/1995','KANTOR INDUK'),('9516070S','95169401','EKA MUHARWIYANTO',NULL,NULL,'JUNIOR OFFICER ADMINISTRASI','SIE KEU DAN ADM','UPP Kitring Papua','UIP Papua','EKA.MUHARWIYANTO@PLN.CO.ID','SPV KEU DAN ADM','37000738','JL KABUPATEN II APO KALI','Fungsional VI','082398432229','Male','30224869','JF ADM','9171012406950003','6/24/1995','UPP KITJAR PPUA'),('95162269ZY','95169402','ADYATMA HASAN',NULL,'A.Md.','JUNIOR ENGINEER TEKNIK MEKANIKAL','BAG TEKNIK','UPP Kitring Papua','UIP Papua','ADYATMA.HASAN@PLN.CO.ID','ASMAN TEKNIK','37000736','Komp. Perdos Unhas Blok EB/33','Fungsional VI','08114446137','Male','30224873','JE TEKNIK MEKANIKAL','7371140511920004','11/5/1995','UPP KITJAR PPUA'),('9616058S','96169400','YANTO RIKI RIKARDHO',NULL,NULL,'JUNIOR OFFICER ADMINISTRASI','SIE KEU DAN ADM','UPP Kitring Papua Barat','UIP Papua','YANTO.RIKI@PLN.CO.ID','SPV KEU DAN ADM','37000744','ARGAPURA II','Fungsional VI','082198659947','Male','30224900','JF ADM','9171020701960004','1/7/1996','UPP KITJAR PBRT'),('9616075S','96169401','SYAEHUL FAZRUL A SIDIQ',NULL,NULL,'JUNIOR OFFICER KESEKRETARIATAN DAN RUMAH TANGGA','BAG ADM MUM','Kantor Induk UIP Papua','UIP Papua','SYAEHUL.FAZRUL@PLN.CO.ID','SPV ADM MUM','37000731','PERUMNAS 1 WAENA , GG DAHLIA II NO.129','Fungsional VI','081344126767','Male','30224854','JF SEKRE DAN RUMAH TANGGA','9171050703960001','3/7/1996','KANTOR INDUK'),('9716062S','97169400','INDRI ARDIA GARINI',NULL,NULL,'JUNIOR OFFICER ADMINISTRASI KEUANGAN','BAG ADM KEU','Kantor Induk UIP Papua','UIP Papua','INDRI.ARDIA@PLN.CO.ID','SPV ADM KEU','37000725','PERUMNAS 3 WAENA','Fungsional VI','082244927355','Female','30224846','JF ADM KEU','9171054512370002','12/5/1997','KANTOR INDUK'),('9716067S','97169401','NURLITA OCTAVIANI',NULL,NULL,'JUNIOR OFFICER ADMINISTRASI DAN KESEJAHTERAAN SDM','BAG ADM DAN BANG SDM','Kantor Induk UIP Papua','UIP Papua','NURLITA.OCTAVIANI@PLN.CO.ID','SPV ADM DAN BANG SDM','37000730','TANAH HITAM','Fungsional VI','081343463668','Female','30224867','JF ADM DAN KESRA SDM','9171034410970007','10/4/1997','KANTOR INDUK'),('9716055S','97169402','AGUYSTO SELZIUS ARONGGEAR',NULL,NULL,'JUNIOR OFFICER ADMINISTRASI','SIE KEU DAN ADM','UPP Kitring Papua Barat','UIP Papua','AGUYSTO.SELZIUS@PLN.CO.ID','SPV KEU DAN ADM','37000744','ARDIPURA II','Fungsional VI','082399028190','Male','30224901','JF ADM','9171022208960006','8/22/1996','UPP KITJAR PBRT'),('9716171S','97169403','ENDANG KURNIAWATI',NULL,NULL,'JUNIOR OFFICER PELAKSANA PENGADAAN','PELAKSANA PENGADAAN','Kantor Induk UIP Papua','UIP Papua','ENDANG.KURNIAWATI@PLN.CO.ID','PJ PELAKSANA PENGADAAN','30215812','PERUMNAS IV WAENA','Fungsional VI','082194197191','Female','30224866','JF ADM PENGADAAN','9171056004970002','4/19/1997','KANTOR INDUK');
+/*!40000 ALTER TABLE `user_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_logged`
+--
+
+DROP TABLE IF EXISTS `user_logged`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_logged` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nik` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_logged`
+--
+
+LOCK TABLES `user_logged` WRITE;
+/*!40000 ALTER TABLE `user_logged` DISABLE KEYS */;
+INSERT INTO `user_logged` VALUES (1,'123456','root','2017-09-14 23:57:52'),(2,'123456','root','2017-09-15 17:51:22'),(3,'123456','root','2017-09-18 06:23:02'),(4,'123456','root','2017-09-20 03:23:58'),(5,'123456','root','2017-09-21 09:44:35'),(6,'123456','root','2017-09-22 03:10:55'),(7,'123456','root','2017-09-22 15:12:24'),(8,'123456','root','2017-09-23 15:39:20'),(9,'123456','root','2017-09-25 20:37:51'),(10,'123456','root','2017-09-25 23:49:16'),(11,'123456','root','2017-09-26 01:58:30'),(12,'123456','Root Linuxer','2017-09-26 04:14:34'),(13,'123456','Root Linuxer','2017-09-26 05:13:14'),(14,'123456','Root Linuxer','2017-09-26 10:22:08'),(15,'123456','Root Linuxer','2017-09-27 10:13:23'),(16,'123456','Root Linuxer','2017-09-28 08:59:19'),(17,'123456','Root Linuxer','2017-09-30 10:06:57'),(18,'123456','Root Linuxer','2017-09-30 13:30:36'),(19,'123456','Root Linuxer','2017-09-30 13:30:59'),(20,'123456','Root Linuxer','2017-09-30 13:33:12'),(21,'123456','Root Linuxer','2017-09-30 13:52:42'),(22,'123456','Root Linuxer','2017-09-30 14:28:35'),(23,'123456','Root Linuxer','2017-09-30 14:41:15'),(24,'333','Trie','2017-09-30 14:42:37'),(25,'333','Trie','2017-09-30 14:44:01'),(26,'333','Trie','2017-09-30 15:00:23'),(27,'123456','Root Linuxer','2017-09-30 15:08:21'),(28,'333','Trie','2017-09-30 15:10:46'),(29,'555','Vivi','2017-09-30 15:11:36'),(30,'333','Trie','2017-09-30 15:11:55'),(31,'123456','Root Linuxer','2017-09-30 15:14:24'),(32,'333','Trie','2017-09-30 15:14:40'),(33,'555','Vivi','2017-09-30 16:04:55'),(34,'333','Trie','2017-09-30 16:05:06'),(35,'123456','Root Linuxer','2017-09-30 16:36:11'),(36,'222','Dwi Arsana','2017-09-30 23:05:01'),(37,'222','Dwi Arsana','2017-10-01 06:38:26'),(38,'222','Dwi Arsana','2017-10-01 15:02:12'),(39,'222','Dwi Arsana','2017-10-01 17:37:16'),(40,'123456','Root Linuxer','2017-10-25 04:06:59');
+/*!40000 ALTER TABLE `user_logged` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vendor`
+--
+
+DROP TABLE IF EXISTS `vendor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vendor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telp` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pemilik` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vendor`
+--
+
+LOCK TABLES `vendor` WRITE;
+/*!40000 ALTER TABLE `vendor` DISABLE KEYS */;
+INSERT INTO `vendor` VALUES (1,'TOKO RISTO','Jl. Baru Hamadi No. 19, RT. 02 RW. 19 Jayapura Selatan','085','samudranta@gmail.com','DEWI HENDIANY');
+/*!40000 ALTER TABLE `vendor` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-11-14 15:06:19

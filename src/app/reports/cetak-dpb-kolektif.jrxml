@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cetak-dpb-kolektif" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de408080-ac4a-4d8b-8c11-5153a2e29269">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="353"/>
-	<property name="ireport.y" value="177"/>
+	<property name="ireport.y" value="443"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/rail/IdeaProjects/simperang/src/app/reports/"]]></defaultValueExpression>
 	</parameter>
@@ -10,7 +10,7 @@
 		<defaultValueExpression><![CDATA[6666]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT k.nomor,k.ket,CONCAT(DATE_FORMAT(k.tgl,'%d %M %Y'),' ') AS tanggal FROM dpb_kolektif AS k WHERE k.nomor=$P{nomor};]]>
+		<![CDATA[SELECT k.nomor,k.ket,CONCAT(DATE_FORMAT(k.tgl,'%d %M %Y'),' ') AS tanggal,CONCAT('NIK. ',k.nik_atasan) AS nik_mgr,k.nama_atasan,k.nama_posisi_atasan FROM dpb_kolektif AS k WHERE k.nomor=$P{nomor};]]>
 	</queryString>
 	<field name="nomor" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -19,6 +19,13 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tanggal" class="java.lang.String"/>
+	<field name="nik_mgr" class="java.lang.String"/>
+	<field name="nama_atasan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_posisi_atasan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -114,7 +121,7 @@
 		</band>
 	</detail>
 	<summary>
-		<band height="50">
+		<band height="183">
 			<textField pattern="dd MMMMM yyyy">
 				<reportElement x="462" y="30" width="110" height="20" uuid="d3c4c3a5-a2df-4515-b8ad-9374c0db16cf"/>
 				<textElement verticalAlignment="Bottom"/>
@@ -126,6 +133,24 @@
 				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
 				<text><![CDATA[Jayapura,]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="369" y="90" width="203" height="20" uuid="c3f3d7a3-0eb4-48b2-97db-845372903188"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nama_posisi_atasan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="141" width="203" height="20" uuid="2f59919c-b39c-4499-9d2e-b08e353d91b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{nama_atasan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="163" width="132" height="20" uuid="ecafc2bf-a734-4635-ae1c-5ddab5a1b5bf"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{nik_mgr}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

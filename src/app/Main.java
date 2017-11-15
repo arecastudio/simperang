@@ -243,7 +243,7 @@ public class Main extends Application{
 		});
 
 		laporan_dpb_vendor2.setOnAction(event -> {
-			//
+			borderPane.setCenter(new ReportDPBVendorPrint());
 		});
 		
 		set_user.setOnAction(new EventHandler<ActionEvent>() {

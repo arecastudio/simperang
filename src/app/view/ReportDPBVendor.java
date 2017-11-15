@@ -195,7 +195,7 @@ public class ReportDPBVendor extends VBox {
         tglawal.setOnAction(new EventHandler() {
             public void handle(Event t) {
                 LocalDate date = tglawal.getValue();
-                System.err.println("Tgl Awal: " + date);
+                //System.err.println("Tgl Awal: " + date);
             }
         });
 
@@ -204,7 +204,7 @@ public class ReportDPBVendor extends VBox {
         tglakhir.setOnAction(new EventHandler() {
             public void handle(Event t) {
                 LocalDate date = tglakhir.getValue();
-                System.err.println("Tgl Akhir: " + date);
+                //System.err.println("Tgl Akhir: " + date);
             }
         });
 

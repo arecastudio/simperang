@@ -2,9 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="surat-permintaan" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a3643e3-a184-4101-8357-381247218f6a">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="306"/>
-	<parameter name="nomor_surat" class="java.lang.String">
-		<defaultValueExpression><![CDATA[6666]]></defaultValueExpression>
+	<property name="ireport.y" value="240"/>
+	<parameter name="nomor_surat" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[SPBK/2/SDM/XI/2017]]></defaultValueExpression>
 	</parameter>
 	<parameter name="konten_surat" class="java.lang.String"/>
 	<parameter name="nama_vendor" class="java.lang.String"/>
@@ -21,6 +21,7 @@
 	<parameter name="nota_dinas" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT k.nomor,k.ket,CONCAT(DATE_FORMAT(k.tgl,'%d %M %Y'),' ') AS tanggal,k.nik,k.mail_send,SUM(p.harga_barang*p.jml_minta) AS tot,((SUM(p.harga_barang*p.jml_minta)*10)/100)AS ppn,(SUM(p.harga_barang*p.jml_minta)-((SUM(p.harga_barang*p.jml_minta)*10)/100))AS grand_total
+,CONCAT('NIK. ',k.nik_atasan) AS nik_mgr,k.nama_atasan,k.nama_posisi_atasan
 FROM dpb_kolektif AS k
 LEFT OUTER JOIN dpb_kolektif_d AS d ON d.nomor_dpb_kolektif=k.nomor
 LEFT OUTER JOIN permintaan_d AS p ON p.nomor_permintaan=d.nomor_permintaan
@@ -42,6 +43,13 @@ WHERE k.nomor=$P{nomor_surat} GROUP BY k.nomor;]]>
 	<field name="tot" class="java.lang.Double"/>
 	<field name="ppn" class="java.lang.Double"/>
 	<field name="grand_total" class="java.lang.Double"/>
+	<field name="nik_mgr" class="java.lang.String"/>
+	<field name="nama_atasan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_posisi_atasan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -150,9 +158,14 @@ WHERE k.nomor=$P{nomor_surat} GROUP BY k.nomor;]]>
 				<textFieldExpression><![CDATA[$P{pemilik_vendor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="289" y="65" width="283" height="20" uuid="a437932d-b045-4466-8794-cac457cecc7e"/>
+				<reportElement x="289" y="65" width="283" height="20" uuid="5272c2da-6040-4f82-9d81-99400c84e4fd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{nama_manager}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nama_atasan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="20" width="283" height="20" uuid="49dfb0e5-c9e4-428d-ab71-97b1d785a0e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nama_posisi_atasan}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="50">
@@ -167,8 +180,17 @@ WHERE k.nomor=$P{nomor_surat} GROUP BY k.nomor;]]>
 				<subreportParameter name="terbilang">
 					<subreportParameterExpression><![CDATA[$P{terbilang}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="nama_atasan">
+					<subreportParameterExpression><![CDATA[$F{nama_atasan}]]></subreportParameterExpression>
+				</subreportParameter>
 				<subreportParameter name="nomor_dpb_kolektif">
 					<subreportParameterExpression><![CDATA[$F{nomor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nik_mgr">
+					<subreportParameterExpression><![CDATA[$F{nik_mgr}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nama_posisi_atasan">
+					<subreportParameterExpression><![CDATA[$F{nama_posisi_atasan}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "surat-permintaan-lampiran.jasper"]]></subreportExpression>

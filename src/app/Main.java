@@ -44,7 +44,7 @@ public class Main extends Application{
     private Scene scene;
     public static MenuItem barang,divisi,posisi,tutup,buat_permintaan,edit_permintaan,
     review_permintaan,set_user,buat_dpb_kolektif,laporan_permintaan,laporan_dpb_vendor,laporan_dpb_vendor2,
-    hapus_permintaan,hapus_dpb_kolektif,notifikasi_email,laporan_dpb_kolektif,set_hak,tambah_hak,
+    hapus_permintaan,hapus_dpb_kolektif,notifikasi_email,notifikasi_email_vendor,laporan_dpb_kolektif,set_hak,tambah_hak,
 	set_panduan,set_db,vendor;
     public static MenuBar menuBar;
     private ImageView imgView;
@@ -112,8 +112,10 @@ public class Main extends Application{
         review_permintaan=new MenuItem("Review Permintaan");
         buat_dpb_kolektif=new MenuItem("Buat DPB Kolektif");
         hapus_dpb_kolektif=new MenuItem("Hapus DPB Kolektif");
-        notifikasi_email=new MenuItem("Notifikasi Email");
-        menuProses.getItems().addAll(buat_permintaan,edit_permintaan,hapus_permintaan,review_permintaan, new SeparatorMenuItem(),buat_dpb_kolektif,hapus_dpb_kolektif,new SeparatorMenuItem(),notifikasi_email);
+        notifikasi_email=new MenuItem("Notifikasi Email internal");
+		notifikasi_email_vendor=new MenuItem("Notifikasi Email ke Vendor");
+		notifikasi_email_vendor.setDisable(true);
+        menuProses.getItems().addAll(buat_permintaan,edit_permintaan,hapus_permintaan,review_permintaan, new SeparatorMenuItem(),buat_dpb_kolektif,hapus_dpb_kolektif,new SeparatorMenuItem(),notifikasi_email,notifikasi_email_vendor);
         // --- Menu View
         Menu menuLaporan = new Menu("Laporan");
         laporan_permintaan=new MenuItem("Cetak Permintaan");
@@ -280,7 +282,9 @@ public class Main extends Application{
 			}
 		});
 
-
+		notifikasi_email_vendor.setOnAction(e->{
+			borderPane.setCenter(new LabelJudul("Notifikasi email ke vendor."));
+		});
 	}
 	
 	private void LoginMode(){

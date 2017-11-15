@@ -2,6 +2,10 @@ package app.view;
 
 import app.controller.DBHelper;
 import app.controller.GetCurDate;
+import app.controller.NotaModify;
+import app.model.DataNota;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,6 +18,7 @@ import javafx.scene.layout.VBox;
 
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.Optional;
 
 /**
  * Created by rail on 11/15/17.
@@ -30,6 +35,11 @@ public class ReportDPBVendorPrint extends VBox {
     private RadioButton radio1,radio2;
     private Button button_show,button_refresh,button_print,button_del;
 
+    private final String SURAT_PERMINTAAN="/app/reports/surat-permintaan.jasper";
+    private final String SURAT_PERMINTAAN_LAMPIRAN="/app/reports/surat-permintaan-lampiran.jasper";
+
+    private String tmp_nomor="";
+
     public ReportDPBVendorPrint(){
         Inits();
 
@@ -39,7 +49,7 @@ public class ReportDPBVendorPrint extends VBox {
 
         HBox hbox2=new HBox(5);
         hbox2.setAlignment(Pos.CENTER);
-        hbox2.getChildren().addAll(button_show,button_refresh,button_print,button_del);
+        hbox2.getChildren().addAll(button_show,button_print,button_refresh,button_del);
 
         GridPane grid=new GridPane();
         grid.setHgap(5);grid.setVgap(5);
@@ -54,6 +64,10 @@ public class ReportDPBVendorPrint extends VBox {
     }
 
     private void Refresh() {
+        table.getItems().clear();
+        text_nota.setText("");
+        tmp_nomor="";
+        ket.setText("Keterangan :");
     }
 
     private void Inits() {
@@ -95,18 +109,57 @@ public class ReportDPBVendorPrint extends VBox {
         radio2=new RadioButton("No. Nota");
         radio2.setToggleGroup(group);
 
-        button_del=new Button("Hapus");
+        button_del=new Button("Hapus Nota");
         button_del.setPrefWidth(150);
+        button_del.setOnAction(e->{
+            if (tmp_nomor!=""){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Dialog Konfirmasi");
+                alert.setHeaderText("Anda akan menghapus Nota ini,");
+                alert.setContentText("Yakin?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    int i=new NotaModify().HapusNota(tmp_nomor);
+                    if (i>0){
+                        Refresh();
+                        ket.setText("Keterangan : Berhasil menghapus Nota.");
+                    }else {
+                        ket.setText("Keterangan : Gagal menghapus Nota");
+                    }
+                }
+            }
+        });
 
         button_print=new Button("Cetak");
         button_print.setPrefWidth(150);
 
         button_refresh=new Button("Refresh");
         button_refresh.setPrefWidth(150);
+        button_refresh.setOnAction(event -> {
+            Refresh();
+        });
 
         button_show=new Button("Tampilkan");
         button_show.setPrefWidth(150);
+        button_show.setOnAction(event -> {
+            if (radio2.isSelected()){
+                table.setItems(new NotaModify().GetTableItem(text_nota.getText().trim(),null,null));
+            }else{
+                table.setItems(new NotaModify().GetTableItem(null,tglawal.getValue().toString(),tglakhir.getValue().toString()));
+            }
+        });
 
-        table=new TableView();
+        table=new TabelNota();
+        table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (table.getSelectionModel().getSelectedItem()!=null){
+                    DataNota nota=(DataNota) table.getSelectionModel().getSelectedItem();
+                    tmp_nomor=nota.getNomor();
+                    ket.setText("Keterangan || Data dipilih: "+ nota.getNomor());
+                }
+            }
+        });
     }
 }

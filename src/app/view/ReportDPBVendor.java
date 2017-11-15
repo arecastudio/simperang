@@ -1,7 +1,6 @@
 package app.view;
 
 import app.GlobalUtility;
-import app.Main;
 import app.controller.*;
 import app.model.*;
 import javafx.application.Platform;
@@ -14,25 +13,16 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.*;
-import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -61,7 +51,6 @@ public class ReportDPBVendor extends VBox {
     private String surat_permintaan="";
     private StringBuilder stringBuffer;
     private ComboBox<DataVendor> cbxVendor;
-    private ComboBox<DataUsers> cbxManager;
     private CheckBox chkPrint,chkEmail;
 
     private final String KONTEN_SURAT="/app/surat_permintaan.txt";
@@ -111,14 +100,11 @@ public class ReportDPBVendor extends VBox {
         //grid.add(new Label("Pihak Pertama"),0,2);
         grid.add(button_show,1,2);
 
-        grid.add(new Label("Pihak Pertama"),0,3);
-        grid.add(cbxManager,1,3);
+        grid.add(new Label("Vendor"),0,3);
+        grid.add(cbxVendor,1,3);
 
-        grid.add(new Label("Pihak Ke Dua"),0,4);
-        grid.add(cbxVendor,1,4);
-
-        grid.add(new Label("Nota Dinas No."),0,5);
-        grid.add(text_nota,1,5);
+        grid.add(new Label("Nota Dinas No."),0,4);
+        grid.add(text_nota,1,4);
 
         hbox3.getChildren().addAll(grid,hbox2);
 
@@ -280,102 +266,20 @@ public class ReportDPBVendor extends VBox {
         });
 
         //------------------------------------------------------------
-        cbxManager=new ComboBox<>(new UserModify().GetTableItems());
-        cbxManager.setPrefWidth(200);
-        cbxManager.setConverter(new StringConverter<DataUsers>() {
-
-            @Override
-            public String toString(DataUsers object) {
-                return object.getNama();
-            }
-
-            @Override
-            public DataUsers fromString(String string) {
-                // TODO Auto-generated method stub
-                return cbxManager.getItems().stream().filter(ap ->
-                        ap.getNama().equals(string)).findFirst().orElse(null);
-            }
-        });
-
-        cbxManager.valueProperty().addListener((obs, oldval, newval) -> {
-            if(newval != null) {
-                //label.setText("NIK : "+newval.getNik());
-                cbxManager.setStyle(newval.getNik());
-                tmpIdManager=newval.getNik();
-                tmpNamaManager=newval.getNama();
-                //System.out.println("manager: " + newval.getNama() + ". nik: " + tmpIdManager);
-            }
-        });
-
-
-        button_print=new Button("Cetak");
-        //button_print.setDisable(true);
-        button_print.setPrefWidth(120);
-        button_print.setOnAction(event -> {
-            //tmpNomor="6666";
-            if (textArea.getText().toString().trim().length()>0  && text_nota.getText().toString().trim().length()>0 && tmpNomor!="" && tmpNamaVendor!="" && tmpAlamatVendor!="" && tmpPemilikVendor!="" && tmpNamaManager!=""){
-                //InputStream
-                //input=getClass().getResourceAsStream("/app/reports/surat-permintaan.jrxml");
-                input=getClass().getResourceAsStream(SURAT_PERMINTAAN);
-
-                try {
-                    //JasperDesign design= JRXmlLoader.load(input);
-                    //JasperReport report= JasperCompileManager.compileReport(design);
-                    JasperReport report=(JasperReport) JRLoader.loadObject(input);
-
-                    Map<String, Object> params = new HashMap<String, Object>();
-                    params.put("nomor_surat",tmpNomor);
-                    params.put("nota_dinas",text_nota.getText().toString().trim());
-                    params.put("konten_surat",textArea.getText().toString().trim());
-                    params.put("nama_vendor",tmpNamaVendor);
-                    params.put("alamat_vendor",tmpAlamatVendor);
-                    params.put("pemilik_vendor",tmpPemilikVendor);
-                    params.put("nama_manager",tmpNamaManager);
-
-                    /*
-                    * tmpTotal="";
-                    tmpPPN="";
-                    tmpGrandTotal="";
-                    tmpTerbilang="";
-                    * */
-
-                    //params.put("tanggal_posting",tmpTanggal);
-                    params.put("total",tmpTotal);
-                    params.put("ppn",tmpPPN);
-                    params.put("grand_total",tmpGrandTotal);
-                    params.put("terbilang",tmpTerbilang);
-
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(report,params,conn);
-                    jasperPrint.setName("Rekap Surat Permintaan");
-
-                    JasperViewer jv=new JasperViewer(jasperPrint,false);
-                    jv.setTitle("Rekap Surat Permintaan");
-                    jv.setVisible(true);
-                } catch (JRException e) {
-                    e.printStackTrace();
-                }
-            }else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Dialog Informasi");
-                alert.setHeaderText("Print Preview Gagal");
-                alert.setContentText("Lengkapi opsi pilihan pada form ini.");
-                alert.show();
-            }
-        });
 
         button_save=new Button("Simpan");
         button_save.setPrefWidth(120);
         button_save.setOnAction((ActionEvent event) -> {
             //if (1==1){
             //text_nota.setText("df");
-            if (textArea.getText().toString().trim().length()>0  && text_nota.getText().toString().trim().length()>0 && tmpNomor!="" && tmpNamaVendor!="" && tmpAlamatVendor!="" && tmpPemilikVendor!="" && tmpNamaManager!="") {
+            if (textArea.getText().toString().trim().length()>0  && text_nota.getText().toString().trim().length()>0 && tmpNomor!="" && tmpNamaVendor!="" && tmpAlamatVendor!="" && tmpPemilikVendor!="") {
 
                 //========================================================
                 //TASK SIMPAN
                 Task<Void>task_simpan=new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
-                        DataNota d=new DataNota();
+                        DataNotaDPB d=new DataNotaDPB();
                         d.setId_vendor(Integer.parseInt(tmpVendor));
                         d.setNomor(text_nota.getText().toString().trim());
                         d.setNomor_dpb_kolektif(tmpNomor);
@@ -423,7 +327,7 @@ public class ReportDPBVendor extends VBox {
                                 params.put("nama_vendor", tmpNamaVendor);
                                 params.put("alamat_vendor", tmpAlamatVendor);
                                 params.put("pemilik_vendor", tmpPemilikVendor);
-                                params.put("nama_manager", tmpNamaManager);
+                                //params.put("nama_manager", tmpNamaManager);
 
                                 //params.put("tanggal_posting",tmpTanggal);
                                 params.put("total", tmpTotal);
@@ -538,7 +442,6 @@ public class ReportDPBVendor extends VBox {
         hbox10.getChildren().clear();
         hbox10.getChildren().addAll(ket);
 
-        cbxManager.getSelectionModel().clearSelection();
         cbxVendor.getSelectionModel().clearSelection();
 
         table.getItems().clear();

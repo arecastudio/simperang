@@ -241,7 +241,7 @@ public class GlobalUtility {
 		String sql=null;
 
 		if (nomor!=""){
-			selip=" AND (p.nomor='"+nomor+"') ";
+			selip=" AND (p.nomor LIKE '%"+nomor+"%') ";
 		}else{
 			selip=" AND (DATE(p.tgl) BETWEEN '"+tglawal+"' AND '"+tglakhir+"') ";
 		}
@@ -279,7 +279,7 @@ public class GlobalUtility {
 		String sql=null;
 
 		if (nomor!=""){
-			selip=" (k.nomor='"+nomor+"') ";
+			selip=" (k.nomor LIKE '%"+nomor+"%') ";
 		}else{
 			selip=" (DATE(k.tgl) BETWEEN '"+tglawal+"' AND '"+tglakhir+"') ";
 		}

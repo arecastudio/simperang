@@ -8,9 +8,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class TabelDPB extends TableView {
 
 	public TabelDPB() {
-		this.setEditable(false);
-		this.setColumnResizePolicy((param) -> true );
-		this.getStyleClass().addAll("table");
+		setEditable(false);
+		setColumnResizePolicy((param) -> true );
+		getStyleClass().addAll("table");
 		
 		//nomor,ket,tgl,nama,total_jml,group_minta
 		 
@@ -22,7 +22,7 @@ public class TabelDPB extends TableView {
         TableColumn mintaCol = new TableColumn<>("Detail Permintaan");
         
         //this.getColumns().addAll(nomorCol, keteranganCol,statusCol, TanggalCol,divisiCol,cetakCol);
-        this.getColumns().addAll(nomorCol, keteranganCol, TanggalCol,namaCol,jmlCol,mintaCol);
+        getColumns().addAll(nomorCol, keteranganCol, TanggalCol,namaCol,jmlCol,mintaCol);
         
         nomorCol.setCellValueFactory(new PropertyValueFactory<DataDPB,String>("nomor"));
         keteranganCol.setCellValueFactory(new PropertyValueFactory<DataDPB,String>("ket"));

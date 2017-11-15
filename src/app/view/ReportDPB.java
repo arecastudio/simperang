@@ -9,6 +9,7 @@ import app.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -22,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -34,7 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReportDPB extends VBox {
-	private HBox hbox1,hbox2,hbox3;
+	private HBox hbox1,hbox2,hbox3,hbox10;
 	private VBox vbox1;
 	private GridPane grid;
 	private TableView table;
@@ -59,6 +61,11 @@ public class ReportDPB extends VBox {
 	private DBHelper helper;
 	private String sql;
 
+	private ProgressBar progressBar;
+
+	private final String CETAK_DPB_KOLEKTIF="/app/reports/cetak-dpb-kolektif.jasper";
+	private final String CETAK_DPB_KOLEKTIF_DETAIL="/app/reports/cetak-dpb-kolektif-detail.jasper";
+
 	public ReportDPB() {
 		init();
 
@@ -72,8 +79,9 @@ public class ReportDPB extends VBox {
 		grid.add(text_nomor,1,1);
 
 		//hbox3.getChildren().addAll(grid,hbox2);
+		hbox10.getChildren().addAll(ket);
 
-		this.getChildren().addAll(new LabelJudul("Laporan Permintaan"),new Separator(Orientation.HORIZONTAL),new Label(tmp_desc),grid,new Separator(Orientation.HORIZONTAL),hbox2,table,new HBox(ket));
+		this.getChildren().addAll(new LabelJudul("Laporan Rekap Permintaan"),new Separator(Orientation.HORIZONTAL),new Label(tmp_desc),grid,new Separator(Orientation.HORIZONTAL),hbox2,table,hbox10);
 	}
 
 	private void init(){
@@ -88,6 +96,9 @@ public class ReportDPB extends VBox {
 
 		isAdmin=Boolean.FALSE;
 		if (GlobalUtility.getUser_logged_in().getId_role().equals("1"))isAdmin=Boolean.TRUE;
+
+		hbox10=new HBox(5);
+		progressBar=new ProgressBar(0);
 
 		ket=new Label("Keterangan :");
 		text_nomor=new TextField();
@@ -133,28 +144,55 @@ public class ReportDPB extends VBox {
 				//if(GlobalUtility.getInetStat()==true) new EmailController().send();
 				String tanggal=new GetCurDate().getTanggal().toString();
 				if (tmpNomor!=""){
-					InputStream input=getClass().getResourceAsStream("/app/reports/cetak-dpb-kolektif.jrxml");
 
-					DataDPBReport dpr=new PermintaanSimpan().getDPBReport(tmpNomor);
+					Task<Void>task=new Task<Void>() {
+						@Override
+						protected Void call() throws Exception {
+							InputStream input=getClass().getResourceAsStream(CETAK_DPB_KOLEKTIF);
+							String lampiran=getClass().getResource(CETAK_DPB_KOLEKTIF_DETAIL).toString();
+							lampiran=lampiran.substring((Integer)"file:".length(),lampiran.length()-(Integer)"cetak-dpb-kolektif-detail.jasper".length());
+							System.out.println("File lampiran: "+lampiran.toString());
 
-					try {
-						JasperDesign design= JRXmlLoader.load(input);
-						JasperReport report= JasperCompileManager.compileReport(design);
+							DataDPBReport dpr=new PermintaanSimpan().getDPBReport(tmpNomor);
+							try {
+								JasperReport report = (JasperReport) JRLoader.loadObject(input);
 
-						Map<String, Object> params = new HashMap<String, Object>();
-						params.put("parameter1",tmpNomor);
-						params.put("parameter2",dpr.getKeterangan());
-						params.put("parameter3",dpr.getTgl());
+								Map<String, Object> params = new HashMap<String, Object>();
+								params.put("nomor",tmpNomor);
 
-						JasperPrint jasperPrint= JasperFillManager.fillReport(report,params,conn);
-						jasperPrint.setName("Laporan");
+								params.put("SUBREPORT_DIR",lampiran.toString());
 
-						JasperViewer jv=new JasperViewer(jasperPrint,false);
-						jv.setTitle("Laporan Permintaan");
-						jv.setVisible(true);
-					} catch (JRException e) {
-						e.printStackTrace();
-					}
+								JasperPrint jasperPrint= JasperFillManager.fillReport(report,params,conn);
+								jasperPrint.setName("Laporan");
+
+								JasperViewer jv=new JasperViewer(jasperPrint,false);
+								jv.setTitle("Laporan Permintaan");
+								jv.setVisible(true);
+							} catch (JRException e) {
+								e.printStackTrace();
+							}
+							return null;
+						}
+					};
+					task.setOnSucceeded(event1 -> {
+						//refresh();
+						progressBar.setProgress(0);
+						ket.setText("Keterangan :");
+						hbox10.getChildren().clear();
+						hbox10.getChildren().addAll(ket);
+					});
+
+					hbox10.getChildren().clear();
+					hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
+					progressBar.setProgress(-1.0);
+					ket.setText("Keterangan: Tunggu hingga proses selesai...");
+
+					Thread thread=new Thread(task);
+					thread.setDaemon(true);
+					thread.start();
+
+					//-------------------------
+
 				}
 			}
 		});
@@ -284,6 +322,9 @@ public class ReportDPB extends VBox {
 
 		tglawal.setValue(new GetCurDate().getLocalDate());
 		tglakhir.setValue(new GetCurDate().getLocalDate());
+
+		hbox10.getChildren().clear();
+		hbox10.getChildren().addAll(ket);
 	}
 
 }

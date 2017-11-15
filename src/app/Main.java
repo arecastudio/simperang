@@ -12,7 +12,6 @@
  *
  * Task List
  * -buat form pengaturan surat per divisi, untuk person manager dalam nama cetakan surat
- * -buat sub report daftar permintaan barang kolektif/rekap untuk vendor
  * -buat jenis barang, atk dan inventaris
  * -hapus role otomatis mengubah user-role ke guest (OPSIONAL)
  * */

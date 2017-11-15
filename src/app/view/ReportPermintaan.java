@@ -206,7 +206,11 @@ public class ReportPermintaan extends VBox {
 						alert.setHeaderText("Proses Selesai.");
 						alert.setContentText("Proses cetak telah dilakukan.");
 						alert.showAndWait();*/
-						refresh();
+						//refresh();
+						progressBar.setProgress(0);
+						ket.setText("Keterangan :");
+						hbox10.getChildren().clear();
+						hbox10.getChildren().addAll(ket);
 					});
 
 					hbox10.getChildren().clear();

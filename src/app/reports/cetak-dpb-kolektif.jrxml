@@ -2,25 +2,23 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cetak-dpb-kolektif" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de408080-ac4a-4d8b-8c11-5153a2e29269">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="parameter1" class="java.lang.String"/>
-	<parameter name="parameter2" class="java.lang.String"/>
-	<parameter name="parameter3" class="java.lang.String"/>
+	<property name="ireport.y" value="60"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/rail/IdeaProjects/simperang/src/app/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nomor" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[6666]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT b.nama,CONCAT(SUM(p2.jml_minta)," ",b.satuan) AS jml,(b.harga)AS harga_satuan,(b.harga*SUM(p2.jml_minta))AS total_harga FROM dpb_kolektif_d AS d2 INNER JOIN permintaan_d AS p2 ON p2.nomor_permintaan=d2.nomor_permintaan INNER JOIN barang AS b ON b.id=p2.id_barang WHERE d2.nomor_dpb_kolektif=$P{parameter1} GROUP BY b.id ;]]>
+		<![CDATA[SELECT k.nomor,k.ket,CONCAT(DATE_FORMAT(k.tgl,'%d %M %Y'),' ') AS tanggal FROM dpb_kolektif AS k WHERE k.nomor=$P{nomor};]]>
 	</queryString>
-	<field name="nama" class="java.lang.String">
+	<field name="nomor" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="jml" class="java.lang.String"/>
-	<field name="harga_satuan" class="java.lang.Double"/>
-	<field name="total_harga" class="java.lang.Double"/>
-	<variable name="grand_total_harga" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[]]></variableExpression>
-	</variable>
-	<variable name="total_harga_1" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{total_harga}]]></variableExpression>
-	</variable>
+	<field name="ket" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -56,11 +54,6 @@
 	</title>
 	<pageHeader>
 		<band height="64" splitType="Stretch">
-			<textField>
-				<reportElement x="101" y="0" width="158" height="20" uuid="05bd769e-b699-456f-8f08-223917c72a07"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter1}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="88" height="20" uuid="06b13c02-f655-4263-835e-87dd4229bb36"/>
 				<textElement verticalAlignment="Middle"/>
@@ -71,15 +64,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="101" y="20" width="471" height="20" uuid="0c098240-7f41-4f85-8883-4f89623b3ee5"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter2}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="0" y="20" width="88" height="20" uuid="3ec100be-4564-4271-b306-00e314855657"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Keterangan]]></text>
+				<text><![CDATA[Perihal]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="88" y="20" width="11" height="20" uuid="7a5a6023-b96f-458d-a181-bfac4150a593"/>
@@ -97,180 +85,32 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="101" y="40" width="158" height="20" uuid="03640e32-cfb1-49c1-9ece-628b29095b59"/>
+				<reportElement x="99" y="0" width="164" height="20" uuid="e25b3dc9-247a-42b3-bce7-6a9feebda850"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nomor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="20" width="473" height="20" uuid="4fe8f611-052b-4e53-bd75-b1105f4b7aff"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ket}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="40" width="164" height="20" uuid="517786af-38c6-4d86-b089-997c52325c62"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="20" splitType="Stretch">
-			<staticText>
-				<reportElement x="32" y="0" width="212" height="20" uuid="150f3d0b-f90c-4700-a06d-ff7b5d6d22b9"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nama]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="244" y="0" width="135" height="20" uuid="7927cc39-1ccc-42e1-9ef9-e34ea4943f71"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Jumlah]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="379" y="0" width="90" height="20" uuid="e29a7c8d-84f8-478a-a94e-e5aadf39671a"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Harga Satuan]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="0" width="32" height="20" uuid="61f0d3d9-e1fa-431d-91a7-1f8f37c17ed5"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[No.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="469" y="0" width="103" height="20" uuid="6e8be8b9-c11a-438d-bc66-15f92fe705be"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Total Harga]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="32" height="20" uuid="678e4839-b6bf-4961-85c4-58932d4eb3ee"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="32" y="0" width="212" height="20" uuid="d665c5bd-9808-4463-854e-b6d98c17befc"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="244" y="0" width="135" height="20" uuid="a5503260-6718-4173-b8b2-8ed13c806b71"/>
-				<box leftPadding="2" rightPadding="2">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{jml}]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0">
-				<reportElement x="379" y="0" width="90" height="20" uuid="9a9520b6-6169-4f2e-91c7-25a3e1d654da"/>
-				<box leftPadding="2" rightPadding="4">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{harga_satuan}]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0">
-				<reportElement x="469" y="0" width="103" height="20" uuid="1cafaa3a-6222-438a-b1d1-51d7d0a16457"/>
-				<box leftPadding="2" rightPadding="4">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{total_harga}]]></textFieldExpression>
-			</textField>
+		<band height="31" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="29" uuid="aab5bdfa-699e-40c9-b774-1e620e9ae57a"/>
+				<subreportParameter name="nomor_dpb_kolektif">
+					<subreportParameterExpression><![CDATA[$P{nomor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cetak-dpb-kolektif-detail.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="26" splitType="Stretch">
-			<textField pattern="#,##0">
-				<reportElement x="469" y="0" width="103" height="20" uuid="15759edf-ffe1-4f7d-b40a-662884486f9f"/>
-				<box leftPadding="2" rightPadding="4">
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{total_harga_1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="244" y="0" width="225" height="20" uuid="bf6a762c-fafe-4165-9326-84cce05b9b4f"/>
-				<box rightPadding="4"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Grand Total --> Rp.]]></text>
-			</staticText>
-		</band>
-	</summary>
 </jasperReport>

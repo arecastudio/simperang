@@ -1,8 +1,10 @@
 package app.view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.HBox;
@@ -22,10 +24,11 @@ public class DPBKolektif extends VBox {
 		setSpacing(5);
 		setPadding(new Insets(5, 5, 5, 5));
 		setMaxHeight(600);
+		setMaxWidth(1024);
 		setAlignment(Pos.TOP_CENTER);
 		getStyleClass().add("box-color");
 
-		this.getChildren().addAll(judul,new Label(desc),tabPane);
+		this.getChildren().addAll(judul,new Separator(Orientation.HORIZONTAL),new Label(desc),tabPane);
 	}
 
 	private void init() {

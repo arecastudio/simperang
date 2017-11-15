@@ -6,8 +6,12 @@ import app.GlobalUtility;
 import app.Main;
 import app.controller.DPBKolektifModify;
 import app.controller.EmailController;
+import app.controller.PosisiModify;
+import app.controller.UserModify;
 import app.model.DataPermintaan;
+import app.model.DataPosisi;
 import app.model.DataUserLogin;
+import app.model.DataUsers;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,44 +27,59 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.util.StringConverter;
 
 public class TabDPBItemSave extends Pane{
 	private VBox vbox1;
-	private HBox hbox1,hbox2,hbox10;
+	private HBox hbox1,hbox10;
 	private TableView table;
 	private Boolean isAdmin;
 	private DataUserLogin ul;
-	private Label label_stat,info;
+	private Label label_stat;
 	private Button button_clear,button_save;
 	private TextField text_nomor,text_ket;
 	private Boolean b=Boolean.FALSE;
 	private CheckBox cekEmail;
-	private final String strKet="Keterangan : Dengan menekan tombol [Simpan], anda telah setuju untuk membuat sebuah Permintaan Kolektif \nSetiap Permintaan dari Divisi yang termuat di dalamnya akan berubah status menjadi [Diteruskan ke Vendor].";
-	
-	private ProgressBar pb;
-	private ProgressIndicator pi;
+
 	private boolean isSendMail;
 	private Alert alert;
+
+	private ComboBox<DataPosisi> cbxPosisiMgr;
+	private ComboBox<DataUsers> cbxManager;
+	private String tmp_id_manager="",tmp_nama_manager="",tmp_id_posisi_manager="",tmp_nama_posisi_manager="";
 
 	private ProgressBar progressBar;
 	
 
 	public TabDPBItemSave() {
 		init();
+
+		GridPane grid=new GridPane();
+		grid.setVgap(5);
+		grid.setHgap(5);
+
+		grid.add(new Label("No. Surat Permintaan"),0,0);
+		grid.add(text_nomor,1,0);
+
+		grid.add(new Label("Perihal"),0,1);
+		grid.add(text_ket,1,1);
+
+		HBox hbox0=new HBox(cbxManager,new Label("Jabatan :"),cbxPosisiMgr);
+		hbox0.setAlignment(Pos.CENTER_LEFT);hbox0.setSpacing(5);
+		grid.add(new Label("Penanggung jawab (SDM)"),0,2);
+		grid.add(hbox0,1,2);
+
 		
-		pb = new ProgressBar(0.6);
-		pi = new ProgressIndicator(0.6);
-		
-		hbox1.getChildren().addAll(text_nomor,text_ket,button_save,new Separator(Orientation.VERTICAL),cekEmail);
-		hbox2.getChildren().add(info);
+		hbox1.getChildren().addAll(button_clear,button_save,new Separator(Orientation.VERTICAL),cekEmail);
 
 		hbox10.getChildren().addAll(label_stat);
 		
-		vbox1.setPrefWidth(Main.primaryStage.getWidth());
-		vbox1.getChildren().addAll(hbox1,hbox2,table,hbox10,button_clear);
+		vbox1.setMinWidth(TabDPBItemSave.this.getWidth());
+		vbox1.getChildren().addAll(grid,new Separator(Orientation.HORIZONTAL),hbox1,table,hbox10);
 		this.getChildren().add(vbox1);
 	}
 
@@ -69,15 +88,11 @@ public class TabDPBItemSave extends Pane{
 		ul=GlobalUtility.getUser_logged_in();
 		table=new TableView();
 		vbox1=new VBox(5);
-		vbox1.setPadding(new Insets(5,5,5,5));
+		//vbox1.setPadding(new Insets(5,5,5,5));
 		
 		hbox1=new HBox(5);
 		hbox1.setPadding(new Insets(5,5,5,5));
-		hbox1.setAlignment(Pos.CENTER_LEFT);
-		
-		hbox2=new HBox(1);
-		//hbox2.setPadding(new Insets(5,5,5,5));
-		hbox2.setAlignment(Pos.CENTER_LEFT);
+		hbox1.setAlignment(Pos.CENTER);
 
 		hbox10=new HBox(5);
 		progressBar=new ProgressBar(0);
@@ -95,25 +110,77 @@ public class TabDPBItemSave extends Pane{
 		});
 		if (cekEmail.isSelected()) isSendMail=true;
 		
-		label_stat=new Label(strKet);
-		info=new Label("Proses [Simpan] memakan waktu beberapa detik terkait pengiriman notifikasi email ke User yang berkaitan.");
-		info.setStyle("fx-font-size:8px;");
+		label_stat=new Label("Keterangan :");
 
 		isAdmin=Boolean.FALSE;
 		if(ul.getId_role().equals("1"))isAdmin=Boolean.TRUE;
 		
-		button_clear=new Button("Clear");
+		button_clear=new Button("Refesh");
 		button_clear.setPrefWidth(100);
 		
 		button_save=new Button("Simpan");
 		button_save.setPrefWidth(100);
 		
 		text_nomor=new TextField();
-		text_nomor.setPromptText("Nomor Surat DBP Kolektif");
+		text_nomor.setMaxWidth(220);
+		text_nomor.setPromptText("Nomor Surat Rekap Permintaan");
 		
 		text_ket=new TextField();
+		text_ket.setMaxWidth(350);
 		text_ket.setPromptText("Perihal...");
-		text_ket.setPrefWidth(400);
+
+		//------------------------------------------------------------
+		cbxPosisiMgr=new ComboBox<>(new PosisiModify().GetTableItems());
+		cbxPosisiMgr.setConverter(new StringConverter<DataPosisi>() {
+			@Override
+			public String toString(DataPosisi object) {
+				// TODO Auto-generated method stub
+				return object.getNama();
+			}
+
+			@Override
+			public DataPosisi fromString(String string) {
+				// TODO Auto-generated method stub
+				return cbxPosisiMgr.getItems().stream().filter(ap ->
+						ap.getNama().equals(string)).findFirst().orElse(null);
+			}
+		});
+
+		cbxPosisiMgr.valueProperty().addListener((obs, oldval, newval) -> {
+			if(newval != null) {
+				cbxPosisiMgr.setStyle(newval.getId());
+				tmp_id_posisi_manager=newval.getId();
+				tmp_nama_posisi_manager=newval.getNama();
+				System.out.println("posisi: " + tmp_nama_posisi_manager + ", id: " + tmp_id_posisi_manager);
+			}
+		});
+		//------------------------------------------------------------
+		cbxManager=new ComboBox<>(new UserModify().GetTableItems());
+		cbxManager.setConverter(new StringConverter<DataUsers>() {
+
+			@Override
+			public String toString(DataUsers object) {
+				return object.getNama();
+			}
+
+			@Override
+			public DataUsers fromString(String string) {
+				// TODO Auto-generated method stub
+				return cbxManager.getItems().stream().filter(ap ->
+						ap.getNama().equals(string)).findFirst().orElse(null);
+			}
+		});
+
+		cbxManager.valueProperty().addListener((obs, oldval, newval) -> {
+			if(newval != null) {
+				//label.setText("NIK : "+newval.getNik());
+				cbxManager.setStyle(newval.getNik());
+				tmp_id_manager=newval.getNik();
+				tmp_nama_manager=newval.getNama();
+				System.out.println("manager: " + tmp_nama_manager + ". nik: " + tmp_id_manager);
+			}
+		});
+		//------------------------------------------------------------
 
 		table.setPrefHeight(300);
 		table.setEditable(false);

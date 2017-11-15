@@ -9,6 +9,7 @@ import app.model.DataUserLogin;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -17,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -29,22 +31,24 @@ public class TabDPBItem extends Pane {
 	
 	public TabDPBItem() {
 		init();
-		vbox1.setPrefWidth(Main.primaryStage.getWidth());
-		vbox1.getChildren().addAll(table,label_stat);
+
+		vbox1.setMinWidth(TabDPBItem.this.getWidth());
+		vbox1.getChildren().addAll(table,new HBox(label_stat));
 		this.getChildren().add(vbox1);
 	}
 
 	private void init() {
 		ul=GlobalUtility.getUser_logged_in();
-		table=new TableView();
 		vbox1=new VBox(5);
-		vbox1.setPadding(new Insets(5,5,5,5));
+		//vbox1.setPadding(new Insets(5,5,5,5));
+		vbox1.setAlignment(Pos.CENTER);
 		
 		label_stat=new Label("Keterangan :");
 
 		isAdmin=Boolean.FALSE;
 		if(ul.getId_role().equals("1"))isAdmin=Boolean.TRUE;
-		
+
+		table=new TableView();
 		table.setEditable(false);
 		table.setColumnResizePolicy((param) -> true );
 		table.getStyleClass().addAll("table");
@@ -70,9 +74,9 @@ public class TabDPBItem extends Pane {
         cetakCol.setCellFactory(CheckBoxTableCell.forTableColumn(cetakCol));
         cetakCol.setEditable(true);
         
-        nomorCol.setPrefWidth(200);
-        keteranganCol.setPrefWidth(450);
-        statusCol.setPrefWidth(300);
+        nomorCol.setPrefWidth(180);
+        keteranganCol.setPrefWidth(400);
+        statusCol.setPrefWidth(180);
         divisiCol.setPrefWidth(200);
         table.setItems(GlobalUtility.getDataPermintaanForKolektif(isAdmin,1));//status 1, dari Divisi sudah di-posting ke SDM
         

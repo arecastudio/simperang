@@ -113,6 +113,7 @@ CREATE TABLE `dpb_kolektif` (
   `mail_send` int(11) NOT NULL DEFAULT '0',
   `nik_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nama_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_posisi_atasan` int(11) DEFAULT NULL,
   `nama_posisi_atasan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`nomor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -124,7 +125,6 @@ CREATE TABLE `dpb_kolektif` (
 
 LOCK TABLES `dpb_kolektif` WRITE;
 /*!40000 ALTER TABLE `dpb_kolektif` DISABLE KEYS */;
-INSERT INTO `dpb_kolektif` VALUES ('6666','77777','2017-11-14 17:27:39','1',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `dpb_kolektif` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +150,6 @@ CREATE TABLE `dpb_kolektif_d` (
 
 LOCK TABLES `dpb_kolektif_d` WRITE;
 /*!40000 ALTER TABLE `dpb_kolektif_d` DISABLE KEYS */;
-INSERT INTO `dpb_kolektif_d` VALUES ('6666','333','UPP KITRING PAPUA BARAT',NULL),('6666','999','BAG PERTANAHAN',NULL),('6666','SPB/2/PERTA/2017','BAG PERTANAHAN',NULL);
 /*!40000 ALTER TABLE `dpb_kolektif_d` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +242,7 @@ CREATE TABLE `permintaan` (
 
 LOCK TABLES `permintaan` WRITE;
 /*!40000 ALTER TABLE `permintaan` DISABLE KEYS */;
-INSERT INTO `permintaan` VALUES ('333','Permintaan UPP KITRING PB yang pertama',2,'2017-11-11 04:03:57','222',68,'111',5,'Dwi Panca','AS KOM','Eka Esa Primus','MAN UPP KITRING PAPUA BARAT',NULL,NULL),('999','Permintaan Pertanahan, urgen',2,'2017-11-11 04:04:54','333',3,'555',1,'Trie','ASMAN PERTANAHAN','Vivi','SPV PERTANAHAN',NULL,NULL),('SPB/2/PERTA/2017','Permintaan lagi.',2,'2017-11-14 15:00:31','333',3,'555',1,'Trie','ASMAN PERTANAHAN','Vivi','SPV PERTANAHAN',NULL,NULL);
+INSERT INTO `permintaan` VALUES ('333','Permintaan UPP KITRING PB yang pertama',1,'2017-11-11 04:03:57','222',68,'111',5,'Dwi Panca','AS KOM','Eka Esa Primus','MAN UPP KITRING PAPUA BARAT',NULL,NULL),('999','Permintaan Pertanahan, urgen',1,'2017-11-11 04:04:54','333',3,'555',1,'Trie','ASMAN PERTANAHAN','Vivi','SPV PERTANAHAN',NULL,NULL),('SPB/2/PERTA/2017','Permintaan lagi.',1,'2017-11-14 15:00:31','333',3,'555',1,'Trie','ASMAN PERTANAHAN','Vivi','SPV PERTANAHAN',NULL,NULL);
 /*!40000 ALTER TABLE `permintaan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -477,4 +476,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-15  9:02:30
+-- Dump completed on 2017-11-15 10:54:44

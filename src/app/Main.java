@@ -11,6 +11,7 @@
  *
  *
  * Task List
+ * -Report DPB Vendor tambahkan gelar.
  * -buat form pengaturan surat per divisi, untuk person manager dalam nama cetakan surat
  * -buat jenis barang, atk dan inventaris
  * -hapus role otomatis mengubah user-role ke guest (OPSIONAL)

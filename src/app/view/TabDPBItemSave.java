@@ -8,10 +8,7 @@ import app.controller.DPBKolektifModify;
 import app.controller.EmailController;
 import app.controller.PosisiModify;
 import app.controller.UserModify;
-import app.model.DataPermintaan;
-import app.model.DataPosisi;
-import app.model.DataUserLogin;
-import app.model.DataUsers;
+import app.model.*;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -88,7 +85,7 @@ public class TabDPBItemSave extends Pane{
 		ul=GlobalUtility.getUser_logged_in();
 		table=new TableView();
 		vbox1=new VBox(5);
-		//vbox1.setPadding(new Insets(5,5,5,5));
+		vbox1.setPadding(new Insets(5,0,0,0));
 		
 		hbox1=new HBox(5);
 		hbox1.setPadding(new Insets(5,5,5,5));
@@ -263,7 +260,8 @@ public class TabDPBItemSave extends Pane{
 				String ket=text_ket.getText().toString().trim();
 				String nik=GlobalUtility.getUser_logged_in().getNik();
 				Integer i=(Integer) GlobalUtility.dataDPB.size();
-				if(nomor.length()>0 && ket.length()>0 && i>0) {
+				//tmp_id_manager="",tmp_nama_manager="",tmp_id_posisi_manager="",tmp_nama_posisi_manager=""
+				if(nomor.length()>0 && ket.length()>0 && i>0 && tmp_id_manager!="" && tmp_nama_manager!="" && tmp_id_posisi_manager!="" && tmp_nama_posisi_manager!="") {
 					alert = new Alert(AlertType.CONFIRMATION);
 					alert.setTitle("Dialog Konfirmasi");
 					alert.setHeaderText("Pembuatan Daftar Permintaan Kolektif");
@@ -276,16 +274,18 @@ public class TabDPBItemSave extends Pane{
 					
 					Optional<ButtonType> result = alert.showAndWait();
 					if (result.get() == ButtonType.OK){
-						int simpan=new DPBKolektifModify().Simpan(nomor, ket, nik, GlobalUtility.getDataDPB());
-						/*if(simpan>0){
-							GlobalUtility.dataDPB.clear();
-							refresh();
-							Main.borderPane.setCenter(new Label("Berhasil membuat Permintaan Kolektif untuk diteruskan ke Vendor"));
-							if(GlobalUtility.getInetStat()==true) {
-								new EmailController().send();//kirim email
-							}
-							//Main.borderPane.setCenter(new DPBKolektif());							
-						}*/
+						DataDPB dpb=new DataDPB();
+						dpb.setNomor(nomor);
+						dpb.setKet(ket);
+						dpb.setNik(nik);
+						//tmp_id_manager="",tmp_nama_manager="",tmp_id_posisi_manager="",tmp_nama_posisi_manager=""
+						dpb.setNik_manager(tmp_id_manager);
+						dpb.setNama_manager(tmp_nama_manager);
+						dpb.setId_posisi_manager(tmp_id_posisi_manager);
+						dpb.setNama_posisi_manager(tmp_nama_posisi_manager);
+
+						int simpan=new DPBKolektifModify().Simpan(dpb, GlobalUtility.getDataDPB());
+
 						if(simpan>0) {
 							GlobalUtility.dataDPB.clear();							
 							//pi.setProgress(0.9);
@@ -338,6 +338,11 @@ public class TabDPBItemSave extends Pane{
 		hbox10.getChildren().clear();
 		hbox10.getChildren().addAll(label_stat);
 		label_stat.setText("Keterangan:");
+
+		tmp_id_manager="";
+		tmp_nama_manager="";
+		tmp_id_posisi_manager="";
+		tmp_nama_posisi_manager="";
 	}
 
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cetak-dpb-kolektif" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de408080-ac4a-4d8b-8c11-5153a2e29269">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="60"/>
+	<property name="ireport.x" value="353"/>
+	<property name="ireport.y" value="177"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/rail/IdeaProjects/simperang/src/app/reports/"]]></defaultValueExpression>
 	</parameter>
@@ -113,4 +113,19 @@
 			</subreport>
 		</band>
 	</detail>
+	<summary>
+		<band height="50">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="462" y="30" width="110" height="20" uuid="d3c4c3a5-a2df-4515-b8ad-9374c0db16cf"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="30" width="62" height="20" uuid="2a3c0cdf-5cdd-416f-96fa-6044385f078d"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[Jayapura,]]></text>
+			</staticText>
+		</band>
+	</summary>
 </jasperReport>

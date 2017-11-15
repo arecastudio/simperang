@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import app.model.DataDPB;
 import app.model.DataPermintaan;
 import app.model.DataTerbilang;
 import javafx.collections.ObservableList;
@@ -42,20 +43,26 @@ public class DPBKolektifModify {
 		return dt;
 	}
 	
-	public int Simpan(String nomor,String ket, String nik, ObservableList<DataPermintaan> dp) {
+	public int Simpan(DataDPB dpb, ObservableList<DataPermintaan> dp) {
 		//simpan dari user,ket serta data globalutil
 		int ret=0;
 		try {
-			sql="INSERT IGNORE INTO dpb_kolektif(nomor,ket,nik)VALUES(?,?,?)";
+			sql="INSERT IGNORE INTO dpb_kolektif(nomor,ket,nik,nik_atasan,nama_atasan,id_posisi_atasan,nama_posisi_atasan)VALUES(?,?,?, ?,?,?,?)";
 			pst=conn.prepareStatement(sql);
-			pst.setString(1, nomor);
-			pst.setString(2, ket);
-			pst.setString(3, nik);
+			pst.setString(1, dpb.getNomor());
+			pst.setString(2, dpb.getKet());
+			pst.setString(3, dpb.getNik());
+			//tmp_id_manager="",tmp_nama_manager="",tmp_id_posisi_manager="",tmp_nama_posisi_manager=""
+			pst.setInt(4,Integer.parseInt(dpb.getNik_manager()));
+			pst.setString(5,dpb.getNama_manager());
+			pst.setInt(6,Integer.parseInt(dpb.getId_posisi_manager()));
+			pst.setString(7,dpb.getNama_posisi_manager());
+
 			if(pst.executeUpdate()>0) {
 				sql="INSERT IGNORE INTO dpb_kolektif_d(nomor_dpb_kolektif,nomor_permintaan,divisi)VALUES(?,?,?);";
 				pst=conn.prepareStatement(sql);
 				for (DataPermintaan d : dp) {
-					pst.setString(1, nomor);
+					pst.setString(1, dpb.getNomor());//nomor_dpb_kolektif
 					pst.setString(2, d.getNomor());
 					pst.setString(3, d.getNik());
 					pst.executeUpdate();

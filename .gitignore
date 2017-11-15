@@ -2,3 +2,4 @@ out/*
 src/app/libs/*
 *.pdf
 *.jar
+*.jasper

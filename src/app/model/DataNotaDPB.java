@@ -4,7 +4,7 @@ package app.model;
  * Created by rail on 11/13/17.
  */
 public class DataNotaDPB {
-    private String nomor,nomor_dpb_kolektif,tgl;
+    private String nomor,nomor_dpb_kolektif,tgl,konten_surat;
     private int mail_send,id_vendor;
 
     public DataNotaDPB() {
@@ -48,5 +48,13 @@ public class DataNotaDPB {
 
     public void setId_vendor(int id_vendor) {
         this.id_vendor = id_vendor;
+    }
+
+    public String getKonten_surat() {
+        return konten_surat;
+    }
+
+    public void setKonten_surat(String konten_surat) {
+        this.konten_surat = konten_surat;
     }
 }

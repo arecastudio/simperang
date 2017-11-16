@@ -284,6 +284,7 @@ public class ReportDPBVendor extends VBox {
                         d.setNomor(text_nota.getText().toString().trim());
                         d.setNomor_dpb_kolektif(tmpNomor);
                         d.setMail_send(mailsend);
+                        d.setKonten_surat(textArea.getText().trim());
 
                         simpan=new NotaModify().Simpan(d);
                         return null;
@@ -368,7 +369,7 @@ public class ReportDPBVendor extends VBox {
                         DataVendor v=new VendorModify().GetVenderoById(tmpVendor);
                         if (chkEmail.isSelected()){
                             if (GlobalUtility.getInetStat()==true){
-                                mailsend=new EmailController().EmailVendor(v.getEmail().toString());
+                                mailsend=new EmailController().EmailVendor(v.getEmail().toString(),"");
                             }
                         }
                         return null;

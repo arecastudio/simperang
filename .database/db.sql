@@ -168,6 +168,7 @@ CREATE TABLE `nota` (
   `nomor_dpb_kolektif` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mail_send` int(11) NOT NULL DEFAULT '0',
+  `konten_surat` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`nomor`,`id_vendor`,`nomor_dpb_kolektif`),
   UNIQUE KEY `nomor` (`nomor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -179,7 +180,7 @@ CREATE TABLE `nota` (
 
 LOCK TABLES `nota` WRITE;
 /*!40000 ALTER TABLE `nota` DISABLE KEYS */;
-INSERT INTO `nota` VALUES ('df',1,'DPBK/01/2017','2017-11-14 09:43:21',1),('j',1,'DPBK/01/2017','2017-11-14 16:37:58',1),('77777',1,'6666','2017-11-14 23:44:51',0),('bgg',1,'SPBK/2/SDM/XI/2017','2017-11-15 03:37:56',1),('666',1,'SPBK/2/SDM/XI/2017','2017-11-15 05:35:14',0);
+INSERT INTO `nota` VALUES ('SPB/N/1/UIP/2017',1,'SPBK/2/SDM/XI/2017','2017-11-15 09:43:33',1,'Bersama ini kami memesan Kepada Perusahaan Saudara Barang-barang sebagaimana terlampir.\ndengan syarat-syarat sebagai berikut :\n\n1.  PPn 10% dan PPh 1,5% dipungut langsung oleh pihak PLN UIP Papua,\n2.  Tidak diberi uang muka,\n3.  Barang /material sudah harus diterima PLN(Persero) UIP Papua paling lambat tanggal\n     seluruhnya, dan apabila sampai batas waktu tersebut ternyata Saudara belum menyerahkan\n     barang/material maka Saudara harus membayar ganti rugi,\n4.  Barang /material harus diterima dengan baik, lengkap, baru dan asli sesuai spesifikasi yang ditentukan\n     dalam Surat Pesanan ini,\n5.  Pembayaran akan dilaksanakan 100% setelah barang/material/sparepart diterima dengan baik dan\n     melampirkan antara lain :\n     a. Kwitansi tagihan bermeterai\n     b. Faktur Pajak\n     c. Surat Setoran Pajak\n6.  Apabila syarat-syarat tersebut di atas tidak dipenuhi, barang/material/sparepart akan dikembalikan/ditolak\n     dan segala biaya yang timbul menjadi tanggung jawab Saudara.\n\nDemikian kami sampaikan, dengan harapan dapat diselesaikan dengan sebaik-baiknya.');
 /*!40000 ALTER TABLE `nota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -478,4 +479,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-15 18:19:31
+-- Dump completed on 2017-11-16 16:29:16

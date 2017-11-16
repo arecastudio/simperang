@@ -115,7 +115,7 @@ public class Main extends Application{
         notifikasi_email=new MenuItem("Notifikasi Email internal");
 		notifikasi_email_vendor=new MenuItem("Notifikasi Email ke Vendor");
 		notifikasi_email_vendor.setDisable(true);
-        menuProses.getItems().addAll(buat_permintaan,edit_permintaan,hapus_permintaan,review_permintaan, new SeparatorMenuItem(),buat_dpb_kolektif,hapus_dpb_kolektif,new SeparatorMenuItem(),notifikasi_email,notifikasi_email_vendor);
+        menuProses.getItems().addAll(buat_permintaan,edit_permintaan,hapus_permintaan,review_permintaan, new SeparatorMenuItem(),buat_dpb_kolektif,hapus_dpb_kolektif,new SeparatorMenuItem(),notifikasi_email);
         // --- Menu View
         Menu menuLaporan = new Menu("Laporan");
         laporan_permintaan=new MenuItem("Cetak Permintaan");

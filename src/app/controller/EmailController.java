@@ -57,7 +57,7 @@ public class EmailController {
 
     }
     
-    public int EmailVendor(String mail){
+    public int EmailVendor(String mail,String konten){
     	int ret=0;
 
 		final String username = new LoginEmail().getUsername();
@@ -85,7 +85,7 @@ public class EmailController {
 			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(mail));
 
-			message.setSubject("Permintaan Pengadaan Barang - "+tgl);
+			message.setSubject("Rekap Permintaan Pengadaan Barang PT. PLN UIP Papua - "+tgl);
 			//message.setText("Dear Mail Crawler,\n\n No spam to my email, please!");
 			con+="Berikut ini adalah Surat Permintaan Barang dengan list sebagai lampiran,<br/>";
 			message.setContent(con, "text/html");
@@ -223,6 +223,20 @@ public class EmailController {
     public int UbahStatusKirim(String nomor){
     	int ret=0;
     	String sql="UPDATE dpb_kolektif SET mail_send=1 WHERE nomor=?;";
+		try {
+			conn=helper.Konek();
+			pst=conn.prepareStatement(sql);
+			pst.setString(1,nomor);
+			ret=pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return  ret;
+	}
+
+	public int UbahStatusKirimNota(String nomor){
+		int ret=0;
+		String sql="UPDATE nota SET mail_send=1 WHERE nomor=?;";
 		try {
 			conn=helper.Konek();
 			pst=conn.prepareStatement(sql);

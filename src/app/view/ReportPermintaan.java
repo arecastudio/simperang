@@ -1,7 +1,6 @@
 package app.view;
 
 import java.io.InputStream;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +13,7 @@ import app.GlobalUtility;
 import app.controller.DBHelper;
 import app.controller.DivisiModify;
 import app.controller.GetCurDate;
-import app.controller.PermintaanSimpan;
+import app.controller.PermintaanModify;
 import app.model.DataDivisi;
 import app.model.DataPermintaan;
 import app.model.DataPermintaanReport;
@@ -35,9 +34,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 //array("parameter1"=>$nomor,"parameter2"=>$ket,"parameter3"=>$tgl,"parameter4"=>$div,"parameter5"=>$tgl_cetak,"parameter6"=>$nik1,"parameter7"=>$nama1,"parameter8"=>$nik2,"parameter9"=>$nama2)
@@ -174,7 +171,7 @@ public class ReportPermintaan extends VBox {
 					Task<Void>task=new Task<Void>() {
 						@Override
 						protected Void call() throws Exception {
-							DataPermintaanReport dpr=new PermintaanSimpan().getPermintaanReport(tmpNomor);
+							DataPermintaanReport dpr=new PermintaanModify().getPermintaanReport(tmpNomor);
 
 							InputStream input=getClass().getResourceAsStream(REPORT_PERMINTAAN);
 							String lampiran=getClass().getResource(REPORT_PERMINTAAN_DETAIL).toString();

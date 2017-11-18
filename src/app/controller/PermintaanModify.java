@@ -9,7 +9,7 @@ import app.GlobalUtility;
 import app.model.*;
 import javafx.collections.ObservableList;
 
-public class PermintaanSimpan {
+public class PermintaanModify {
 	//private DataPermintaan dp;
 	private DataPermintaanDetail dpb;	
 
@@ -21,7 +21,7 @@ public class PermintaanSimpan {
 	private Boolean isEdit;
 	private DataUserLogin user_login;
 	
-	public PermintaanSimpan() {
+	public PermintaanModify() {
 		conn=helper.Konek();
 		user_login=(DataUserLogin)GlobalUtility.getUser_logged_in();
 	}
@@ -32,7 +32,7 @@ public class PermintaanSimpan {
 		if (isEdit.equals(Boolean.FALSE)) {
 			//mode insert
 			try {
-				sql = "INSERT INTO permintaan (nomor, alasan, nik, id_posisi,nik_atasan,id_posisi_atasan, nama,nama_posisi,nama_atasan,nama_posisi_atasan) VALUES(?, ?, ?, ?,?,?, ?,?,?,?);";
+				sql = "INSERT INTO permintaan (nomor, alasan, nik, id_posisi,nik_atasan,id_posisi_atasan, nama,nama_posisi,nama_atasan,nama_posisi_atasan,id_divisi,nama_divisi) VALUES(?, ?, ?, ?,?,?, ?,?,?,?,?,?);";
 				pst=conn.prepareStatement(sql);		
 				pst.setString(1, dp.getNomor());
 				pst.setString(2, dp.getAlasan());
@@ -47,6 +47,9 @@ public class PermintaanSimpan {
 				pst.setString(8,dp.getNama_posisi());
 				pst.setString(9,dp.getNama_atasan());
 				pst.setString(10,dp.getNama_posisi_atasan());
+
+				pst.setInt(11,Integer.parseInt(dp.getId_divisi()));
+				pst.setString(12,dp.getNama_divisi());
 				
 				if(pst.executeUpdate()>0) {
 					//simpan permintaan_d

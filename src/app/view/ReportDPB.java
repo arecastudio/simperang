@@ -4,7 +4,7 @@ import app.GlobalUtility;
 import app.controller.DBHelper;
 import app.controller.DivisiModify;
 import app.controller.GetCurDate;
-import app.controller.PermintaanSimpan;
+import app.controller.PermintaanModify;
 import app.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,9 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.InputStream;
@@ -153,7 +151,7 @@ public class ReportDPB extends VBox {
 							lampiran=lampiran.substring((Integer)"file:".length(),lampiran.length()-(Integer)"cetak-dpb-kolektif-detail.jasper".length());
 							System.out.println("File lampiran: "+lampiran.toString());
 
-							DataDPBReport dpr=new PermintaanSimpan().getDPBReport(tmpNomor);
+							DataDPBReport dpr=new PermintaanModify().getDPBReport(tmpNomor);
 							try {
 								JasperReport report = (JasperReport) JRLoader.loadObject(input);
 

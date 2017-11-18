@@ -1,5 +1,6 @@
 package app.controller;
 
+import java.io.File;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,13 +12,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 //import javax.swing.JOptionPane;
 
 import javafx.concurrent.Task;
@@ -57,7 +58,7 @@ public class EmailController {
 
     }
     
-    public int EmailVendor(String mail,String konten){
+    public int EmailVendor(String mail,String attach){
     	int ret=0;
 
 		final String username = new LoginEmail().getUsername();
@@ -87,8 +88,33 @@ public class EmailController {
 
 			message.setSubject("Rekap Permintaan Pengadaan Barang PT. PLN UIP Papua - "+tgl);
 			//message.setText("Dear Mail Crawler,\n\n No spam to my email, please!");
-			con+="Berikut ini adalah Surat Permintaan Barang dengan list sebagai lampiran,<br/>";
-			message.setContent(con, "text/html");
+			con+="";
+
+			File file=new File(attach);
+			Boolean exists=file.exists();
+			if (attach!="" && exists==true){
+				System.out.println("File exists on: "+attach);
+				// Set the email msg text.
+				MimeBodyPart messagePart = new MimeBodyPart();
+				messagePart.setText("Berikut ini kami kirimkan lampiran Rekap Permintaan Pengadaan Barang PT. PLN UIP Papua");
+				//messagePart.setContent(con,"text/html");
+
+				// Set the email attachment file
+				FileDataSource fileDataSource = new FileDataSource(attach);
+
+				MimeBodyPart attachmentPart = new MimeBodyPart();
+				attachmentPart.setDataHandler(new DataHandler(fileDataSource));
+				attachmentPart.setFileName(fileDataSource.getName());
+
+				// Create Multipart E-Mail.
+				Multipart multipart = new MimeMultipart();
+				multipart.addBodyPart(messagePart);
+				multipart.addBodyPart(attachmentPart);
+
+				message.setContent(multipart);
+			}else{
+				message.setContent(con, "text/html");
+			}
 
 			Task<Void>task=new Task<Void>() {
 				@Override

@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class EditPermintaan extends VBox {
@@ -22,7 +23,7 @@ public class EditPermintaan extends VBox {
 	private TableView table;
 	private Button button;
 	private Separator hsep1;
-	private final String deskripsi="Modul ini menampilkan Daftar Permintaan Barang dari masing-masing Divisi dengan Status: Review Divisi / belum diposting ke SDM.";
+	private final String deskripsi="Modul ini menampilkan Daftar Permintaan Barang dari masing-masing Divisi yang belum approve.";
 
 	public EditPermintaan() {		
 		judul=new Label("Edit Permintaan");judul.getStyleClass().addAll("judul");
@@ -86,7 +87,7 @@ public class EditPermintaan extends VBox {
 		setAlignment(Pos.TOP_CENTER);
 		getStyleClass().add("box-color");
 
-		this.getChildren().addAll(judul,hsep1,new Label(deskripsi),table);//tambahkan buton untuk test
+		this.getChildren().addAll(judul,new Separator(Orientation.HORIZONTAL),new HBox(new Label(deskripsi)),table);//tambahkan buton untuk test
 	}
 
 }

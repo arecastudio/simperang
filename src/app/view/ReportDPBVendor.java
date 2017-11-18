@@ -71,6 +71,10 @@ public class ReportDPBVendor extends VBox {
 
     private Optional<ButtonType> result;
 
+    private String EXPORT_FILE_NAME="";
+
+    private  JasperPrint jasperPrint=null;
+
     public ReportDPBVendor() {
         Inits();
 
@@ -270,8 +274,7 @@ public class ReportDPBVendor extends VBox {
         button_save=new Button("Simpan");
         button_save.setPrefWidth(120);
         button_save.setOnAction((ActionEvent event) -> {
-            //if (1==1){
-            //text_nota.setText("df");
+
             if (textArea.getText().toString().trim().length()>0  && text_nota.getText().toString().trim().length()>0 && tmpNomor!="" && tmpNamaVendor!="" && tmpAlamatVendor!="" && tmpPemilikVendor!="") {
 
                 //========================================================
@@ -293,6 +296,13 @@ public class ReportDPBVendor extends VBox {
                 task_simpan.setOnSucceeded(event1 -> {
                     hbox10.getChildren().clear();
                     hbox10.getChildren().addAll(ket);
+
+                    if (jasperPrint!=null){
+                        JasperViewer jv=new JasperViewer(jasperPrint,false);
+                        jv.setTitle("Rekap Surat Permintaan");
+                        jv.setVisible(true);
+                    }
+
                     if (simpan>0){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Dialog Informasi");
@@ -307,6 +317,30 @@ public class ReportDPBVendor extends VBox {
                         alert.showAndWait();
                     }
                     Refresh();
+                });
+
+                //========================================================
+                //TASK KIRIM EMAIL
+                Task<Void>task_mail=new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        DataVendor v=new VendorModify().GetVenderoById(tmpVendor);
+                        if (chkEmail.isSelected()){
+                            if (GlobalUtility.getInetStat()==true){
+                                mailsend=new EmailController().EmailVendor(v.getEmail().toString(),EXPORT_FILE_NAME);
+                            }
+                        }
+                        return null;
+                    }
+                };
+                task_mail.setOnSucceeded(event1 -> {
+                    ket.setText("Keterangan: Tunggu hingga proses selesai...");
+                    Platform.runLater(()->{
+                        Thread r=new Thread(task_simpan);
+                        r.setDaemon(true);
+                        r.start();
+                    });
+
                 });
                 //========================================================
                 //TASK CETAK
@@ -338,12 +372,20 @@ public class ReportDPBVendor extends VBox {
 
                                 params.put("SUBREPORT_DIR",lampiran.toString());
 
-                                JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, conn);
+                                jasperPrint = JasperFillManager.fillReport(report, params, conn);
                                 jasperPrint.setName("Rekap Surat Permintaan");
 
-                                JasperViewer jv=new JasperViewer(jasperPrint,false);
+                                String path=System.getProperty("user.home");
+                                if (path.substring(path.length()-1,path.length())!="/")path+="/";
+
+                                EXPORT_FILE_NAME=path+"attach-surat-pengadaan-"+new GetCurDate().getTanggal()+".pdf";
+
+                                JasperExportManager.exportReportToPdfFile(jasperPrint,EXPORT_FILE_NAME);
+
+                                /*JasperViewer jv=new JasperViewer(jasperPrint,false);
                                 jv.setTitle("Rekap Surat Permintaan");
-                                jv.setVisible(true);
+                                jv.setVisible(true);*/
+
 
                             } catch (JRException e) {
                                 e.printStackTrace();
@@ -356,36 +398,12 @@ public class ReportDPBVendor extends VBox {
                 task_cetak.setOnSucceeded(event1 -> {
                     ket.setText("Keterangan: Tunggu hingga proses selesai...");
                     Platform.runLater(()->{
-                        Thread t=new Thread(task_simpan);
+                        Thread t=new Thread(task_mail);
                         t.setDaemon(true);
                         t.start();
                     });
                 });
                 //========================================================
-                //TASK KIRIM EMAIL
-                Task<Void>task_mail=new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        DataVendor v=new VendorModify().GetVenderoById(tmpVendor);
-                        if (chkEmail.isSelected()){
-                            if (GlobalUtility.getInetStat()==true){
-                                mailsend=new EmailController().EmailVendor(v.getEmail().toString(),"");
-                            }
-                        }
-                        return null;
-                    }
-                };
-                task_mail.setOnSucceeded(event1 -> {
-                    ket.setText("Keterangan: Tunggu hingga proses selesai...");
-                    Platform.runLater(()->{
-                        Thread r=new Thread(task_cetak);
-                        r.setDaemon(true);
-                        r.start();
-                    });
-
-                });
-                //========================================================
-
 
                 hbox10.getChildren().clear();
                 hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
@@ -394,7 +412,7 @@ public class ReportDPBVendor extends VBox {
                 Thread e=new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Thread thread=new Thread(task_mail);
+                        Thread thread=new Thread(task_cetak);
                         thread.setDaemon(true);
                         thread.start();
                     }

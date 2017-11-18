@@ -125,7 +125,6 @@ CREATE TABLE `dpb_kolektif` (
 
 LOCK TABLES `dpb_kolektif` WRITE;
 /*!40000 ALTER TABLE `dpb_kolektif` DISABLE KEYS */;
-INSERT INTO `dpb_kolektif` VALUES ('SPBK/2/SDM/XI/2017','Pengadaan Barang dan Inventori bulan November.','2017-11-15 02:45:52','1',1,'666','Djumandjie',10,'PLT MAN KEU DAN SDM');
 /*!40000 ALTER TABLE `dpb_kolektif` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +150,6 @@ CREATE TABLE `dpb_kolektif_d` (
 
 LOCK TABLES `dpb_kolektif_d` WRITE;
 /*!40000 ALTER TABLE `dpb_kolektif_d` DISABLE KEYS */;
-INSERT INTO `dpb_kolektif_d` VALUES ('SPBK/2/SDM/XI/2017','333','UPP KITRING PAPUA BARAT',NULL),('SPBK/2/SDM/XI/2017','999','BAG PERTANAHAN',NULL),('SPBK/2/SDM/XI/2017','SPB/2/PERTA/2017','BAG PERTANAHAN',NULL);
 /*!40000 ALTER TABLE `dpb_kolektif_d` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +178,6 @@ CREATE TABLE `nota` (
 
 LOCK TABLES `nota` WRITE;
 /*!40000 ALTER TABLE `nota` DISABLE KEYS */;
-INSERT INTO `nota` VALUES ('SPB/N/1/UIP/2017',1,'SPBK/2/SDM/XI/2017','2017-11-15 09:43:33',1,'Bersama ini kami memesan Kepada Perusahaan Saudara Barang-barang sebagaimana terlampir.\ndengan syarat-syarat sebagai berikut :\n\n1.  PPn 10% dan PPh 1,5% dipungut langsung oleh pihak PLN UIP Papua,\n2.  Tidak diberi uang muka,\n3.  Barang /material sudah harus diterima PLN(Persero) UIP Papua paling lambat tanggal\n     seluruhnya, dan apabila sampai batas waktu tersebut ternyata Saudara belum menyerahkan\n     barang/material maka Saudara harus membayar ganti rugi,\n4.  Barang /material harus diterima dengan baik, lengkap, baru dan asli sesuai spesifikasi yang ditentukan\n     dalam Surat Pesanan ini,\n5.  Pembayaran akan dilaksanakan 100% setelah barang/material/sparepart diterima dengan baik dan\n     melampirkan antara lain :\n     a. Kwitansi tagihan bermeterai\n     b. Faktur Pajak\n     c. Surat Setoran Pajak\n6.  Apabila syarat-syarat tersebut di atas tidak dipenuhi, barang/material/sparepart akan dikembalikan/ditolak\n     dan segala biaya yang timbul menjadi tanggung jawab Saudara.\n\nDemikian kami sampaikan, dengan harapan dapat diselesaikan dengan sebaik-baiknya.');
 /*!40000 ALTER TABLE `nota` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,7 +242,6 @@ CREATE TABLE `permintaan` (
 
 LOCK TABLES `permintaan` WRITE;
 /*!40000 ALTER TABLE `permintaan` DISABLE KEYS */;
-INSERT INTO `permintaan` VALUES ('333','Permintaan UPP KITRING PB yang pertama',2,'2017-11-11 04:03:57','222',68,'111',5,'Dwi Panca','AS KOM','Eka Esa Primus','MAN UPP KITRING PAPUA BARAT',NULL,NULL),('999','Permintaan Pertanahan, urgen',2,'2017-11-11 04:04:54','333',3,'555',1,'Trie','ASMAN PERTANAHAN','Vivi','SPV PERTANAHAN',NULL,NULL),('SPB/2/PERTA/2017','Permintaan lagi.',2,'2017-11-14 15:00:31','333',3,'555',1,'Trie','ASMAN PERTANAHAN','Vivi','SPV PERTANAHAN',NULL,NULL);
 /*!40000 ALTER TABLE `permintaan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +273,6 @@ CREATE TABLE `permintaan_d` (
 
 LOCK TABLES `permintaan_d` WRITE;
 /*!40000 ALTER TABLE `permintaan_d` DISABLE KEYS */;
-INSERT INTO `permintaan_d` VALUES ('333',2,75,0,'-','Dwi Panca','2017-11-11 04:05:46','Ballpoint hitam tinta kering','PAK',2500),('333',1,155,0,'-','Dwi Panca','2017-11-11 04:05:46','Ballpoint hitam tinta basah','PAK',15000),('999',6,14,0,'-','Trie','2017-11-11 04:05:12','Penghapus Pencil','DOS',100),('999',8,18,0,'-','Trie','2017-11-11 04:05:12','Kertas HVS','PAK',8500),('999',11,17,0,'-','Trie','2017-11-11 04:05:12','Spidol Biru','DOS',1200),('333',15,15,0,'-','Dwi Panca','2017-11-11 04:05:46','Kertas HVS Later','PAK',8000),('333',6,183,0,'-','Dwi Panca','2017-11-11 04:05:46','Penghapus Pencil','DOS',100),('333',10,12,0,'-','Dwi Panca','2017-11-11 04:05:46','Spidol Hitam','DOS',1200),('SPB/2/PERTA/2017',13,28,0,'-','Trie','2017-11-14 15:02:03','Kertas Postit','DOS',5000),('SPB/2/PERTA/2017',17,22,0,'-','Trie','2017-11-14 15:02:03','Kertas Kuning','RIM',25000),('SPB/2/PERTA/2017',2,10,0,'-','Trie','2017-11-14 15:02:03','Ballpoint hitam tinta kering','PAK',2500),('SPB/2/PERTA/2017',15,30,0,'-','Trie','2017-11-14 15:02:03','Kertas HVS Later','PAK',8000),('SPB/2/PERTA/2017',1,14,0,'-','Trie','2017-11-14 15:02:03','Ballpoint hitam tinta basah','PAK',15000);
 /*!40000 ALTER TABLE `permintaan_d` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,7 +336,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'Admin',1,1,1,1,1,1,1,1,1,1,1,1,1,1),(2,'Super Operator',0,0,0,0,1,1,0,0,0,1,1,0,0,0),(3,'Operator',0,0,1,1,1,0,0,0,0,1,1,0,0,0),(6,'Guest',0,0,0,0,0,0,0,0,0,1,1,0,0,0);
+INSERT INTO `role` VALUES (1,'Admin',1,1,1,1,1,1,1,1,1,1,1,1,1,1),(2,'Super Operator',0,0,0,1,1,1,0,0,0,1,1,0,0,0),(3,'Operator',0,0,1,1,1,0,0,0,0,1,1,0,0,0),(6,'Guest',0,0,0,0,0,0,0,0,0,1,1,0,0,0);
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-16 16:29:16
+-- Dump completed on 2017-11-18 10:01:46

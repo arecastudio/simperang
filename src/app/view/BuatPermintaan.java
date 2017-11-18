@@ -43,7 +43,7 @@ public class BuatPermintaan {
 		
 		tabPane.getTabs().addAll(tabPilih,tabSimpan);
 		
-		vbox.getChildren().addAll(judul,tabPane);
+		vbox.getChildren().addAll(judul,new HBox(new Label("Modul ini berfungsi untuk membuat list permintaan Divisi.")),tabPane);
 		
 	}
 	

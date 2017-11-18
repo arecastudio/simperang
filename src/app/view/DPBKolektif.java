@@ -16,7 +16,7 @@ public class DPBKolektif extends VBox {
 	private TabPane tabPane;
 	private Tab tabPilih,tabSimpan;
 	private Label judul;
-	private String desc="Modul ini berfungsi untuk memilih Permintaan Barang dari tiap Divisi untuk kemudaian di muat dalam Draf Kolektif yang diteruskan ke Vendor";
+	private String desc="Modul ini berfungsi untuk memilih Permintaan Barang (tiap Divisi) ke dalam draft.";
 	
 	public DPBKolektif() {
 		init();
@@ -28,7 +28,7 @@ public class DPBKolektif extends VBox {
 		setAlignment(Pos.TOP_CENTER);
 		getStyleClass().add("box-color");
 
-		this.getChildren().addAll(judul,new Separator(Orientation.HORIZONTAL),new Label(desc),tabPane);
+		this.getChildren().addAll(judul,new Separator(Orientation.HORIZONTAL),new HBox(new Label(desc)),tabPane);
 	}
 
 	private void init() {

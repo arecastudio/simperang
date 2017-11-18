@@ -35,7 +35,7 @@ public class DPBKolektifModify {
 				dt.setTotal(rs.getDouble(6));
 				dt.setPpn(rs.getDouble(7));
 				dt.setGrand_total(rs.getDouble(8));
-				dt.setTerbilang(new Terbilang().bilangx(rs.getDouble(8))+"Rupiah.");
+				dt.setTerbilang(new Terbilang().bilangx(rs.getDouble(8))+" Rupiah.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

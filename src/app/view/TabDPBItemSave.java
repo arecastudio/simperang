@@ -266,11 +266,6 @@ public class TabDPBItemSave extends Pane{
 					alert.setTitle("Dialog Konfirmasi");
 					alert.setHeaderText("Pembuatan Daftar Permintaan Kolektif");
 					alert.setContentText("Nomor Surat: ["+nomor+"]\nLanjut proses Simpan?");
-
-					hbox10.getChildren().clear();
-					hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),label_stat);
-					progressBar.setProgress(-1.0);
-					label_stat.setText("Keterangan: Tunggu hingga proses selesai...");
 					
 					Optional<ButtonType> result = alert.showAndWait();
 					if (result.get() == ButtonType.OK){
@@ -318,6 +313,11 @@ public class TabDPBItemSave extends Pane{
 									Main.borderPane.setCenter(new DPBKolektif());
 								});
 							});
+
+							hbox10.getChildren().clear();
+							hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),label_stat);
+							progressBar.setProgress(-1.0);
+							label_stat.setText("Keterangan: Tunggu hingga proses selesai...");
 
 							Thread thread=new Thread(task);
 							thread.setDaemon(true);

@@ -17,10 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -54,6 +51,8 @@ public class ReportDPBVendorPrint extends VBox {
 
     private String tmp_nomor="";
     private String tmpTanggal="",tmpTotal="",tmpPPN="",tmpGrandTotal="",tmpTerbilang="";
+    
+    private String EXPORT_FILE_NAME="";
 
     public ReportDPBVendorPrint(){
         conn=helper.Konek();
@@ -231,25 +230,36 @@ public class ReportDPBVendorPrint extends VBox {
         button_mail.setPrefWidth(150);
         button_mail.setOnAction(event -> {
             if (tmp_nomor!=""){
-                DataNota dn=new NotaModify().GetNotaByNomor(tmp_nomor);
-                Task<Integer>task=new Task<Integer>() {
+                DataNota dn=new NotaModify().GetNotaByNomor(tmp_nomor);                
+
+                //------------------------------------------------------------------------------------
+                Task<Integer>task_mail=new Task<Integer>() {
                     @Override
                     protected Integer call() throws Exception {
                         Integer sent=0;
                         if (GlobalUtility.getInetStat()==true){
-                            sent=new EmailController().EmailVendor(dn.getEmail_vendor(),"");
+                            sent=new EmailController().EmailVendor(dn.getEmail_vendor(),EXPORT_FILE_NAME);
+                            //sent=new EmailController().EmailVendor(dn.getEmail_vendor(),"");
                             //System.out.println(dn.getEmail_vendor());
                         }
                         return sent;
                     }
                 };
-                task.setOnSucceeded(e->{
+                task_mail.setOnSucceeded(e->{
 
-                    if (task.getValue()>0){
+                    if (task_mail.getValue()>0){
                         new EmailController().UbahStatusKirimNota(dn.getNomor());
                     }
 
                     Platform.runLater(()->{
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Dialog Informasi");
+                        alert.setHeaderText("Proses selesai.");
+                        alert.setContentText("Email telah dikirimkan ke alamat :\n"+dn.getEmail_vendor());
+                        alert.showAndWait();
+
+
                         ket.setText("Keterangan :");
                         progressBar.setProgress(0);
                         hbox10.getChildren().clear();
@@ -258,13 +268,73 @@ public class ReportDPBVendorPrint extends VBox {
                     });
 
                 });
+                //------------------------------------------------------------------------------------
+                Task<Void> task_print=new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+
+                        InputStream input = getClass().getResourceAsStream(SURAT_PERMINTAAN);
+                        String lampiran=getClass().getResource(SURAT_PERMINTAAN_LAMPIRAN).toString();
+                        lampiran=lampiran.substring((Integer)"file:".length(),lampiran.length()-(Integer)"surat-permintaan-lampiran.jasper".length());
+                        System.out.println("File lampiran: "+lampiran.toString());
+                        try {
+                            JasperReport report = (JasperReport) JRLoader.loadObject(input);
+
+                            Map<String, Object> params = new HashMap<String, Object>();
+                            params.put("nomor_surat", dn.getNomor_dpb_kolektif());
+                            params.put("nota_dinas", dn.getNomor());
+                            params.put("konten_surat", dn.getKonten_surat());
+                            params.put("nama_vendor", dn.getNama_vendor());
+                            params.put("alamat_vendor", dn.getAlamat_vendor());
+                            params.put("pemilik_vendor", dn.getPemilik_vendor());
+                            //params.put("nama_manager", tmpNamaManager);
+
+                            //params.put("tanggal_posting",tmpTanggal);
+                            params.put("total", tmpTotal);
+                            params.put("ppn", tmpPPN);
+                            params.put("grand_total", tmpGrandTotal);
+                            params.put("terbilang", tmpTerbilang);
+
+                            params.put("SUBREPORT_DIR",lampiran.toString());
+
+                            JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, conn);
+                            jasperPrint.setName("Rekap Surat Permintaan");
+
+                            /*JasperViewer jv=new JasperViewer(jasperPrint,false);
+                            jv.setTitle("Rekap Surat Permintaan");
+                            jv.setVisible(true);*/
+
+                            String path=System.getProperty("user.home");
+                            if (path.substring(path.length()-1,path.length())!="/")path+="/";
+
+                            EXPORT_FILE_NAME=path+"attach-surat-pengadaan-"+new GetCurDate().getTanggal()+".pdf";
+
+                            JasperExportManager.exportReportToPdfFile(jasperPrint,EXPORT_FILE_NAME);
+
+                        } catch (JRException e) {
+                            e.printStackTrace();
+                        }
+
+                        return null;
+                    }
+                };
+                task_print.setOnSucceeded(e->{
+                    /*ket.setText("Keterangan :");
+                    progressBar.setProgress(0);
+                    hbox10.getChildren().clear();
+                    hbox10.getChildren().add(ket);*/
+                    Thread t=new Thread(task_mail);
+                    t.setDaemon(true);
+                    t.start();
+                });
+                //------------------------------------------------------------------------------------
 
                 hbox10.getChildren().clear();
                 hbox10.getChildren().addAll(progressBar,new Separator(Orientation.VERTICAL),ket);
                 progressBar.setProgress(-1.0);
                 ket.setText("Keterangan: Tunggu hingga proses selesai...");
 
-                Thread thread=new Thread(task);
+                Thread thread=new Thread(task_print);
                 thread.setDaemon(true);
                 thread.start();
             }

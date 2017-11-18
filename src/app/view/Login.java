@@ -59,12 +59,12 @@ public class Login {
 		username=new TextField();
 		username.setAlignment(Pos.CENTER);
 		username.setPromptText("NIK...");
-		username.setText("1");
+		//username.setText("1");
 
 		password=new PasswordField();
 		password.setAlignment(Pos.CENTER);
 		password.setPromptText("Password...");
-		password.setText("1");
+		//password.setText("1");
 		
 		button_login=new Button("Login");		
 		button_login.setPrefWidth(100);
@@ -157,15 +157,15 @@ public class Login {
 					Main.primaryStage.setMaximized(true);
 					Main.label_status.setText("Status: Log in  ||  host: "+DBHelper.getHost()+"  ||  User: "+GlobalUtility.getUser_logged_in().getNama()+"  ||  Hak Akses: "+nama_role+"  ||  Divisi: "+nama_divisi);
 				}else {
-					Alert alert = new Alert(AlertType.WARNING);
+					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Warning");
-					alert.setHeaderText("Kombinasi NIK dan Password belum tepat,");
-					alert.setContentText("silakan dikoreksi.");
-					Optional<ButtonType> result = alert.showAndWait();
+					alert.setHeaderText("Terjadi kesalahan.");
+					alert.setContentText("Kombinasi NIK dan Password tidak tepat.");
+					alert.showAndWait();
+					/*Optional<ButtonType> result = alert.showAndWait();
 					if (result.get() == ButtonType.OK){
 					} else {
-						// ... user chose CANCEL or closed the dialog
-					}
+					}*/
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -200,6 +200,7 @@ public class Login {
 			Main.laporan_permintaan.setDisable(dis(dcr.getLaporan_permintaan()));
 			Main.laporan_dpb_kolektif.setDisable(dis(dcr.getLaporan_dpb_kolektif()));
 			Main.laporan_dpb_vendor.setDisable(dis(dcr.getLaporan_dpb_vendor()));
+			Main.laporan_dpb_vendor2.setDisable(dis(dcr.getLaporan_dpb_vendor()));
 			Main.set_user.setDisable(dis(dcr.getPengaturan_admin()));
 			Main.set_hak.setDisable(dis(dcr.getPengaturan_admin()));
 

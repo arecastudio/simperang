@@ -118,4 +118,20 @@ public class DivisiModify {
 		return dd;
 	}
 
+	public DataDivisi GetDataDivisiByPosisi(String id_posisi){
+		DataDivisi dd=null;
+		String sql="SELECT d.id,d.nama,d.ket FROM posisi AS p LEFT OUTER JOIN divisi AS d ON d.id=p.id_divisi WHERE p.id_divisi=? LIMIT 1;";
+		try{
+			pst=conn.prepareStatement(sql);
+			pst.setString(1,id_posisi);
+			rs=pst.executeQuery();
+			if (rs.next()){
+				dd=new DataDivisi(rs.getString(1),rs.getString(2),rs.getString(3));
+			}
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
+		return dd;
+	}
+
 }

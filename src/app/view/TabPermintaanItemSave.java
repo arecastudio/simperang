@@ -2,7 +2,8 @@ package app.view;
 
 import app.GlobalUtility;
 import app.Main;
-import app.controller.PermintaanSimpan;
+import app.controller.DivisiModify;
+import app.controller.PermintaanModify;
 import app.controller.PosisiModify;
 import app.controller.UserModify;
 import app.model.*;
@@ -55,16 +56,16 @@ public class TabPermintaanItemSave extends AnchorPane {
 		label_satuan=new Label("Satuan");
 
 		button_update=new Button("Update");
-		button_update.setPrefWidth(100);
+		button_update.setPrefWidth(130);
 
-		button_del=new Button("Hapus");
-		button_del.setPrefWidth(100);
+		button_del=new Button("Hapus Item");
+		button_del.setPrefWidth(130);
 
 		button_simpan=new Button("Posting");
-		button_simpan.setPrefWidth(100);
+		button_simpan.setPrefWidth(130);
 
 		button_clear=new Button("Reset");
-		button_clear.setPrefWidth(100);
+		button_clear.setPrefWidth(130);
 
 		text_jumlah=new TextField();text_jumlah.setPrefWidth(100);
 		
@@ -125,8 +126,10 @@ public class TabPermintaanItemSave extends AnchorPane {
 			if(newval != null) {
 				cbxPosisi.setStyle(newval.getId());
 				tmp_id_posisi=newval.getId();
-				//System.out.println("posisi: " + newval.getNama() + ", id: " + tmp_id_posisi);
 				tmp_nama_posisi=newval.getNama();
+
+
+				System.out.println("posisi: " + tmp_nama_posisi + ", id: " + tmp_id_posisi);
 			}
 		});
 		//------------------------------------------------------------
@@ -214,7 +217,7 @@ public class TabPermintaanItemSave extends AnchorPane {
 							if(dbp.getId().toString()==label_nama.getStyle().toString()) {
 								GlobalUtility.dataBarangDipilihEdit.set(Integer.parseInt(text_jumlah.getStyle()), new DataBarangDipilih(dbp.getId(), dbp.getNama(), text_jumlah.getText().toString().trim(), dbp.getSatuan(), dbp.getKeterangan(),dbp.getHarga()));
 								System.out.println(dbp.getNama());
-								refresh();
+								table.setItems(GlobalUtility.getBarang_dipilihEdit());
 							}
 						}
 					}else {
@@ -222,10 +225,13 @@ public class TabPermintaanItemSave extends AnchorPane {
 							if(dbp.getId().toString()==label_nama.getStyle().toString()) {
 								GlobalUtility.dataBarangDipilih.set(Integer.parseInt(text_jumlah.getStyle()), new DataBarangDipilih(dbp.getId(), dbp.getNama(), text_jumlah.getText().toString().trim(), dbp.getSatuan(), dbp.getKeterangan(),dbp.getHarga()));
 								System.out.println(dbp.getNama());
-								refresh();
+								table.setItems(GlobalUtility.getBarang_dipilih());
 							}
 						}
-					}					
+					}
+					label.setText("Jumlah : ");
+					label_nama.setText("Barang");
+					label_satuan.setText("Satuan");
 				}				
 			}
 		});
@@ -279,11 +285,16 @@ public class TabPermintaanItemSave extends AnchorPane {
 					//nama,nama_posisi,nama_atasan,nama_posisi_atasan
 					tmp_nama=GlobalUtility.getUser_logged_in().getNama();
 					dp.setNama(tmp_nama);
+
 					dp.setNama_posisi(tmp_nama_posisi);
 					dp.setNama_atasan(tmp_nama_atasan);
 					dp.setNama_posisi_atasan(tmp_nama_posisi_atasan);
+
+					DataDivisi dd=new DivisiModify().GetDataDivisiByPosisi(tmp_id_posisi);
+					dp.setId_divisi(dd.getId());
+					dp.setNama_divisi(dd.getNama());
 					
-					int i=new PermintaanSimpan().SimpanAll(dp, diPilih, isEdit);
+					int i=new PermintaanModify().SimpanAll(dp, diPilih, isEdit);
 					if(i>0){
 						GlobalUtility.dataBarangDipilih.clear();
 						GlobalUtility.dataBarangDipilihEdit.clear();
@@ -307,14 +318,14 @@ public class TabPermintaanItemSave extends AnchorPane {
 				}
 				
 				/*try {
-					int simpan=new PermintaanSimpan().permintaan(dp,isEdit);
+					int simpan=new PermintaanModify().permintaan(dp,isEdit);
 					if(simpan>0) {
 						//System.out.println("tasimpan");
 						if(isEdit.equals(Boolean.TRUE)) {
 						//Boolean b=
-							new PermintaanSimpan().permintaan_d(GlobalUtility.getBarang_dipilihEdit(),isEdit);
+							new PermintaanModify().permintaan_d(GlobalUtility.getBarang_dipilihEdit(),isEdit);
 						}else {
-							new PermintaanSimpan().permintaan_d(GlobalUtility.getBarang_dipilih(),isEdit);							
+							new PermintaanModify().permintaan_d(GlobalUtility.getBarang_dipilih(),isEdit);
 							GlobalUtility.dataBarangDipilih.clear();
 						}
 						//if (b.equals(Boolean.TRUE)) {
@@ -390,7 +401,7 @@ public class TabPermintaanItemSave extends AnchorPane {
 			grid.setVisible(false);
 			vbox.getChildren().remove(grid);
 
-			String[] userSurat=new PermintaanSimpan().GetUserOnPermintaan(GlobalUtility.edit_nomor_surat);
+			String[] userSurat=new PermintaanModify().GetUserOnPermintaan(GlobalUtility.edit_nomor_surat);
 			tmp_nik=userSurat[0];
 			tmp_id_posisi=userSurat[1];
 			tmp_id_manager=userSurat[2];
@@ -431,7 +442,7 @@ public class TabPermintaanItemSave extends AnchorPane {
 
 			grid.setVisible(false);
 			vbox.getChildren().remove(grid);
-			String[] userSurat=new PermintaanSimpan().GetUserOnPermintaan(GlobalUtility.edit_nomor_surat);
+			String[] userSurat=new PermintaanModify().GetUserOnPermintaan(GlobalUtility.edit_nomor_surat);
 			tmp_nik=userSurat[0];
 			tmp_id_posisi=userSurat[1];
 			tmp_id_manager=userSurat[2];

@@ -3,7 +3,7 @@ package app.view;
 import java.util.Optional;
 
 import app.GlobalUtility;
-import app.controller.PermintaanSimpan;
+import app.controller.PermintaanModify;
 import app.model.DataPermintaan;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -27,17 +27,18 @@ public class HapusPermintaan extends VBox {
 	private HBox hbox1;
 	private Button button_del;	
 	private String tmpNomor="";
-	private final String desc="Modul ini hanya menampilkan Daftar Permintaan yang belum di-kirim ke SDM";
+	private final String desc="Modul ini berfungsin untuk menghapus Permintaan dari Divsi.";
 
 	public HapusPermintaan() {
 		init();
-		getChildren().addAll(new LabelJudul("Hapus Permintaan"),new Label(desc),table,ket,button_del);
+		getChildren().addAll(new LabelJudul("Hapus Permintaan"),new Label(desc),table,new HBox(ket),new HBox(button_del));
 	}
 
 	private void init() {
 		setSpacing(5);
 		setPadding(new Insets(5, 5, 5, 5));
 		setMaxHeight(500);
+		setMaxWidth(1024);
 		setAlignment(Pos.TOP_CENTER);
 		getStyleClass().add("box-color");
 		
@@ -73,7 +74,7 @@ public class HapusPermintaan extends VBox {
 
 					Optional<ButtonType> result = alert.showAndWait();
 					if (result.get() == ButtonType.OK){
-						int hapus=new PermintaanSimpan().HapusPermintaan(tmpNomor);
+						int hapus=new PermintaanModify().HapusPermintaan(tmpNomor);
 						if(hapus==1){
 							refresh();
 						}

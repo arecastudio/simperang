@@ -4,6 +4,7 @@ public class DataPermintaan {
 	private String nomor, alasan, status, tgl, nik;
 	private String id_posisi,nik_atasan,id_posisi_atasan;
 	private String nama,nama_posisi,nama_atasan,nama_posisi_atasan;
+	private String id_divisi,nama_divisi;
 	private Boolean cetak;
 	
 	public DataPermintaan() {}
@@ -117,5 +118,21 @@ public class DataPermintaan {
 
 	public void setNama_posisi_atasan(String nama_posisi_atasan) {
 		this.nama_posisi_atasan = nama_posisi_atasan;
+	}
+
+	public String getId_divisi() {
+		return id_divisi;
+	}
+
+	public void setId_divisi(String id_divisi) {
+		this.id_divisi = id_divisi;
+	}
+
+	public String getNama_divisi() {
+		return nama_divisi;
+	}
+
+	public void setNama_divisi(String nama_divisi) {
+		this.nama_divisi = nama_divisi;
 	}
 }

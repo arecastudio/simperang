@@ -41,7 +41,7 @@ public class SetRole extends VBox {
 
         vbox2.getChildren().addAll(new Label("Menu Proses"),cek_buat_permintaan,cek_edit_permintaan,cek_hapus_permintaan,cek_review_permintaan,cek_buat_dpb_kolektif,cek_hapus_dpb_kolektif,cek_notifikasi_email);
 
-        vbox3.getChildren().addAll(new Label("Menu Laporan"),cek_laporan_permintaan,cek_laporan_dpb_kolektif,cek_laporan_dpb_vendor);
+        vbox3.getChildren().addAll(new Label("Menu Laporan"),cek_laporan_permintaan,cek_laporan_dpb_kolektif,cek_laporan_dpb_vendor,new Label("& Cetak/Kirim ulang ke Vendor"));
 
         vbox4.getChildren().addAll(new Label("Menu Pengaturan"),cek_pengaturan_db);
 

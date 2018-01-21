@@ -236,7 +236,7 @@ public class EmailController {
     			ret+="<tr><td>Divisi</td><td>"+rs.getString(4)+"</td></tr>";
     			ret+="<tr><td>No. Surat Divisi</td><td>"+rs.getString(5)+"</td></tr>";    			
     			ret+=" </table>";    			
-    			ret+="<br/><br/><hr/>Sent from ATK Mgr V.01<br/>"+tgl;    			
+    			ret+="<br/><br/><hr/>Sent from System Informasi Manajemen Pengadaan Barang 1.0<br/>"+tgl;
     		}
     		pst.close();
 			conn.close();

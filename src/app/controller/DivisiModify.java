@@ -118,9 +118,10 @@ public class DivisiModify {
 		return dd;
 	}
 
+	//tidak bisa dipakai karena tidak semua data posisi sudah dimasukkan id_divisi nya.
 	public DataDivisi GetDataDivisiByPosisi(String id_posisi){
 		DataDivisi dd=null;
-		String sql="SELECT d.id,d.nama,d.ket FROM posisi AS p LEFT OUTER JOIN divisi AS d ON d.id=p.id_divisi WHERE p.id_divisi=? LIMIT 1;";
+		String sql="SELECT p.id_divisi,d.nama,d.ket FROM posisi AS p LEFT OUTER JOIN divisi AS d ON d.id=p.id_divisi WHERE p.id_divisi=? LIMIT 1;";
 		try{
 			pst=conn.prepareStatement(sql);
 			pst.setString(1,id_posisi);
@@ -128,6 +129,7 @@ public class DivisiModify {
 			if (rs.next()){
 				dd=new DataDivisi(rs.getString(1),rs.getString(2),rs.getString(3));
 			}
+			//System.out.println("DATA DIVISI di DivisiModify.java--> "+dd.getId()+""+dd.getNama());
 		}catch (SQLException e){
 			e.printStackTrace();
 		}

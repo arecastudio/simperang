@@ -2,24 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/controller/PermintaanSimpan.java" afterPath="$PROJECT_DIR$/src/app/controller/PermintaanModify.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lampiran SPB.jpg" afterPath="$PROJECT_DIR$/Lampiran SPB.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SPB.jpg" afterPath="$PROJECT_DIR$/SPB.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img4.png" afterPath="$PROJECT_DIR$/img4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img5.png" afterPath="$PROJECT_DIR$/img5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img6.png" afterPath="$PROJECT_DIR$/img6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img7.png" afterPath="$PROJECT_DIR$/img7.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/cetak-dpb-kolektif-detail.jasper" afterPath="$PROJECT_DIR$/src/app/reports/cetak-dpb-kolektif-detail.jasper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/cetak-dpb-kolektif.jasper" afterPath="$PROJECT_DIR$/src/app/reports/cetak-dpb-kolektif.jasper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/report-permintaan-detail.jasper" afterPath="$PROJECT_DIR$/src/app/reports/report-permintaan-detail.jasper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/report-permintaan.jasper" afterPath="$PROJECT_DIR$/src/app/reports/report-permintaan.jasper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/simperang-logo.ico" afterPath="$PROJECT_DIR$/src/app/simperang-logo.ico" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/simperang-logo.png" afterPath="$PROJECT_DIR$/src/app/simperang-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.database/db.sql" afterPath="$PROJECT_DIR$/.database/db.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/simperang.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/simperang.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/description.html" afterPath="$PROJECT_DIR$/.idea/description.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/libs.xml" afterPath="$PROJECT_DIR$/.idea/libraries/libs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/DPBKolektifModify.java" afterPath="$PROJECT_DIR$/src/app/controller/DPBKolektifModify.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/DivisiModify.java" afterPath="$PROJECT_DIR$/src/app/controller/DivisiModify.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controller/EmailController.java" afterPath="$PROJECT_DIR$/src/app/controller/EmailController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataPermintaan.java" afterPath="$PROJECT_DIR$/src/app/model/DataPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/BuatPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/BuatPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/DPBKolektif.java" afterPath="$PROJECT_DIR$/src/app/view/DPBKolektif.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/EditPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/EditPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/HapusPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/HapusPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Login.java" afterPath="$PROJECT_DIR$/src/app/view/Login.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReportDPB.java" afterPath="$PROJECT_DIR$/src/app/view/ReportDPB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReportDPBVendor.java" afterPath="$PROJECT_DIR$/src/app/view/ReportDPBVendor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/model/DataNota.java" afterPath="$PROJECT_DIR$/src/app/model/DataNota.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/cetak-dpb-kolektif-detail.jrxml" afterPath="$PROJECT_DIR$/src/app/reports/cetak-dpb-kolektif-detail.jrxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/reports/report-permintaan.jrxml" afterPath="$PROJECT_DIR$/src/app/reports/report-permintaan.jrxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/Barang.java" afterPath="$PROJECT_DIR$/src/app/view/Barang.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReportDPBVendorPrint.java" afterPath="$PROJECT_DIR$/src/app/view/ReportDPBVendorPrint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/ReportPermintaan.java" afterPath="$PROJECT_DIR$/src/app/view/ReportPermintaan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/SetRole.java" afterPath="$PROJECT_DIR$/src/app/view/SetRole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabDPBItemSave.java" afterPath="$PROJECT_DIR$/src/app/view/TabDPBItemSave.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java" afterPath="$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/view/TabelNota.java" afterPath="$PROJECT_DIR$/src/app/view/TabelNota.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,50 +94,105 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TabPermintaanItemSave.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="294" column="52" lean-forward="true" selection-start-line="294" selection-start-column="52" selection-end-line="294" selection-end-column="52" />
+            <state relative-caret-position="34">
+              <caret line="2" column="53" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DivisiModify.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/controller/DivisiModify.java">
+      <file leaf-file-name="TabelVendor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/TabelVendor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PermintaanModify.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/controller/PermintaanModify.java">
+      <file leaf-file-name="TabelPosisi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/TabelPosisi.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="48" column="61" lean-forward="true" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
+              <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="24" selection-end-column="89" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataPermintaan.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/model/DataPermintaan.java">
+      <file leaf-file-name="config.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/config.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="122" column="34" lean-forward="false" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
+            <state relative-caret-position="17">
+              <caret line="1" column="8" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Divisi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/Divisi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Barang.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/Barang.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4624">
+              <caret line="300" column="0" lean-forward="false" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BarangModify.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/controller/BarangModify.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="69" column="4" lean-forward="true" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataBarang.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/model/DataBarang.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="18" />
               <folding>
-                <element signature="e#2230#2231#0" expanded="true" />
-                <element signature="e#2277#2278#0" expanded="true" />
-                <element signature="e#2310#2311#0" expanded="true" />
-                <element signature="e#2345#2346#0" expanded="true" />
-                <element signature="e#2370#2371#0" expanded="true" />
-                <element signature="e#2421#2422#0" expanded="true" />
-                <element signature="e#2458#2459#0" expanded="true" />
+                <element signature="e#1238#1239#0" expanded="true" />
+                <element signature="e#1255#1256#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="986">
+              <caret line="84" column="34" lean-forward="false" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SetUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/view/SetUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1904">
+              <caret line="133" column="13" lean-forward="false" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,6 +215,8 @@
       <find>spinner</find>
       <find>export_file_name</find>
       <find>GetDPBTerbilang</find>
+      <find>atk</find>
+      <find>dataBarangDipilihEdit</find>
     </findStrings>
     <replaceStrings>
       <replace>DataNota</replace>
@@ -169,7 +243,6 @@
         <option value="$PROJECT_DIR$/src/app/model/DataBarang.java" />
         <option value="$PROJECT_DIR$/src/app/controller/BarangSimpan.java" />
         <option value="$PROJECT_DIR$/src/app/controller/BarangModify.java" />
-        <option value="$PROJECT_DIR$/src/app/view/Barang.java" />
         <option value="$PROJECT_DIR$/src/app/view/TabPermintaanItem.java" />
         <option value="$PROJECT_DIR$/src/app/view/HapusDPB.java" />
         <option value="$PROJECT_DIR$/src/app/view/EmailDPB.java" />
@@ -185,7 +258,6 @@
         <option value="$PROJECT_DIR$/src/app/controller/NotaModify.java" />
         <option value="$PROJECT_DIR$/src/app/Main.java" />
         <option value="$PROJECT_DIR$/src/app/view/TabDPBItemSave.java" />
-        <option value="$PROJECT_DIR$/src/app/controller/EmailController.java" />
         <option value="$PROJECT_DIR$/src/app/view/ReportDPBVendorPrint.java" />
         <option value="$PROJECT_DIR$/src/app/view/SetRole.java" />
         <option value="$PROJECT_DIR$/src/app/view/DPBKolektif.java" />
@@ -195,10 +267,12 @@
         <option value="$PROJECT_DIR$/src/app/view/EditPermintaan.java" />
         <option value="$PROJECT_DIR$/src/app/view/ReportDPBVendor.java" />
         <option value="$PROJECT_DIR$/src/app/controller/DPBKolektifModify.java" />
-        <option value="$PROJECT_DIR$/src/app/controller/DivisiModify.java" />
         <option value="$PROJECT_DIR$/src/app/model/DataPermintaan.java" />
-        <option value="$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java" />
         <option value="$PROJECT_DIR$/src/app/controller/PermintaanModify.java" />
+        <option value="$PROJECT_DIR$/src/app/controller/DivisiModify.java" />
+        <option value="$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java" />
+        <option value="$PROJECT_DIR$/src/app/controller/EmailController.java" />
+        <option value="$PROJECT_DIR$/src/app/view/Barang.java" />
       </list>
     </option>
   </component>
@@ -231,6 +305,8 @@
     <panes>
       <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,8 +350,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -571,7 +645,6 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12445095" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -591,6 +664,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -609,45 +683,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/sample.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/app/Controller.java" />
-    <entry file="file://$PROJECT_DIR$/src/app/sample.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/app/Controller.java" />
-    <entry file="file://$PROJECT_DIR$/simperang.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/simperang/app/view/ReportDPBVendor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="325" column="91" lean-forward="false" selection-start-line="325" selection-start-column="91" selection-end-line="325" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/view/SetDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="60" column="18" lean-forward="false" selection-start-line="58" selection-start-column="58" selection-end-line="66" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controller/BarangShow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/model/DataBarang.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="829">
-          <caret line="73" column="28" lean-forward="false" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/view/HapusDPB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -666,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -712,13 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controller/BarangModify.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="51" column="60" lean-forward="true" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/controller/GetDataBarangs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -744,15 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="121" column="73" lean-forward="false" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/GlobalUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="281" column="46" lean-forward="false" selection-start-line="281" selection-start-column="46" selection-end-line="281" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -763,23 +781,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="117" column="8" lean-forward="false" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/model/DataNotaDPB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="52" column="37" lean-forward="false" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-          <folding>
-            <element signature="e#1074#1075#0" expanded="false" />
-            <element signature="e#1130#1131#0" expanded="false" />
-            <element signature="e#1178#1179#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -787,7 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1734">
           <caret line="113" column="52" lean-forward="false" selection-start-line="113" selection-start-column="52" selection-end-line="113" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -795,13 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
           <caret line="92" column="38" lean-forward="false" selection-start-line="92" selection-start-column="38" selection-end-line="92" selection-end-column="38" />
-          <folding>
-            <element signature="e#1675#1676#0" expanded="false" />
-            <element signature="e#1709#1710#0" expanded="false" />
-            <element signature="e#2099#2100#0" expanded="false" />
-            <element signature="e#2157#2158#0" expanded="false" />
-            <element signature="e#2207#2208#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -809,7 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="36" column="68" lean-forward="false" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -817,18 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="75" column="48" lean-forward="true" selection-start-line="75" selection-start-column="48" selection-end-line="75" selection-end-column="48" />
-          <folding>
-            <element signature="e#10631#10930#0" expanded="false" />
-            <element signature="e#10929#10930#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/view/Barang.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672">
-          <caret line="241" column="42" lean-forward="true" selection-start-line="241" selection-start-column="42" selection-end-line="241" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -836,15 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controller/EmailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="98" column="71" lean-forward="false" selection-start-line="98" selection-start-column="71" selection-end-line="98" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="43" column="172" lean-forward="false" selection-start-line="43" selection-start-column="172" selection-end-line="43" selection-end-column="172" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,7 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="30" column="102" lean-forward="false" selection-start-line="30" selection-start-column="102" selection-end-line="30" selection-end-column="102" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,7 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="45" column="117" lean-forward="false" selection-start-line="45" selection-start-column="117" selection-end-line="45" selection-end-column="117" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,15 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-340">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/view/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="163" column="40" lean-forward="true" selection-start-line="163" selection-start-column="40" selection-end-line="163" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,7 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="42" column="41" lean-forward="true" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,7 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="89" column="107" lean-forward="false" selection-start-line="89" selection-start-column="107" selection-end-line="89" selection-end-column="107" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,7 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-170">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -916,7 +876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="210" column="76" lean-forward="false" selection-start-line="210" selection-start-column="61" selection-end-line="210" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -924,7 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-755">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,7 +890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="37" column="75" lean-forward="false" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -940,17 +897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="295" column="64" lean-forward="false" selection-start-line="295" selection-start-column="52" selection-end-line="295" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5538#7818#0" expanded="true" />
-            <element signature="e#6271#6287#0" expanded="true" />
-            <element signature="e#7817#7818#0" expanded="true" />
-            <element signature="e#8888#9484#0" expanded="true" />
-            <element signature="e#9483#9484#0" expanded="true" />
-            <element signature="e#10580#13249#0" expanded="true" />
-            <element signature="e#11313#11329#0" expanded="true" />
-            <element signature="e#13248#13249#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -958,46 +904,155 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controller/DivisiModify.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/model/DataPermintaan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
+        <state relative-caret-position="1190">
           <caret line="122" column="34" lean-forward="false" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
-          <folding>
-            <element signature="e#2230#2231#0" expanded="true" />
-            <element signature="e#2277#2278#0" expanded="true" />
-            <element signature="e#2310#2311#0" expanded="true" />
-            <element signature="e#2345#2346#0" expanded="true" />
-            <element signature="e#2370#2371#0" expanded="true" />
-            <element signature="e#2421#2422#0" expanded="true" />
-            <element signature="e#2458#2459#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="294" column="52" lean-forward="true" selection-start-line="294" selection-start-column="52" selection-end-line="294" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/controller/PermintaanModify.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="48" column="61" lean-forward="false" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controller/DivisiModify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="117" column="18" lean-forward="false" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/GlobalUtility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="74" column="36" lean-forward="false" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/TabPermintaanItemSave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="279" column="38" lean-forward="false" selection-start-line="279" selection-start-column="38" selection-end-line="279" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controller/EmailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="105" column="79" lean-forward="false" selection-start-line="105" selection-start-column="79" selection-end-line="105" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/LabelJudul.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1921">
+          <caret line="147" column="26" lean-forward="false" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controller/RoleModify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="53" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/TabelVendor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/TabelPosisi.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="48" column="61" lean-forward="true" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
+          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="24" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="8" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/Divisi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/Barang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4624">
+          <caret line="300" column="0" lean-forward="false" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/DataBarang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="84" column="34" lean-forward="false" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/view/SetUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="133" column="13" lean-forward="false" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controller/BarangModify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="69" column="4" lean-forward="true" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
           <folding />
         </state>
       </provider>

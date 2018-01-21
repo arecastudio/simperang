@@ -25,6 +25,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 
+import java.util.ConcurrentModificationException;
+
 public class TabPermintaanItemSave extends AnchorPane {
 	private TableView table;
 	private Button button_update,button_simpan,button_clear,button_del;
@@ -239,22 +241,43 @@ public class TabPermintaanItemSave extends AnchorPane {
 		button_del.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				int i=0,j=0;
+				boolean b=false;
 				if(text_jumlah.getText().toString().trim().length()>0 && Integer.parseInt(text_jumlah.getText().toString().trim())>0 && label_nama.getStyle().trim().length()>0) {
 					if(isEdit.equals(Boolean.TRUE)) {
-						for(DataBarangDipilih dbp:GlobalUtility.dataBarangDipilihEdit) {
+						for(DataBarangDipilih dbp: GlobalUtility.dataBarangDipilihEdit) {
+
 							if(dbp.getId().toString()==label_nama.getStyle().toString()) {
-								GlobalUtility.dataBarangDipilihEdit.remove(dbp);
-								//System.out.println(dbp.getNama());
-								refresh();
+								/*try {
+									GlobalUtility.dataBarangDipilihEdit.remove(dbp);
+								}catch (ConcurrentModificationException e){
+								}
+								refresh();*/
+								i=j;
+								b=true;
 							}
+							j++;
 						}
+						if (b==true){
+							GlobalUtility.dataBarangDipilihEdit.remove(i);
+							refresh();
+						}
+
 					}else {
 						for(DataBarangDipilih dbp:GlobalUtility.dataBarangDipilih) {
 							if(dbp.getId().toString()==label_nama.getStyle().toString()) {
-								GlobalUtility.dataBarangDipilih.remove(dbp);
-								//System.out.println(dbp.getNama());
-								refresh();
+								/*try {
+									GlobalUtility.dataBarangDipilih.remove(dbp);
+								}catch (ConcurrentModificationException e){
+								}
+								refresh();*/
+								i=j;
+								b=true;
 							}
+						}
+						if (b==true){
+							GlobalUtility.dataBarangDipilihEdit.remove(i);
+							refresh();
 						}
 					}
 				}
@@ -290,7 +313,7 @@ public class TabPermintaanItemSave extends AnchorPane {
 					dp.setNama_atasan(tmp_nama_atasan);
 					dp.setNama_posisi_atasan(tmp_nama_posisi_atasan);
 
-					DataDivisi dd=new DivisiModify().GetDataDivisiByPosisi(tmp_id_posisi);
+					DataDivisi dd=new DivisiModify().GetDataDivisiByNik(tmp_nik);
 					dp.setId_divisi(dd.getId());
 					dp.setNama_divisi(dd.getNama());
 					

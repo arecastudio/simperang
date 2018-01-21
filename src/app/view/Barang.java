@@ -305,6 +305,8 @@ public class Barang {
 					if (path.substring(path.length()-1,path.length())!="/") path+="/";
 					System.out.println("temp dir: "+path);
 
+					imgView.setImage(null);
+
 					byte[] b=new BarangModify().GetImage(tmpId);
 					if (b!=null){
 						Task<Void>task=new Task<Void>() {

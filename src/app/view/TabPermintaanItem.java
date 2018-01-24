@@ -41,7 +41,8 @@ public class TabPermintaanItem extends Pane {
 	//public static ObservableList<DataBarang> list;
 	private Boolean isEdit;
 	private String path="";
-	
+	private ScrollPane sp;
+
 	public TabPermintaanItem(Boolean isEdit) {
 		this.isEdit=isEdit;
 
@@ -105,12 +106,18 @@ public class TabPermintaanItem extends Pane {
 		//hbox2.getChildren().add(table);
 		//vbox1.getChildren().add(hbox2);
 		
-		ScrollPane sp = new ScrollPane();
-		//sp.setFitToWidth(true);
-		sp.setPrefWidth(Main.primaryStage.getWidth()-10);
-		sp.setPrefHeight(Main.primaryStage.getHeight()-230);
+		sp = new ScrollPane();
 		sp.setContent(grid);
-		
+		sp.setFitToWidth(true);
+		//sp.setPrefWidth(Main.primaryStage.getWidth()-15);
+		//sp.setPrefHeight(Main.primaryStage.getHeight());
+		final double sp_width=grid.getWidth();
+		final double sp_height=grid.getHeight();
+		sp.setPrefSize(1300,420);
+
+		//sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+		//sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+
 		vroot.getChildren().addAll(hbox1,sp);
 		this.getChildren().add(vroot);
 
@@ -153,8 +160,8 @@ public class TabPermintaanItem extends Pane {
 			//File file=new File(path+db.getId()+".jpg");
 			//Image image=new Image(file.toURI().toString());
 			ImageView imageView=new ImageView();
-			imageView.setFitWidth(250);
-			imageView.setFitHeight(150);
+			imageView.setFitWidth(50);
+			imageView.setFitHeight(50);
 
 			byte[] b=new BarangModify().GetImage(db.getId());
 			if (b!=null){
@@ -183,7 +190,7 @@ public class TabPermintaanItem extends Pane {
 			bt.setGraphic(imageView);
 			bt.getStyleClass().addAll("button_barang");
 			bt.setId(""+db.getId());
-			bt.setPrefHeight(250);
+			bt.setPrefHeight(150);
 			bt.setPrefWidth(300);
 			if(j>3) {j=0;k++;}
 			grid.add(bt, j, k);

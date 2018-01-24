@@ -59,12 +59,12 @@ public class Login {
 		username=new TextField();
 		username.setAlignment(Pos.CENTER);
 		username.setPromptText("NIK...");
-		//username.setText("1");
+		username.setText("1");
 
 		password=new PasswordField();
 		password.setAlignment(Pos.CENTER);
 		password.setPromptText("Password...");
-		//password.setText("1");
+		password.setText("1");
 		
 		button_login=new Button("Login");		
 		button_login.setPrefWidth(100);

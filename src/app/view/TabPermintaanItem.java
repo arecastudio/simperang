@@ -111,9 +111,10 @@ public class TabPermintaanItem extends Pane {
 		sp.setFitToWidth(true);
 		//sp.setPrefWidth(Main.primaryStage.getWidth()-15);
 		//sp.setPrefHeight(Main.primaryStage.getHeight());
-		final double sp_width=grid.getWidth();
-		final double sp_height=grid.getHeight();
-		sp.setPrefSize(1300,420);
+		final double sp_width=Main.primaryStage.getWidth()-20;
+		final double sp_height=Main.primaryStage.getHeight()-310;
+		//System.out.println("tinggi: "+sp_height);
+		sp.setPrefSize(sp_width,sp_height);
 
 		//sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 		//sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);

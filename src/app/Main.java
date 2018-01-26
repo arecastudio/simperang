@@ -45,7 +45,7 @@ public class Main extends Application{
     public static MenuItem barang,divisi,posisi,tutup,buat_permintaan,edit_permintaan,
     review_permintaan,set_user,buat_dpb_kolektif,laporan_permintaan,laporan_dpb_vendor,laporan_dpb_vendor2,
     hapus_permintaan,hapus_dpb_kolektif,notifikasi_email,notifikasi_email_vendor,laporan_dpb_kolektif,set_hak,tambah_hak,
-	set_panduan,set_db,vendor;
+	set_panduan,set_db,vendor,inv_barang_masuk,inv_barang_keluar;
     public static MenuBar menuBar;
     private ImageView imgView;
     public static Label label_status;
@@ -116,6 +116,11 @@ public class Main extends Application{
 		notifikasi_email_vendor=new MenuItem("Notifikasi Email ke Vendor");
 		notifikasi_email_vendor.setDisable(true);
         menuProses.getItems().addAll(buat_permintaan,edit_permintaan,hapus_permintaan,review_permintaan, new SeparatorMenuItem(),buat_dpb_kolektif,hapus_dpb_kolektif,new SeparatorMenuItem(),notifikasi_email);
+        // --- Menu Inventory
+        Menu menuInventory =new Menu("Inventori");
+        inv_barang_masuk=new MenuItem("Barang Masuk");
+		inv_barang_keluar=new MenuItem("Barang Keluar");
+		menuInventory.getItems().addAll(inv_barang_masuk,inv_barang_keluar);
         // --- Menu View
         Menu menuLaporan = new Menu("Laporan");
         laporan_permintaan=new MenuItem("Cetak Permintaan");
@@ -133,7 +138,7 @@ public class Main extends Application{
         set_db.setDisable(true);
         menuPengaturan.getItems().addAll(set_user,set_hak, new SeparatorMenuItem(),set_db, new SeparatorMenuItem(),set_panduan);
         
-        menuBar.getMenus().addAll(menuBerkas, menuProses, menuLaporan,menuPengaturan);
+        menuBar.getMenus().addAll(menuBerkas, menuProses, menuInventory, menuLaporan,menuPengaturan);
         clickMenu();
 		menuBar.setVisible(false);
 	}
@@ -284,6 +289,10 @@ public class Main extends Application{
 
 		notifikasi_email_vendor.setOnAction(e->{
 			borderPane.setCenter(new LabelJudul("Notifikasi email ke vendor."));
+		});
+
+		inv_barang_masuk.setOnAction(e->{
+			borderPane.setCenter(new InvBarangMasuk());
 		});
 	}
 	
